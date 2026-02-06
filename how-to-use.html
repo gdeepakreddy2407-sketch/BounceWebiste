@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use - Bounce Connect</title>
+    <meta name="description"
+        content="Learn how to use Bounce Connect to seamlessly connect your Mac and Android devices.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-light: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-card: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.06);
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent-cyan: #007aff;
+            --accent-blue: #0066ff;
+            --accent-green: #10b981;
+            --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(0, 122, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .animate-on-scroll.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Scroll progress indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+            z-index: 10000;
+            transition: width 0.1s ease;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 16px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .back-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-link:hover {
+            background: var(--bg-secondary);
+            transform: translateX(-4px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            letter-spacing: -1.5px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        /* Step Card */
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-large);
+            border-color: transparent;
+        }
+
+        .step-card:hover::before {
+            opacity: 0.02;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            min-width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.4);
+        }
+
+        .step-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-description {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-list {
+            list-style: none;
+            margin: 16px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-list li {
+            padding: 10px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .step-list li:hover {
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .step-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+            margin-bottom: 60px;
+        }
+
+        .feature-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow-large);
+            border-color: transparent;
+        }
+
+        .feature-box:hover::before {
+            opacity: 0.03;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-box:hover .feature-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .feature-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), rgba(0, 102, 255, 0.05));
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .tip-box:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .tip-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .tip-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-top: 20px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        .footer-content a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 42px;
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .step-card {
+                padding: 28px;
+            }
+
+            .step-header {
+                flex-direction: column;
+            }
+
+            .step-title {
+                font-size: 24px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .toc-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 12px;
+        }
+
+        .toc-list a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .toc-list a:hover {
+            transform: translateX(4px);
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo-container">
+                    <img src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
+                    <div class="logo">Bounce Connect</div>
+                </a>
+                <a href="index.html" class="back-link">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>How to Use<br>Bounce Connect</h1>
+            <p class="subtitle">
+                Everything you need to know to get started and make the most of your connected devices.
+            </p>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="guide-section">
+        <div class="container">
+            <div class="toc animate-on-scroll">
+                <div class="toc-title">Quick Navigation</div>
+                <ul class="toc-list">
+                    <li><a href="#setup">Getting Started</a></li>
+                    <li><a href="#features">Core Features</a></li>
+                    <li><a href="#messaging">Message Sync & SMS</a></li>
+                    <li><a href="#calls">Call Management</a></li>
+                    <li><a href="#clipboard">Universal Clipboard</a></li>
+                    <li><a href="#files">File Transfer</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <li><a href="#security">Security & Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="guide-section" id="setup">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Getting Started</h2>
+            <p class="section-subtitle animate-on-scroll">Set up Bounce Connect in three simple steps.</p>
+
+            <div class="step-card animate-on-scroll">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Download & Install</h3>
+                </div>
+                <p class="step-description">
+                    Download Bounce Connect for Mac and Bounce Companion for Android. Install both applications on your
+                    respective devices.
+                </p>
+                <ul class="step-list">
+                    <li>Mac app requires macOS 11 Big Sur or later</li>
+                    <li>Android app requires Android 8.0 Oreo or higher</li>
+                    <li>Both devices must be connected to the same WiFi network</li>
+                </ul>
+            </div>
+
+            <div class="step-card animate-on-scroll">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Pair Your Devices</h3>
+                </div>
+                <p class="step-description">
+                    Open both apps and use the QR code scanner to connect your devices securely.
+                </p>
+                <ul class="step-list">
+                    <li>Launch Bounce Connect on your Mac</li>
+                    <li>Open Bounce Companion on your Android device</li>
+                    <li>Tap "Pair New Device" on Android and scan the QR code shown on Mac</li>
+                    <li>Wait for the secure handshake to complete</li>
+                    <li>Grant necessary permissions when prompted</li>
+                </ul>
+                <div class="tip-box">
+                    <div class="tip-title">🔐 Security Note</div>
+                    <div class="tip-text">
+                        The pairing process uses AES-256-GCM encryption. Your devices communicate directly over your
+                        local network—no data passes through external servers.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card animate-on-scroll">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Grant Permissions</h3>
+                </div>
+                <p class="step-description">
+                    Enable the necessary permissions on Android to unlock all features.
+                </p>
+                <ul class="step-list">
+                    <li><strong>Notification Access:</strong> Required for syncing notifications to Mac</li>
+                    <li><strong>SMS Permissions:</strong> Enables SMS forwarding and replies</li>
+                    <li><strong>Phone Permissions:</strong> For call notifications and management</li>
+                    <li><strong>Contacts Access:</strong> To display caller information</li>
+                    <li><strong>Storage Access:</strong> For file transfers</li>
+                </ul>
+                <div class="tip-box">
+                    <div class="tip-title">✨ Pro Tip</div>
+                    <div class="tip-text">
+                        Disable battery optimization for Bounce Companion to ensure reliable background operation. Go to
+                        Settings → Apps → Bounce Companion → Battery → Unrestricted.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="guide-section" id="features" style="background: var(--bg-secondary); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Core Features</h2>
+            <p class="section-subtitle animate-on-scroll">Discover what makes Bounce Connect powerful.</p>
+
+            <div class="feature-grid">
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-name">Message Sync</h3>
+                    <p class="feature-desc">
+                        View all your Android messages in real-time on Mac. Works with SMS, WhatsApp, Telegram, and
+                        more.
+                    </p>
+                </div>
+
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">📞</div>
+                    <h3 class="feature-name">Call Notifications</h3>
+                    <p class="feature-desc">
+                        See incoming calls on your Mac with caller ID. Answer or decline calls with one click.
+                    </p>
+                </div>
+
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">🔔</div>
+                    <h3 class="feature-name">Notification Mirror</h3>
+                    <p class="feature-desc">
+                        All your Android notifications appear on Mac instantly. Stay connected without checking your
+                        phone.
+                    </p>
+                </div>
+
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">📋</div>
+                    <h3 class="feature-name">Universal Clipboard</h3>
+                    <p class="feature-desc">
+                        Copy text or images on one device and paste on the other instantly. Seamless cross-device
+                        workflows.
+                    </p>
+                </div>
+
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">📁</div>
+                    <h3 class="feature-name">File Transfer</h3>
+                    <p class="feature-desc">
+                        Drag and drop files from Mac to Android. Supports all file types with no size limits.
+                    </p>
+                </div>
+
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">🔗</div>
+                    <h3 class="feature-name">Share Sheet</h3>
+                    <p class="feature-desc">
+                        Share content from any Android app directly to your Mac. Images, links, and text transfer
+                        instantly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Guides -->
+    <section class="guide-section" id="messaging">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Using Specific Features</h2>
+
+            <!-- Messages -->
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">📱 Message Sync & SMS Forwarding</h3>
+                <p class="step-description">
+                    Bounce Connect displays all your Android messages in real-time on your Mac, including SMS, WhatsApp,
+                    and Telegram.
+                </p>
+                <ul class="step-list">
+                    <li>Messages appear as native macOS notifications</li>
+                    <li>Click a notification to view the full conversation</li>
+                    <li>Sender information is displayed with timestamps</li>
+                    <li>Group SMS forwarding works for group conversations</li>
+                    <li>Messages are organized by app and contact</li>
+                </ul>
+                <div class="tip-box">
+                    <div class="tip-title">🔒 Privacy Note</div>
+                    <div class="tip-text">
+                        All messages are transmitted using AES-256-GCM encryption. Messages are never stored on
+                        servers—they go directly between your devices over WiFi.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calls -->
+            <div class="step-card animate-on-scroll" id="calls">
+                <h3 class="step-title" style="margin-bottom: 20px;">📞 Managing Calls</h3>
+                <p class="step-description">
+                    When someone calls your Android phone, you'll see a beautiful caller ID window on your Mac.
+                </p>
+                <ul class="step-list">
+                    <li><strong>Incoming Calls:</strong> Caller name, number, and photo appear instantly</li>
+                    <li><strong>Answer:</strong> Click the green button (call continues on your phone)</li>
+                    <li><strong>Decline:</strong> Click the red button to reject the call</li>
+                    <li><strong>Mute:</strong> Silence the ringer on both devices</li>
+                    <li><strong>Call History:</strong> Track incoming, active, and missed calls with duration</li>
+                </ul>
+                <div class="tip-box">
+                    <div class="tip-title">📲 Supported Apps</div>
+                    <div class="tip-text">
+                        Works with regular phone calls, WhatsApp calls, Telegram calls, and most VoIP apps that
+                        integrate with Android's call system.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clipboard -->
+            <div class="step-card animate-on-scroll" id="clipboard">
+                <h3 class="step-title" style="margin-bottom: 20px;">📋 Universal Clipboard</h3>
+                <p class="step-description">
+                    Copy on Mac, paste on Android instantly with universal clipboard sync.
+                </p>
+                <ul class="step-list">
+                    <li>Copy text or images on your Mac using ⌘+C</li>
+                    <li>The content automatically syncs to your Android device</li>
+                    <li>Open any app on Android and paste with long-press</li>
+                    <li>Currently supports one-way sync (Mac → Android)</li>
+                    <li>View clipboard history on the Android app</li>
+                </ul>
+            </div>
+
+            <!-- File Transfer -->
+            <div class="step-card animate-on-scroll" id="files">
+                <h3 class="step-title" style="margin-bottom: 20px;">📁 File Transfer</h3>
+                <p class="step-description">
+                    Transfer any file from Mac to Android with drag-and-drop simplicity.
+                </p>
+                <ul class="step-list">
+                    <li>Open the Files tab in Bounce Connect on Mac</li>
+                    <li>Drag and drop files into the window, or click "Select Files"</li>
+                    <li>Files transfer automatically to Android Downloads folder</li>
+                    <li>Track progress with real-time transfer status</li>
+                    <li>Supports multiple files at once with no size limit</li>
+                    <li>All file types are supported (images, videos, documents, etc.)</li>
+                </ul>
+                <div class="tip-box">
+                    <div class="tip-title">⚡ Transfer Speed</div>
+                    <div class="tip-text">
+                        Files transfer over WiFi at full network speed. For best performance, ensure both devices are on
+                        a fast WiFi network. Large files transfer faster than cloud services!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="guide-section" id="troubleshooting" style="background: var(--bg-secondary); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Troubleshooting</h2>
+            <p class="section-subtitle animate-on-scroll">Solutions to common issues.</p>
+
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">❌ Devices Not Connecting</h3>
+                <ul class="step-list">
+                    <li>Ensure both devices are on the same WiFi network</li>
+                    <li>Check that Bounce Connect is running on both devices</li>
+                    <li>Try unpairing and re-pairing with a new QR code</li>
+                    <li>Verify your firewall isn't blocking the connection</li>
+                    <li>Restart both apps and try again</li>
+                    <li>Long press the app icon and click on app settings and click on battery and disable battery
+                        optimization for the app/ allow background usage</li>
+                </ul>
+            </div>
+
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">📱 Not Receiving Notifications</h3>
+                <ul class="step-list">
+                    <li>Go to Android Settings → Apps → Bounce Companion</li>
+                    <li>Verify "Notification Access" permission is granted</li>
+                    <li>Check that the feature is enabled in the Android app dashboard</li>
+                    <li>Ensure the Android app is running in the background</li>
+                    <li>Disable battery optimization for Bounce Companion</li>
+                    <li>Long press the app icon and click on app settings and click on battery and disable battery
+                        optimization for the app/ allow background usage</li>
+                </ul>
+            </div>
+
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">🔌 Connection Drops Frequently</h3>
+                <ul class="step-list">
+                    <li>Ensure a stable WiFi connection on both devices</li>
+                    <li>Long press the app icon and click on app settings and click on battery and disable battery
+                        optimization for the app/ allow background usage</li>
+                    <li>Check if your router has connection limits or security settings</li>
+                    <li>Move devices closer to the WiFi router if signal is weak</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section class="guide-section" id="security">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">🔒 Security & Privacy</h2>
+            <p class="section-subtitle animate-on-scroll">How Bounce Connect keeps your data safe.</p>
+
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">End-to-End Encryption</h3>
+                <p class="step-description">
+                    All communication between your Mac and Android device is encrypted using <strong>AES-256-GCM
+                        encryption</strong>, the same standard used by banks and military organizations.
+                </p>
+                <div class="code-block">
+                    Encryption: AES-256-GCM<br>
+                    Key Storage: macOS Keychain (secure)<br>
+                    Pairing: QR code with encrypted handshake<br>
+                    Transport: Direct WiFi connection
+                </div>
+            </div>
+
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">No Cloud Storage</h3>
+                <p class="step-description">
+                    Your data never leaves your devices. All messages, notifications, and files are transmitted directly
+                    between your Mac and Android over your local WiFi network. No data is stored on external servers.
+                </p>
+                <div class="tip-box">
+                    <div class="tip-title">🌐 Local Network Only</div>
+                    <div class="tip-text">
+                        Bounce Connect operates entirely on your local network. Your data never touches the internet or
+                        any third-party servers.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card animate-on-scroll">
+                <h3 class="step-title" style="margin-bottom: 20px;">Secure Key Management</h3>
+                <p class="step-description">
+                    Encryption keys are stored securely in macOS Keychain and never transmitted in plain text. When you
+                    unpair devices, all keys are immediately deleted.
+                </p>
+                <ul class="step-list">
+                    <li>Keys are generated during initial pairing</li>
+                    <li>Stored in macOS Keychain with hardware encryption</li>
+                    <li>Never transmitted over the network</li>
+                    <li>Automatically deleted when devices are unpaired</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Bounce Connect. All rights reserved.</p>
+                <p style="margin-top: 12px;">
+                    <a href="index.html">Back to Home</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
