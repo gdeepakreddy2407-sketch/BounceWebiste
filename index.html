@@ -383,12 +383,7 @@
             height: 24px;
         }
 
-        /* Features Section */
-        .features-section {
-            padding: 100px 0;
-            background: linear-gradient(to bottom, transparent, var(--bg-secondary) 50%);
-        }
-
+        /* Global Section Styles */
         .section-header {
             text-align: center;
             margin-bottom: 80px;
@@ -408,6 +403,59 @@
             max-width: 650px;
             margin: 0 auto;
             line-height: 1.6;
+        }
+
+        /* Features Outro Section (Bottom Background) */
+        .features-outro-section {
+            padding: 120px 0;
+            position: relative;
+            background: transparent;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Removed negative margin to fix spacing for next section */
+        }
+
+        /* Full Width Background Image */
+        .features-outro-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('Screenshots/feature_bg.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            z-index: -2;
+        }
+
+        /* Trigger visibility */
+        .features-outro-section.visible::before {
+            opacity: 1;
+        }
+
+        /* White Glass Overlay */
+        .features-outro-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.05);
+            /* Very light tint */
+            z-index: -1;
+        }
+
+        /* Features Header Standard (Reverted) */
+        .features-header-standard {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background: transparent;
+        }
+
+        .features-grid-section {
+            padding-bottom: 100px;
         }
 
         .features-grid {
@@ -1022,16 +1070,21 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
+    <!-- Features Header Section -->
+    <section class="features-header-standard animate-on-scroll">
         <div class="container">
-            <div class="section-header animate-on-scroll">
+            <div class="section-header">
                 <h2 class="section-title">Everything you need,<br>beautifully integrated.</h2>
                 <p class="section-subtitle">
                     Powerful features that work seamlessly together to enhance your workflow.
                 </p>
             </div>
+        </div>
+    </section>
 
+    <!-- Features Grid Section -->
+    <section class="features-grid-section">
+        <div class="container">
             <div class="features-grid">
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">💬</div>
@@ -1293,6 +1346,16 @@
         </div>
     </section>
 
+    <!-- Features Outro (Background Animation Section) -->
+    <section class="features-outro-section animate-on-scroll">
+        <div class="container" style="text-align: center; position: relative; z-index: 2;">
+            <h2 class="section-title" style="margin-bottom: 10px; color: #000;">Never miss a notification.</h2>
+            <p class="section-subtitle" style="color: #000; font-size: 18px; font-weight: 500;">
+                Notifications synced from Android to Mac seamlessly and privately.
+            </p>
+        </div>
+    </section>
+
     <!-- Final CTA -->
     <section class="hero" style="padding: 100px 0;">
         <div class="container">
@@ -1442,6 +1505,14 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Background Reveal Observer for Features Intro
+        // Since we are using 'animate-on-scroll' generic class, it will get the 'visible' class automatically
+        // which triggers the opacity 1 on ::before
+
+        // Remove old observer if it exists or relies on bg-visible
+        const oldObserver = document.querySelector('.features-section');
+        // Logic handled by general observer adding 'visible' class to .features-intro-section
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
