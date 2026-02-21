@@ -648,19 +648,6 @@
             overflow: hidden;
         }
 
-        .carousel-phone-mockup::before {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 24px;
-            background: #1d1d1f;
-            border-radius: 0 0 20px 20px;
-            z-index: 10;
-        }
-
         .android-screenshot {
             width: 100%;
             height: 100%;
@@ -731,6 +718,9 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .screenshot-card:hover {
@@ -740,9 +730,12 @@
 
         .screenshot-img {
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top;
             transition: transform 0.6s ease;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .screenshot-card:hover .screenshot-img {
@@ -761,6 +754,39 @@
             color: var(--text-secondary);
             padding: 0 24px 24px;
             line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .screenshot-description strong {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+
+        .screenshot-description ul {
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+
+        .screenshot-description ul li {
+            position: relative;
+            margin-bottom: 6px;
+            padding-left: 16px;
+        }
+
+        .screenshot-description ul li::before {
+            content: '•';
+            color: var(--accent-cyan);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -1199,33 +1225,7 @@
                             </div>
                             <h3 class="carousel-item-title">Elegant Dashboard</h3>
                             <p class="carousel-item-description">
-                                Monitor connection status, battery life, and storage in one clean interface.
-                            </p>
-                        </div>
-
-                        <!-- Notification Listener 
-                        <div class="carousel-item">
-                            <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_notification.png" alt="Notification Listener"
-                                    class="android-screenshot"
-                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
-                            </div>
-                            <h3 class="carousel-item-title">Notification Access</h3>
-                            <p class="carousel-item-description">
-                                Grant secure access to sync notifications across devices with complete privacy.
-                            </p>
-                        </div>-->
-
-                        <!-- File Transfer -->
-                        <div class="carousel-item">
-                            <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_file_transfer.png" alt="File Transfer"
-                                    class="android-screenshot"
-                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
-                            </div>
-                            <h3 class="carousel-item-title">Easy File Sharing</h3>
-                            <p class="carousel-item-description">
-                                Transfer files seamlessly. Drag & drop from Mac or share from Android apps.
+                                Monitor connections, battery life, and your 9 active features in one clean interface.
                             </p>
                         </div>
 
@@ -1235,22 +1235,115 @@
                                 <img src="Screenshots/android_sms.png" alt="SMS Forwarding" class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
-                            <h3 class="carousel-item-title">SMS Forwarding</h3>
+                            <h3 class="carousel-item-title">iMessage-Style SMS</h3>
                             <p class="carousel-item-description">
-                                View and reply to SMS messages directly from your Mac notifications.
+                                A full desktop UI that mirrors your Android inbox. Dual-SIM support included.
                             </p>
                         </div>
 
-                        <!-- Share Sheet -->
+                        <!-- File Transfer -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_share.png" alt="Share to Bounce"
+                                <img src="Screenshots/android_file_transfer.png" alt="Large File Transfer"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
-                            <h3 class="carousel-item-title">Share Sheet Integration</h3>
+                            <h3 class="carousel-item-title">Large File Transfer</h3>
                             <p class="carousel-item-description">
-                                Bounce appears in your share menu—send content to Mac from any app.
+                                Wirelessly drag & drop multi-gigabyte files instantly, completely bypassing the cloud.
+                            </p>
+                        </div>
+
+                        <!-- Universal Clipboard -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_clipboard.png" alt="Universal Clipboard"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Universal Clipboard</h3>
+                            <p class="carousel-item-description">
+                                Unify your copy-paste history seamlessly across Android and macOS.
+                            </p>
+                        </div>
+
+                        <!-- Smart Notifications -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_notifications.png" alt="Smart Notifications"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Smart Notifications</h3>
+                            <p class="carousel-item-description">
+                                Mirror alerts, remote dismiss, and reply inline to WhatsApp & Telegram directly from
+                                Mac.
+                            </p>
+                        </div>
+
+                        <!-- Call Management -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_calls.png" alt="Call Management"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Call Management</h3>
+                            <p class="carousel-item-description">
+                                Answer / Reject cellular and WhatsApp calls right from your Mac desktop.
+                            </p>
+                        </div>
+
+                        <!-- Remote Media Controls -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_media.png" alt="Remote Media Controls"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Remote Media Controls</h3>
+                            <p class="carousel-item-description">
+                                See what's playing on Android and control playback via the Mac menu bar.
+                            </p>
+                        </div>
+
+                        <!-- Continuity Link Sharing -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_link_share.png" alt="Continuity Link Sharing"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Continuity Links</h3>
+                            <p class="carousel-item-description">
+                                Bounce web links between Android and Safari using the native Share Sheet.
+                            </p>
+                        </div>
+
+                        <!-- Dynamic Wallpaper Sync -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_wallpaper.png" alt="Dynamic Wallpaper Sync"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Wallpaper Sync</h3>
+                            <p class="carousel-item-description">
+                                A cosmetic continuity feature that aligns your macOS and Android background aesthetics.
+                            </p>
+                        </div>
+
+                        <!-- Real-Time Telemetry -->
+                        <div class="carousel-item">
+                            <div class="carousel-phone-mockup">
+                                <img src="Screenshots/android_telemetry.png" alt="Real-Time Telemetry"
+                                    class="android-screenshot"
+                                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
+                            </div>
+                            <h3 class="carousel-item-title">Real-Time Telemetry</h3>
+                            <p class="carousel-item-description">
+                                Monitor your Android hardware state, battery health, and connection status directly from
+                                macOS.
                             </p>
                         </div>
                     </div>
@@ -1275,72 +1368,219 @@
             </div>
 
             <div class="screenshots-grid">
+                <!-- 1. Dashboard -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Screenshot%202026-02-05%20at%202.05.16%20PM.png" alt="Dashboard Overview"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Dashboard Overview</h3>
-                    <p class="screenshot-description">Complete overview of connected devices, recent activity, and quick
-                        stats.</p>
+                    <h3 class="screenshot-title">Contextual Dashboard</h3>
+                    <div class="screenshot-description">
+                        Provides a single pane of glass to monitor your Android phone's battery life, active network
+                        connection, and available storage.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Open the Bounce Mac app to instantly see your phone's live hardware status.</li>
+                            <li>Toggle active features and monitor connection health.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Battery readings may occasionally delay by a few seconds due to Android OS background
+                                optimizations.</li>
+                        </ul>
+                    </div>
                 </div>
 
+                <!-- 2. Real-Time Messages -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Screenshot%202026-02-05%20at%202.05.32%20PM.png" alt="Message Sync"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Real-Time Messages</h3>
-                    <p class="screenshot-description">View messages from multiple apps with sender details and
-                        timestamps.</p>
+                    <h3 class="screenshot-title">iMessage-Style SMS</h3>
+                    <div class="screenshot-description">
+                        View and send SMS messages from multiple threads directly from your desktop.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Navigate to the Messages tab to view all existing SMS threads.</li>
+                            <li>Compose new messages and natively select which SIM card to use for sending (Dual-SIM
+                                support).</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Currently supports standard SMS only. Rich media (MMS) photo attachments in standard
+                                messaging threads are not fully supported.</li>
+                        </ul>
+                    </div>
                 </div>
 
+                <!-- 3. Call Management -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Screenshot%202026-02-05%20at%202.08.54%20PM.png" alt="Call Notifications"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Call Management</h3>
-                    <p class="screenshot-description">Track incoming, active, and missed calls with detailed
-                        information.</p>
+                    <h3 class="screenshot-title">Smart Call Management</h3>
+                    <div class="screenshot-description">
+                        Track incoming, active, and missed calls with granular caller ID integration.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Native macOS notification appears instantly for Cellular and WhatsApp calls.</li>
+                            <li>Click Accept or Decline directly from your Mac screen.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Audio routing is not supported. Accepting a call on Mac will answer it on your Android
+                                phone's current audio route (e.g., Bluetooth earbuds or speaker).</li>
+                        </ul>
+                    </div>
                 </div>
 
+                <!-- 4. Notification Center -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Screenshot%202026-02-05%20at%202.05.01%20PM.png" alt="Notification Center"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Notification Center</h3>
-                    <p class="screenshot-description">All Android notifications beautifully organized in one place.</p>
+                    <h3 class="screenshot-title">Unified Notifications</h3>
+                    <div class="screenshot-description">
+                        All pushed Android notifications seamlessly centralized on your Mac desktop.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Reply inline to WhatsApp, Telegram, and Messages via a native input field.</li>
+                            <li>Dismissing a notification on Mac wipes it cleanly from your Android phone drop-down.
+                            </li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Dismissal is unidirectional. Swiping away a notification natively on your Android limits
+                                remote-deletion synchronization from restoring Mac's history logic.</li>
+                        </ul>
+                    </div>
                 </div>
 
+                <!-- 5. Clipboard History -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.12%20PM.png" alt="Clipboard History"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Clipboard</h3>
-                    <p class="screenshot-description">Access clipboard with instant sync. Copy once, paste
-                        everywhere.</p>
+                    <h3 class="screenshot-title">Universal Clipboard</h3>
+                    <div class="screenshot-description">
+                        Access cross-device clipboard history with effortless native syncing.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Mac-to-Android: Copy text or images on Mac; it automatically appears in Android's
+                                clipboard buffer.</li>
+                            <li>Android-to-Mac: Highlight text on Android, tap 'Share', and select Bounce.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Due to strict Android background app restrictions, Android-to-Mac sync is limited to
+                                text blocks only.</li>
+                        </ul>
+                    </div>
                 </div>
 
+                <!-- 6. Easy File Transfers -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.27%20PM.png" alt="File Transfers"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Easy File Transfers</h3>
-                    <p class="screenshot-description">Send files with progress tracking and organized storage.</p>
+                    <h3 class="screenshot-title">Wireless File Transfer</h3>
+                    <div class="screenshot-description">
+                        Send massive files back and forth rapidly without cables or cloud storage.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Mac-to-Android: Drag and drop files from Finder directly into the Mac app UI.</li>
+                            <li>Android-to-Mac: Select files in your gallery, tap Share, and beam them to your Mac.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Devices must naturally be on the same local Wi-Fi subnet router (or Hotspot network).
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.39%20PM.png" alt="Settings & Pairing"
-                        class="screenshot-img"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Secure Pairing</h3>
-                    <p class="screenshot-description">Simple QR code pairing with AES-256 encryption.</p>
-                </div>
-
+                <!-- 7. Contacts -->
                 <div class="screenshot-card animate-on-scroll">
                     <img src="Screenshots/Gemini_Generated_Image_h1nb40h1nb40h1nb.png" alt="Android Companion"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
-                    <h3 class="screenshot-title">Contacts</h3>
-                    <p class="screenshot-description">View and manage Android contacts directly from your Mac.</p>
+                    <h3 class="screenshot-title">Native Contacts Sync</h3>
+                    <div class="screenshot-description">
+                        Directly interact with your address book synced securely from your phone.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Search seamlessly through your contacts via the Mac app sidebar.</li>
+                            <li>Click a contact to instantly dial them, initiate an SMS thread, or view details.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Contacts are strictly Read-Only from the Mac. Adding or editing entries must be natively
+                                performed on the phone itself.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 8. Secure Pairing -->
+                <div class="screenshot-card animate-on-scroll">
+                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.39%20PM.png" alt="Settings & Pairing"
+                        class="screenshot-img"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
+                    <h3 class="screenshot-title">Secure Encrypted Pairing</h3>
+                    <div class="screenshot-description">
+                        Frictionless connection handshake utilizing military-grade cryptography.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Mac app auto-generates a rapid QR payload. Snap the QR code using the Companion app.
+                            </li>
+                            <li>Establishes an AES-256 encrypted WebSocket tunnel instantly.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>Highly segmented corporate firewalls occasionally block Bonjour/mDNS packets, requiring
+                                the fallback manual IP configuration logic algorithm.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 9. Continuity Link Sharing -->
+                <div class="screenshot-card animate-on-scroll">
+                    <img src="Screenshots/mac_link_share.png" alt="Continuity Links" class="screenshot-img"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
+                    <h3 class="screenshot-title">Continuity Link Sharing</h3>
+                    <div class="screenshot-description">
+                        Pass live webpages directly between your desktop and mobile environments.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Mac-to-Android: Push current Safari/Chrome tabs via the macOS Share Extension.</li>
+                            <li>Android-to-Mac: Send browser links to macOS utilizing the Android Share menu.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>The macOS Share Extension must be manually enabled via System settings for the
+                                Mac-to-Android injection utility wrapper to function.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 10. Browse Android Files -->
+                <div class="screenshot-card animate-on-scroll">
+                    <img src="Screenshots/mac_file_browser.png" alt="Remote File Browser" class="screenshot-img"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
+                    <h3 class="screenshot-title">Remote File Browser</h3>
+                    <div class="screenshot-description">
+                        Browse, fetch, and organize your raw Android filesystem securely from Mac.
+                        <strong>How it works</strong>
+                        <ul>
+                            <li>Navigate Android directories like internal storage (DCIM, Downloads) directly from the
+                                beautiful Mac interface UI.</li>
+                            <li>Highlight items and trigger a rapid wireless pull payload to your natively macOS
+                                Desktop.</li>
+                        </ul>
+                        <strong>Limitations</strong>
+                        <ul>
+                            <li>To safeguard security paradigms, strict inaccessible protected Android OS directories
+                                cannot be browsed natively.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
