@@ -570,11 +570,17 @@
                 <div class="toc-title">Quick Navigation</div>
                 <ul class="toc-list">
                     <li><a href="#setup">Getting Started</a></li>
-                    <li><a href="#features">Core Features</a></li>
-                    <li><a href="#messaging">Message Sync & SMS</a></li>
-                    <li><a href="#calls">Call Management</a></li>
-                    <li><a href="#clipboard">Universal Clipboard</a></li>
-                    <li><a href="#files">File Transfer</a></li>
+                    <li><a href="#features">Core Features Quick List</a></li>
+                    <li><a href="#dashboard">1. Contextual Dashboard</a></li>
+                    <li><a href="#messaging">2. iMessage-Style SMS</a></li>
+                    <li><a href="#calls">3. Smart Call Management</a></li>
+                    <li><a href="#notifications">4. Unified Notifications</a></li>
+                    <li><a href="#clipboard">5. Universal Clipboard</a></li>
+                    <li><a href="#files">6. Wireless File Transfer</a></li>
+                    <li><a href="#contacts">7. Native Contacts Sync</a></li>
+                    <li><a href="#pairing">8. Encrypted Pairing</a></li>
+                    <li><a href="#links">9. Continuity Links</a></li>
+                    <li><a href="#browser">10. Remote File Browser</a></li>
                     <li><a href="#troubleshooting">Troubleshooting</a></li>
                     <li><a href="#security">Security & Privacy</a></li>
                 </ul>
@@ -631,23 +637,38 @@
             <div class="step-card animate-on-scroll">
                 <div class="step-header">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Grant Permissions</h3>
+                    <h3 class="step-title">Grant System Permissions</h3>
                 </div>
                 <p class="step-description">
-                    Enable the necessary permissions on Android to unlock all features.
+                    Bounce Companion requires specific, granular Android system permissions to power its cross-device
+                    continuity. Enable them all to unlock the full ecosystem.
                 </p>
                 <ul class="step-list">
-                    <li><strong>Notification Access:</strong> Required for syncing notifications to Mac</li>
-                    <li><strong>SMS Permissions:</strong> Enables SMS forwarding and replies</li>
-                    <li><strong>Phone Permissions:</strong> For call notifications and management</li>
-                    <li><strong>Contacts Access:</strong> To display caller information</li>
-                    <li><strong>Storage Access:</strong> For file transfers</li>
+                    <li><strong>Notification Access (Special):</strong> Crucial for mirroring active Android apps to
+                        macOS.</li>
+                    <li><strong>SMS & MMS:</strong> Required to retrieve conversational history and transmit native
+                        replies.</li>
+                    <li><strong>Phone & Call Logs:</strong> Required to trigger macOS popups during incoming calls and
+                        resolve caller identities.</li>
+                    <li><strong>Contacts Access:</strong> Necessary to display real names instead of bare numbers on
+                        your Mac.</li>
+                    <li><strong>Storage / Manage Files:</strong> Required to enable large file transfers and the Remote
+                        File Browser functionality.</li>
+                    <li><strong>Post Notifications (Android 13+):</strong> Required to maintain the persistent
+                        background connection service.</li>
                 </ul>
                 <div class="tip-box">
-                    <div class="tip-title">✨ Pro Tip</div>
+                    <div class="tip-title">🔋 Critical: Battery Optimization</div>
                     <div class="tip-text">
-                        Disable battery optimization for Bounce Companion to ensure reliable background operation. Go to
-                        Settings → Apps → Bounce Companion → Battery → Unrestricted.
+                        <strong>Step 1:</strong>
+                        By far the most important setting: you MUST disable battery optimization and allow background
+                        activity for Bounce Companion. If restricted, Android will systematically kill your WebSocket
+                        tunnel when the screen sleeps. go to settings → battery → apps → bounce connect → unrestricted.
+                        <br><br>
+                        <strong>Step 2:</strong> Long press the Bounce Companion app icon → click on <strong>App
+                            Info (ⓘ)</strong> → click on <strong>Battery</strong> → select <strong>Unrestricted</strong>
+                        OR toggle <strong>Allow background activity</strong> to ON. Both permissions are required for
+                        stable background use.
                     </div>
                 </div>
             </div>
@@ -662,146 +683,210 @@
 
             <div class="feature-grid">
                 <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-name">Contextual Dashboard</h3>
+                    <p class="feature-desc">Monitor your phone's live hardware status and toggle active features.</p>
+                </div>
+                <div class="feature-box animate-on-scroll">
                     <div class="feature-icon">💬</div>
-                    <h3 class="feature-name">Message Sync</h3>
-                    <p class="feature-desc">
-                        View all your Android messages in real-time on Mac. Works with SMS, WhatsApp, Telegram, and
-                        more.
+                    <h3 class="feature-name">iMessage-Style SMS</h3>
+                    <p class="feature-desc">Send and receive SMS messages directly from your Mac with dual-SIM support.
                     </p>
                 </div>
-
                 <div class="feature-box animate-on-scroll">
                     <div class="feature-icon">📞</div>
-                    <h3 class="feature-name">Call Notifications</h3>
-                    <p class="feature-desc">
-                        See incoming calls on your Mac with caller ID. Answer or decline calls with one click.
+                    <h3 class="feature-name">Smart Call Management</h3>
+                    <p class="feature-desc">Accept or decline incoming Cellular and WhatsApp calls from your desktop.
                     </p>
                 </div>
-
                 <div class="feature-box animate-on-scroll">
                     <div class="feature-icon">🔔</div>
-                    <h3 class="feature-name">Notification Mirror</h3>
-                    <p class="feature-desc">
-                        All your Android notifications appear on Mac instantly. Stay connected without checking your
-                        phone.
-                    </p>
+                    <h3 class="feature-name">Unified Notifications</h3>
+                    <p class="feature-desc">Mirror, dismiss, and inline-reply to app notifications centralized on your
+                        Mac.</p>
                 </div>
-
                 <div class="feature-box animate-on-scroll">
                     <div class="feature-icon">📋</div>
                     <h3 class="feature-name">Universal Clipboard</h3>
-                    <p class="feature-desc">
-                        Copy text or images on one device and paste on the other instantly. Seamless cross-device
-                        workflows.
-                    </p>
+                    <p class="feature-desc">Unify your copy-paste buffer instantly between macOS and Android OS.</p>
                 </div>
-
                 <div class="feature-box animate-on-scroll">
                     <div class="feature-icon">📁</div>
-                    <h3 class="feature-name">File Transfer</h3>
-                    <p class="feature-desc">
-                        Drag and drop files from Mac to Android. Supports all file types with no size limits.
+                    <h3 class="feature-name">Wireless File Transfer</h3>
+                    <p class="feature-desc">Drag and drop multi-gigabyte files wirelessly without strict limitations.
                     </p>
                 </div>
-
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-name">Native Contacts Sync</h3>
+                    <p class="feature-desc">Browse your address book directly from Mac to quickly dial or SMS.</p>
+                </div>
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-name">Encrypted Pairing</h3>
+                    <p class="feature-desc">Secure local AES-256 handshake bypassing the cloud entirely.</p>
+                </div>
                 <div class="feature-box animate-on-scroll">
                     <div class="feature-icon">🔗</div>
-                    <h3 class="feature-name">Share Sheet</h3>
-                    <p class="feature-desc">
-                        Share content from any Android app directly to your Mac. Images, links, and text transfer
-                        instantly.
-                    </p>
+                    <h3 class="feature-name">Continuity Links</h3>
+                    <p class="feature-desc">Pass web URLs back and forth instantly using the native Share Sheets.</p>
+                </div>
+                <div class="feature-box animate-on-scroll">
+                    <div class="feature-icon">🗄️</div>
+                    <h3 class="feature-name">Remote File Browser</h3>
+                    <p class="feature-desc">Fetch and organize your phone's exact filesystem directly from Mac.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Detailed Guides -->
-    <section class="guide-section" id="messaging">
+    <section class="guide-section" id="detailed-guides">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Using Specific Features</h2>
 
-            <!-- Messages -->
-            <div class="step-card animate-on-scroll">
-                <h3 class="step-title" style="margin-bottom: 20px;">📱 Message Sync & SMS Forwarding</h3>
-                <p class="step-description">
-                    Bounce Connect displays all your Android messages in real-time on your Mac, including SMS, WhatsApp,
-                    and Telegram.
+            <!-- 1. Dashboard -->
+            <div class="step-card animate-on-scroll" id="dashboard">
+                <h3 class="step-title" style="margin-bottom: 20px;">📊 1. Contextual Dashboard</h3>
+                <p class="step-description">Provides a single pane of glass to monitor your Android phone's battery
+                    life, active network connection, and available storage.</p>
+                <ul class="step-list">
+                    <li><strong>How it works:</strong> Open the Bounce Mac app to instantly see your phone's live
+                        hardware status. Toggle active features and monitor connection health.</li>
+                    <li><strong>Limitations:</strong> Battery readings may occasionally delay by a few seconds due to
+                        Android OS background optimizations.</li>
+                </ul>
+            </div>
+
+            <!-- 2. Messages -->
+            <div class="step-card animate-on-scroll" id="messaging">
+                <h3 class="step-title" style="margin-bottom: 20px;">💬 2. iMessage-Style SMS</h3>
+                <p class="step-description">View and send SMS messages from multiple threads directly from your desktop.
                 </p>
                 <ul class="step-list">
-                    <li>Messages appear as native macOS notifications</li>
-                    <li>Click a notification to view the full conversation</li>
-                    <li>Sender information is displayed with timestamps</li>
-                    <li>Group SMS forwarding works for group conversations</li>
-                    <li>Messages are organized by app and contact</li>
+                    <li><strong>How it works:</strong> Navigate to the Messages tab to view all existing SMS threads.
+                        Compose new messages and natively select which SIM card to use for sending (Dual-SIM support).
+                    </li>
+                    <li><strong>Limitations:</strong> Currently supports standard SMS only. Rich media (MMS) photo
+                        attachments in standard messaging threads are not fully supported.</li>
                 </ul>
                 <div class="tip-box">
                     <div class="tip-title">🔒 Privacy Note</div>
-                    <div class="tip-text">
-                        All messages are transmitted using AES-256-GCM encryption. Messages are never stored on
-                        servers—they go directly between your devices over WiFi.
-                    </div>
+                    <div class="tip-text">All messages are transmitted using AES-256-GCM encryption. Messages are never
+                        stored on servers—they go directly between your devices over WiFi.</div>
                 </div>
             </div>
 
-            <!-- Calls -->
+            <!-- 3. Calls -->
             <div class="step-card animate-on-scroll" id="calls">
-                <h3 class="step-title" style="margin-bottom: 20px;">📞 Managing Calls</h3>
-                <p class="step-description">
-                    When someone calls your Android phone, you'll see a beautiful caller ID window on your Mac.
-                </p>
+                <h3 class="step-title" style="margin-bottom: 20px;">📞 3. Smart Call Management</h3>
+                <p class="step-description">Track incoming, active, and missed calls with granular caller ID
+                    integration.</p>
                 <ul class="step-list">
-                    <li><strong>Incoming Calls:</strong> Caller name, number, and photo appear instantly</li>
-                    <li><strong>Answer:</strong> Click the green button (call continues on your phone)</li>
-                    <li><strong>Decline:</strong> Click the red button to reject the call</li>
-                    <li><strong>Mute:</strong> Silence the ringer on both devices</li>
-                    <li><strong>Call History:</strong> Track incoming, active, and missed calls with duration</li>
+                    <li><strong>How it works:</strong> Native macOS notification appears instantly for Cellular and
+                        WhatsApp calls. Click Accept or Decline directly from your Mac screen.</li>
+                    <li><strong>Limitations:</strong> Audio routing is not supported. Accepting a call on Mac will
+                        answer it on your Android phone's current audio route (e.g., Bluetooth earbuds or speaker).</li>
                 </ul>
-                <div class="tip-box">
-                    <div class="tip-title">📲 Supported Apps</div>
-                    <div class="tip-text">
-                        Works with regular phone calls, WhatsApp calls, Telegram calls, and most VoIP apps that
-                        integrate with Android's call system.
-                    </div>
-                </div>
             </div>
 
-            <!-- Clipboard -->
+            <!-- 4. Notifications -->
+            <div class="step-card animate-on-scroll" id="notifications">
+                <h3 class="step-title" style="margin-bottom: 20px;">🔔 4. Unified Notifications</h3>
+                <p class="step-description">All pushed Android notifications seamlessly centralized on your Mac desktop.
+                </p>
+                <ul class="step-list">
+                    <li><strong>How it works:</strong> Reply inline to WhatsApp, Telegram, and Messages via a native
+                        input field. Dismissing a notification on Mac wipes it cleanly from your Android phone
+                        drop-down.</li>
+                    <li><strong>Limitations:</strong> Dismissal is unidirectional. Swiping away a notification natively
+                        on your Android limits remote-deletion synchronization from restoring Mac's history logic.</li>
+                </ul>
+            </div>
+
+            <!-- 5. Clipboard -->
             <div class="step-card animate-on-scroll" id="clipboard">
-                <h3 class="step-title" style="margin-bottom: 20px;">📋 Universal Clipboard</h3>
-                <p class="step-description">
-                    Copy on Mac, paste on Android instantly with universal clipboard sync.
-                </p>
+                <h3 class="step-title" style="margin-bottom: 20px;">📋 5. Universal Clipboard</h3>
+                <p class="step-description">Access cross-device clipboard history with effortless native syncing.</p>
                 <ul class="step-list">
-                    <li>Copy text or images on your Mac using ⌘+C</li>
-                    <li>The content automatically syncs to your Android device</li>
-                    <li>Open any app on Android and paste with long-press</li>
-                    <li>Currently supports one-way sync (Mac → Android)</li>
-                    <li>View clipboard history on the Android app</li>
+                    <li><strong>How it works:</strong> Mac-to-Android: Copy text or images on Mac; it automatically
+                        appears in Android's clipboard buffer. Android-to-Mac: Highlight text on Android, tap 'Share',
+                        and select Bounce.</li>
+                    <li><strong>Limitations:</strong> Due to strict Android background app restrictions, Android-to-Mac
+                        sync is limited to text blocks only.</li>
                 </ul>
             </div>
 
-            <!-- File Transfer -->
+            <!-- 6. File Transfer -->
             <div class="step-card animate-on-scroll" id="files">
-                <h3 class="step-title" style="margin-bottom: 20px;">📁 File Transfer</h3>
-                <p class="step-description">
-                    Transfer any file from Mac to Android with drag-and-drop simplicity.
+                <h3 class="step-title" style="margin-bottom: 20px;">📁 6. Wireless File Transfer</h3>
+                <p class="step-description">Send massive files back and forth rapidly without cables or cloud storage.
                 </p>
                 <ul class="step-list">
-                    <li>Open the Files tab in Bounce Connect on Mac</li>
-                    <li>Drag and drop files into the window, or click "Select Files"</li>
-                    <li>Files transfer automatically to Android Downloads folder</li>
-                    <li>Track progress with real-time transfer status</li>
-                    <li>Supports multiple files at once with no size limit</li>
-                    <li>All file types are supported (images, videos, documents, etc.)</li>
+                    <li><strong>How it works:</strong> Mac-to-Android: Drag and drop files from Finder directly into the
+                        Mac app UI. Android-to-Mac: Select files in your gallery, tap Share, and beam them to your Mac.
+                    </li>
+                    <li><strong>Limitations:</strong> Devices must naturally be on the same local Wi-Fi subnet router
+                        (or Hotspot network).</li>
                 </ul>
                 <div class="tip-box">
                     <div class="tip-title">⚡ Transfer Speed</div>
-                    <div class="tip-text">
-                        Files transfer over WiFi at full network speed. For best performance, ensure both devices are on
-                        a fast WiFi network. Large files transfer faster than cloud services!
-                    </div>
+                    <div class="tip-text">Files transfer over WiFi at full network speed. For best performance, ensure
+                        both devices are on a fast WiFi network. Large files transfer faster than cloud services!</div>
                 </div>
+            </div>
+
+            <!-- 7. Contacts -->
+            <div class="step-card animate-on-scroll" id="contacts">
+                <h3 class="step-title" style="margin-bottom: 20px;">👥 7. Native Contacts Sync</h3>
+                <p class="step-description">Directly interact with your address book synced securely from your phone.
+                </p>
+                <ul class="step-list">
+                    <li><strong>How it works:</strong> Search seamlessly through your contacts via the Mac app sidebar.
+                        Click a contact to instantly dial them, initiate an SMS thread, or view details.</li>
+                    <li><strong>Limitations:</strong> Contacts are strictly Read-Only from the Mac. Adding or editing
+                        entries must be natively performed on the phone itself.</li>
+                </ul>
+            </div>
+
+            <!-- 8. Secure Pairing -->
+            <div class="step-card animate-on-scroll" id="pairing">
+                <h3 class="step-title" style="margin-bottom: 20px;">🔒 8. Secure Encrypted Pairing</h3>
+                <p class="step-description">Frictionless connection handshake utilizing military-grade cryptography.</p>
+                <ul class="step-list">
+                    <li><strong>How it works:</strong> Mac app auto-generates a rapid QR payload. Snap the QR code using
+                        the Companion app. Establishes an AES-256 encrypted WebSocket tunnel instantly.</li>
+                    <li><strong>Limitations:</strong> Highly segmented corporate firewalls occasionally block
+                        Bonjour/mDNS packets, requiring the fallback manual IP configuration logic algorithm.</li>
+                </ul>
+            </div>
+
+            <!-- 9. Continuity Link Sharing -->
+            <div class="step-card animate-on-scroll" id="links">
+                <h3 class="step-title" style="margin-bottom: 20px;">🔗 9. Continuity Link Sharing</h3>
+                <p class="step-description">Pass live webpages directly between your desktop and mobile environments.
+                </p>
+                <ul class="step-list">
+                    <li><strong>How it works:</strong> Mac-to-Android: Push current Safari/Chrome tabs via the macOS
+                        Share Extension. Android-to-Mac: Send browser links to macOS utilizing the Android Share menu.
+                    </li>
+                    <li><strong>Limitations:</strong> The macOS Share Extension must be manually enabled via System
+                        settings for the Mac-to-Android injection utility wrapper to function.</li>
+                </ul>
+            </div>
+
+            <!-- 10. Browse Android Files -->
+            <div class="step-card animate-on-scroll" id="browser">
+                <h3 class="step-title" style="margin-bottom: 20px;">🗄️ 10. Remote File Browser</h3>
+                <p class="step-description">Browse, fetch, and organize your raw Android filesystem securely from Mac.
+                </p>
+                <ul class="step-list">
+                    <li><strong>How it works:</strong> Navigate Android directories like internal storage (DCIM,
+                        Downloads) directly from the beautiful Mac interface UI. Highlight items and trigger a rapid
+                        wireless pull payload to your natively macOS Desktop.</li>
+                    <li><strong>Limitations:</strong> To safeguard security paradigms, strict inaccessible protected
+                        Android OS directories cannot be browsed natively.</li>
+                </ul>
             </div>
         </div>
     </section>
