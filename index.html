@@ -1200,6 +1200,123 @@
             z-index: 10000;
             transition: width 0.1s ease;
         }
+
+        /* Bento Box Comparison Section */
+        .comparison-section {
+            padding: 120px 0;
+            background: #fbfbfd;
+            overflow: hidden;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .bento-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 36px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Card Themes */
+        .bento-card.dark {
+            background: #1d1d1f;
+            color: #f5f5f7;
+        }
+
+        .bento-card.dark .bento-desc {
+            color: #a1a1a6;
+        }
+
+        .bento-card.gradient-1 {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: #1d1d1f;
+        }
+
+        .bento-card.gradient-2 {
+            background: linear-gradient(135deg, #fcebb6 0%, #f08b7f 100%);
+            color: #1d1d1f;
+        }
+
+        .bento-card.gradient-1 .bento-desc,
+        .bento-card.gradient-2 .bento-desc {
+            color: rgba(0, 0, 0, 0.75);
+        }
+
+        .bento-icon {
+            font-size: 42px;
+            margin-bottom: 24px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bento-card:hover .bento-icon {
+            transform: scale(1.15) translateY(-5px);
+        }
+
+        .bento-title {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            margin-top: 0;
+        }
+
+        .bento-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #86868b;
+            margin: 0;
+        }
+
+        /* Subtle animated background gloss */
+        .bento-gloss {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+            transform: skewX(-20deg);
+            z-index: -1;
+            transition: all 0.7s ease;
+        }
+
+        .bento-card:hover .bento-gloss {
+            left: 200%;
+        }
+
+        .bento-card.dark .bento-gloss {
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+        }
     </style>
 </head>
 
@@ -1553,6 +1670,174 @@
         </div>
     </section>
 
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Why choose Bounce?</h2>
+                <p class="section-subtitle">Comparing Bounce Connect to KDE Connect and other alternatives.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Point 1 -->
+                <div class="bento-card dark animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">⚡️</div>
+                    <div>
+                        <h3 class="bento-title">Pure Native Performance</h3>
+                        <p class="bento-desc">Bounce is built entirely from the ground up in <strong>native
+                                Swift</strong>, not a ported framework. This guarantees vastly better battery life,
+                            memory usage, and UI fluidity on macOS.</p>
+                    </div>
+                </div>
+
+                <!-- Point 11 -->
+                <div class="bento-card gradient-1 animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">📞</div>
+                    <div>
+                        <h3 class="bento-title">Advanced Call Handling</h3>
+                        <p class="bento-desc">Answer, reject, and mute the mic for both regular cellular calls and
+                            <strong>WhatsApp calls</strong> right from your Mac. KDE Connect completely misses WhatsApp
+                            calls.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="bento-card gradient-2 animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">🚀</div>
+                    <div>
+                        <h3 class="bento-title">Drag & Drop Simplicity</h3>
+                        <p class="bento-desc">File transfers in Bounce are fundamentally seamless. No complex menus or
+                            file pickers—just drag and drop multi-gigabyte files directly.</p>
+                    </div>
+                </div>
+
+                <!-- Point 6 -->
+                <div class="bento-card dark animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">✍️</div>
+                    <div>
+                        <h3 class="bento-title">Full Message Composer</h3>
+                        <p class="bento-desc">Unlike alternatives that gray out the 'New Message' button, Bounce
+                            features a complete, native composer for SMS.</p>
+                    </div>
+                </div>
+
+                <!-- Point 5 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">🗂️</div>
+                    <div>
+                        <h3 class="bento-title">Remote File Browser</h3>
+                        <p class="bento-desc">Browse our Android filesystem and fetch files instantly from your Mac. KDE
+                            Connect cannot browse your phone from macOS.</p>
+                    </div>
+                </div>
+
+                <!-- Point 8 & 9 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">🔋</div>
+                    <div>
+                        <h3 class="bento-title">Reliable & Dual-SIM Ready</h3>
+                        <p class="bento-desc">Choose exactly which SIM card to send a message from. Plus, macOS volume
+                            controls are explicitly engineered to work consistently every time.</p>
+                    </div>
+                </div>
+
+                <!-- Point 13 & 16 -->
+                <div class="bento-card dark animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">📸</div>
+                    <div>
+                        <h3 class="bento-title">Clipboard Sync</h3>
+                        <p class="bento-desc">We sync more than raw text. Bounce bridges clipboard images and
+                            beautifully mirrors your Android wallpaper right onto the Mac desktop.</p>
+                    </div>
+                </div>
+
+                <!-- Point 14 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">🔍</div>
+                    <div>
+                        <h3 class="bento-title">Native Contact Dialer</h3>
+                        <p class="bento-desc">Search your Android contacts directly from our spotlight-like interface to
+                            instantly dial or SMS them.</p>
+                    </div>
+                </div>
+
+                <!-- Point 7 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">💬</div>
+                    <div>
+                        <h3 class="bento-title">Inline Replies</h3>
+                        <p class="bento-desc">Reply directly from Mac notifications (including WhatsApp and Telegram).
+                            KDE Connect just mirrors them passively without interaction.</p>
+                    </div>
+                </div>
+
+                <!-- Point 15 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">📡</div>
+                    <div>
+                        <h3 class="bento-title">Smart mDNS</h3>
+                        <p class="bento-desc">Bounce uses Apple's mDNS to effortlessly find your phone even when IP
+                            addresses change on WiFi. No more annoying dropouts.</p>
+                    </div>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">🌐</div>
+                    <div>
+                        <h3 class="bento-title">Safari Extension</h3>
+                        <p class="bento-desc">Share any webpage straight to your Android browser with one single tap.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">📋</div>
+                    <div>
+                        <h3 class="bento-title">Natural Clipboard</h3>
+                        <p class="bento-desc">Utilizes Android's native share system. No manual triggers from annoying
+                            notification tiles required.</p>
+                    </div>
+                </div>
+
+                <!-- Point 10 -->
+                <div class="bento-card animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">📜</div>
+                    <div>
+                        <h3 class="bento-title">Notification Sync</h3>
+                        <p class="bento-desc">Clear a notification on your Mac, and it vanishes on your Android.</p>
+                    </div>
+                </div>
+
+                <!-- Point 12 -->
+                <div class="bento-card gradient-1 animate-on-scroll">
+                    <div class="bento-gloss"></div>
+                    <div class="bento-icon">🎵</div>
+                    <div>
+                        <h3 class="bento-title">Proactive Media</h3>
+                        <p class="bento-desc">Trigger and resume your favorite music app directly from the Mac menu bar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Screenshots Section -->
     <section class="screenshots-section">
         <div class="container">
@@ -1785,7 +2070,8 @@
         <div class="container" style="text-align: center; position: relative; z-index: 2;">
             <h2 class="section-title" style="margin-bottom: 10px; color: #000;">Never miss a notification.</h2>
             <p class="section-subtitle" style="color: #000; font-size: 18px; font-weight: 500;">
-                Notifications synced from Android to Mac seamlessly and privately.
+                Notifications synced from Android to Mac seamlessly and privately. you can reply too directly from the
+                notification.
             </p>
         </div>
     </section>
