@@ -1,0 +1,11 @@
+Privacy Policy for Bounce Connect
+
+Bounce Connect does not collect, store, or transmit any personal data to external servers.
+
+All data (notifications, messages, clipboard, files) is transferred directly between 
+your Android device and your Mac over your local Wi-Fi network.
+
+Camera permission is used solely for scanning QR codes during device pairing.
+No images or camera data are stored or transmitted.
+
+Contact:zurgteam@proton.me
