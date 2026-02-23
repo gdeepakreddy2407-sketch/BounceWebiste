@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Bounce Connect — Sparkle Appcast
+  =================================
+  Host this file on GitHub Pages so Sparkle can check for updates.
+
+  HOW TO UPDATE (every new release):
+  1. Build a signed .dmg of your new Bounce version in Xcode (Product → Archive → Distribute App)
+  2. Upload the .dmg to a new GitHub Release (e.g. tag v1.1.0)
+  3. Run `sign_update` from the Sparkle package to get the EdDSA signature:
+       .build/release/sign_update /path/to/Bounce-1.1.0.dmg
+  4. Copy the printed `sparkle:edSignature` value into the <enclosure> below
+  5. Update version, length (file size in bytes), and the download URL
+  6. Commit & push — GitHub Pages auto-serves the updated appcast
+-->
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>Bounce Connect</title>
+        <link>https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO/appcast.xml</link>
+        <description>Bounce Connect release notes and update feed</description>
+        <language>en</language>
+
+        <!-- ═══════════ LATEST RELEASE — edit this block for every update ═════════ -->
+        <item>
+            <title>Bounce Connect 1.0.0</title>
+
+            <!-- Human-readable release notes (supports HTML) -->
+            <sparkle:releaseNotesLink>
+                https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO/releases/tag/v1.0.0
+            </sparkle:releaseNotesLink>
+
+            <!-- Publication date (RFC 2822 format) -->
+            <pubDate>Mon, 24 Feb 2026 00:00:00 +0000</pubDate>
+
+            <!-- The actual download.
+                 url       → Direct download link to the .dmg on GitHub Releases
+                 sparkle:version → CFBundleVersion (build number, e.g. "1")
+                 sparkle:shortVersionString → CFBundleShortVersionString (e.g. "1.0.0")
+                 sparkle:edSignature → from `sign_update` tool (see instructions above)
+                 length    → File size in bytes (run: stat -f%z Bounce.dmg)
+                 type      → Always "application/octet-stream" for .dmg
+            -->
+            <enclosure
+                url="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO/releases/download/v1.0.0/Bounce.dmg"
+                sparkle:version="1"
+                sparkle:shortVersionString="1.0.0"
+                sparkle:edSignature="PASTE_SIGNATURE_FROM_sign_update_TOOL"
+                length="0"
+                type="application/octet-stream"
+            />
+
+            <!-- Minimum macOS version required for this update (optional) -->
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+        </item>
+        <!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+    </channel>
+</rss>
