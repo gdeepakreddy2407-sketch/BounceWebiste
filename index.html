@@ -321,24 +321,28 @@
             opacity: 1;
         }
 
-        .btn-mac {
+        .btn-mac,
+        .btn-modal-mac {
             background: linear-gradient(135deg, var(--text-primary), #000);
             color: white;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-mac:hover {
+        .btn-mac:hover,
+        .btn-modal-mac:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
         }
 
-        .btn-android {
+        .btn-android,
+        .btn-modal-android {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: white;
             box-shadow: 0 4px 16px rgba(0, 122, 255, 0.25);
         }
 
-        .btn-android:hover {
+        .btn-android:hover,
+        .btn-modal-android:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 12px 28px rgba(0, 122, 255, 0.4);
         }
@@ -2113,245 +2117,119 @@
         </div>
     </footer>
 
-    <!-- Download Modal -->
-    <div class="download-modal" id="downloadModal">
-        <div class="modal-content" id="modalContent">
-            <div class="modal-close-icon" onclick="closeDownloadModal()">✕</div>
-
-            <div id="modal-initial-content">
-                <div class="modal-icon">
-                    <svg fill="currentColor" viewBox="0 0 24 24">
+    <!-- Mac Download Modal -->
+    <div class="download-modal" id="macDownloadModal">
+        <div class="modal-content" style="max-width: 450px;">
+            <div class="modal-close-icon" onclick="closeMacModal()">✕</div>
+            <div>
+                <div class="modal-icon" style="margin-bottom: 16px;">
+                    <svg fill="currentColor" viewBox="0 0 24 24" style="width: 48px; height: 48px;">
                         <path
-                            d="M13,2.05C18.05,2.55 22,6.82 22,12C22,13.45 21.68,14.83 21.12,16.07L18.5,13.45C18.82,13 19,12.53 19,12C19,8.13 15.87,5 12,5C11.59,5 11.2,5.1 10.82,5.29L8.8,3.27C10.03,2.47 11.47,2 13,2.05M2,12C2,6.82 5.95,2.55 11,2.05V5C7.13,5 4,8.13 4,12H2M7,12C7,9.24 9.24,7 12,7V9C10.34,9 9,10.34 9,12H7M12,16C10.9,16 10,15.11 10,14H8C8,16.21 9.79,18 12,18V16M16,12C16,14.21 17.79,16 20,16H22C22,17.16 21.73,18.26 21.24,19.26L16.28,14.3C16.14,14.19 16.03,14.14 16,14V12M17.19,20.18L4.69,7.69L3.41,8.96L8.09,13.63C8.03,13.75 8,13.87 8,14A4,4 0 0,0 12,18C12.13,18 12.25,17.97 12.37,17.91L16,21.5L17.19,20.18Z" />
-                        <!-- Rocket Launch Icon -->
-                        <path
-                            d="M2.5,19.6L3.8,18.3C3.8,18.3 11.2,10.9 11.2,10.9L13.1,12.8L5.7,20.2C5.3,20.6 4.7,20.6 4.3,20.2C4,19.8 4,19.2 4.4,18.8L2.5,19.6ZM15.2,10.3C15.2,10.3 17.1,5.6 17.1,5.6C17.1,5.6 12.5,7.6 12.5,7.6L11.5,6.6L12.5,4L18.4,2.9L16.4,8.8L15.2,10.3ZM18.7,11.6L14.9,7.8L13.8,9.2L12.4,7.8L18.1,2.1C18.4,1.8 18.9,1.8 19.3,2.1C19.6,2.5 19.6,3 19.3,3.3L13.6,9L12.2,7.6L13.6,6.2L18.7,11.6Z"
-                            style="display:none;" id="rocket-path-v2" />
-                        <path
-                            d="M14.5,4.5 C15.8,3.2 18,2 20,2 C20,4 18.8,6.2 17.5,7.5 L14.5,10.5 L11.5,7.5 L14.5,4.5 Z" />
-                        <path d="M11.5,7.5 L7.5,11.5 L8.5,15.5 L11.5,18.5 C11.5,18.5 13,14 14.5,10.5 L11.5,7.5 Z" />
-                        <path
-                            d="M8.5,15.5 L5.5,18.5 C3.5,20.5 2,22 2,22 C2,22 3.5,20.5 5.5,18.5 L9.5,17.5 L8.5,15.5 Z" />
+                            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5M13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                     </svg>
                 </div>
-                <h2 class="modal-title">Almost Ready!</h2>
-                <p class="modal-message">
-                    We're putting the finishing touches on Bounce Connect. Our team is working hard to deliver an
-                    amazing
-                    experience.
-                </p>
-                <div class="modal-progress">
-                    <div class="progress-header">
-                        <span>Launching Soon</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
+                <h2 class="modal-title">Mac Installation Guide</h2>
+                <div
+                    style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 16px;"><strong>Important:</strong> Because Bounce Connect is a new app,
+                        macOS might block it initially for security reasons.</p>
+                    <ol style="padding-left: 20px; margin-bottom: 24px;">
+                        <li style="margin-bottom: 12px;">Open the downloaded <strong>Bounce.dmg</strong> file and drag
+                            the app to your Applications folder.</li>
+                        <li style="margin-bottom: 12px;">Try to open Bounce. You may see a warning that it cannot be
+                            opened.
+                            Click OK.</li>
+                        <li>Go to <strong>System Settings > Privacy & Security</strong>, scroll down, and click
+                            <strong>Open Anyway</strong> to launch the app.
+                        </li>
+                    </ol>
                 </div>
-                <button class="modal-close-btn" onclick="showBetaForm()">Signup for Beta</button>
+                <!-- Removed onclick to prevent cancelling the download navigation -->
+                <a href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/bounce2.0/Bounce.dmg"
+                    class="btn btn-modal-mac" style="width: 100%; justify-content: center;" target="_blank">Download
+                    Bounce.dmg</a>
             </div>
+        </div>
+    </div>
 
-            <div id="modal-beta-form" class="beta-form-container">
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
-                    onload="if(submitted) { showSuccessMessage(); }"></iframe>
-
-                <form id="betaSignupForm" class="native-beta-form"
-                    action="https://4023663a.sibforms.com/serve/MUIFALA4284nI_BliR92igD_EpSrB9LD7xpzm7tW7V4iPgjP4ySg2lys54qnb6QS0YbIAXNWwbANpvUkXvqsHsy4x5Z_gGXEqPnM_ryUD4-lnIKPR8SJgsG5KNscCo7jUxqFsiB8Dt0qTUjjhkV4xz2dBPRnqdwckoQRfMptvls8hc31XzT7hop0LDvT-Mmvt7bcTaSRhx2hGPfh6A=="
-                    method="POST" target="hidden_iframe" onsubmit="return handleFormSubmit(event)">
-                    <h3 class="beta-title">Join the Beta</h3>
-                    <p class="beta-subtitle">Be the first to experience the seamless power of Bounce Connect directly on
-                        your Mac. The beta is coming soon and is currently in its finishing stages!</p>
-
-                    <div class="input-group">
-                        <label for="FIRSTNAME">First Name</label>
-                        <input type="text" id="FIRSTNAME" name="FIRSTNAME" placeholder="e.g. John Doe" required
-                            autocomplete="name">
-                    </div>
-
-                    <div class="input-group">
-                        <label for="EMAIL">Email Address</label>
-                        <input type="email" id="EMAIL" name="EMAIL" placeholder="hello@example.com" required
-                            autocomplete="email">
-                        <div id="email-error" style="color: #ff3b30; font-size: 13px; margin-top: 6px; display: none;">
-                            Please enter a valid email address.</div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="CAPTCHA" id="captcha-label">Security Check</label>
-                        <input type="number" id="CAPTCHA" name="CAPTCHA" placeholder="Enter the sum" required>
-                        <div id="captcha-error"
-                            style="color: #ff3b30; font-size: 13px; margin-top: 6px; display: none;">Incorrect answer.
-                            Please try again.</div>
-                    </div>
-
-                    <input type="hidden" name="email_address_check" value="">
-                    <input type="hidden" name="locale" value="en">
-
-                    <button id="betaSubmitBtn" type="submit" class="beta-submit-btn">Get Early Access</button>
-                </form>
-
-                <div id="betaSuccessMessage" class="success-message-container">
-                    <div class="success-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="success-title">You're on the list!</h3>
-                    <p class="success-text">Thank you for joining the Bounce Connect beta. We'll email you soon with
-                        exclusive early access details.</p>
-                    <button class="modal-close-btn" onclick="closeDownloadModal()">Awesome</button>
+    <!-- Android Download Modal -->
+    <div class="download-modal" id="androidDownloadModal">
+        <div class="modal-content" style="max-width: 450px;">
+            <div class="modal-close-icon" onclick="closeAndroidModal()">✕</div>
+            <div>
+                <div class="modal-icon" style="margin-bottom: 16px;">
+                    <svg fill="currentColor" viewBox="0 0 24 24"
+                        style="width: 48px; height: 48px; color: var(--accent-green);">
+                        <path
+                            d="M17.6,9.48L16.85,8.82C17.3,8.13 17.58,7.3 17.58,6.4C17.58,4.12 15.71,2.25 13.43,2.25C12.53,2.25 11.7,2.53 11,2.98L10.36,2.23C10.14,1.96 9.75,1.93 9.48,2.15C9.21,2.37 9.18,2.76 9.4,3.03L10.03,3.76C9.58,4.45 9.3,5.28 9.3,6.18C9.3,8.46 11.17,10.33 13.45,10.33C14.35,10.33 15.18,10.05 15.87,9.6L16.5,10.25C16.63,10.38 16.8,10.45 16.97,10.45C17.12,10.45 17.27,10.4 17.39,10.3C17.66,10.08 17.69,9.69 17.47,9.42L17.6,9.48M11.05,6.18C11.05,5.43 11.32,4.74 11.79,4.21L14.5,7.29C13.97,7.76 13.28,8.03 12.53,8.03C11.78,8.03 11.09,7.76 10.56,7.29C10.09,6.76 9.82,6.07 9.82,5.32L11.05,6.18M12.53,3C13.28,3 13.97,3.27 14.5,3.74C14.97,4.27 15.24,4.96 15.24,5.71L14.01,4.85C14.01,4.1 13.74,3.41 13.27,2.88L12.53,3M6.05,8.55C5.5,8.55 5.05,9 5.05,9.55V15.45C5.05,16 5.5,16.45 6.05,16.45C6.6,16.45 7.05,16 7.05,15.45V9.55C7.05,9 6.6,8.55 6.05,8.55M18.05,8.55C17.5,8.55 17.05,9 17.05,9.55V15.45C17.05,16 17.5,16.45 18.05,16.45C18.6,16.45 19.05,16 19.05,15.45V9.55C19.05,9 18.6,8.55 18.05,8.55M8.05,21.5C8.05,22.33 8.72,23 9.55,23C10.38,23 11.05,22.33 11.05,21.5V18.5H8.05V21.5M13.05,21.5C13.05,22.33 13.72,23 14.55,23C15.38,23 16.05,22.33 16.05,21.5V18.5H13.05V21.5M8.05,9V17.5H16.05V9H8.05Z" />
+                    </svg>
                 </div>
+                <h2 class="modal-title">Closed Beta Notice</h2>
+                <div
+                    style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 12px; text-align: center;">Bounce Connect for Android is currently in
+                        <strong>Beta</strong>.
+                    </p>
+                    <p style="text-align: center;">You may experience occasional bugs or unpolished features as we
+                        continue to improve the app. We appreciate your feedback!</p>
+                </div>
+                <!-- Removed onclick to prevent cancelling the download navigation -->
+                <a href="https://play.google.com/store/apps/details?id=com.bounce.connect" target="_blank"
+                    class="btn btn-modal-android" style="width: 100%; justify-content: center;">Get it on Google
+                    Play</a>
             </div>
         </div>
     </div>
 
     <script>
         // Download Modal Functions
-        let submitted = false;
-        let captchaResult = 0;
-
-        function generateCaptcha() {
-            const num1 = Math.floor(Math.random() * 10) + 1;
-            const num2 = Math.floor(Math.random() * 10) + 1;
-            captchaResult = num1 + num2;
-            const label = document.getElementById('captcha-label');
-            if (label) {
-                label.textContent = `Security Check: What is ${num1} + ${num2}?`;
-            }
-            const input = document.getElementById('CAPTCHA');
-            if (input) input.value = '';
-        }
-
-        function handleFormSubmit(e) {
-            // Validate Email
-            const emailInput = document.getElementById('EMAIL').value;
-            const emailError = document.getElementById('email-error');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            let isValid = true;
-
-            if (!emailRegex.test(emailInput)) {
-                if (emailError) emailError.style.display = 'block';
-                isValid = false;
-            } else {
-                if (emailError) emailError.style.display = 'none';
-            }
-
-            // Validate Captcha
-            const captchaInput = document.getElementById('CAPTCHA').value;
-            const captchaError = document.getElementById('captcha-error');
-
-            if (parseInt(captchaInput) !== captchaResult) {
-                if (captchaError) captchaError.style.display = 'block';
-                generateCaptcha(); // Regenerate on failure
-                isValid = false;
-            } else {
-                if (captchaError) captchaError.style.display = 'none';
-            }
-
-            if (!isValid) {
-                e.preventDefault();
-                return false;
-            }
-
-            submitted = true;
-            const btn = document.getElementById('betaSubmitBtn');
-            btn.innerHTML = 'Submitting...';
-            btn.style.opacity = '0.7';
-            btn.style.pointerEvents = 'none';
-            return true;
-        }
-
-        function showSuccessMessage() {
-            if (submitted) {
-                document.getElementById('betaSignupForm').style.display = 'none';
-                document.getElementById('betaSuccessMessage').style.display = 'block';
-                submitted = false; // Reset for future interactions
-            }
-        }
-
-        function openDownloadModal(e) {
-            e.preventDefault();
-            document.getElementById('downloadModal').classList.add('active');
+        function openMacModal(e) {
+            if (e) e.preventDefault();
+            document.getElementById('macDownloadModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeDownloadModal() {
-            document.getElementById('downloadModal').classList.remove('active');
+        function closeMacModal() {
+            document.getElementById('macDownloadModal').classList.remove('active');
             document.body.style.overflow = '';
-
-            // Allow exit animation to finish before resetting state
-            setTimeout(() => {
-                resetModalState();
-            }, 400);
         }
 
-        function showBetaForm() {
-            document.getElementById('modal-initial-content').style.display = 'none';
-            document.getElementById('modalContent').classList.add('expanded');
-
-            const formContainer = document.getElementById('modal-beta-form');
-            formContainer.style.display = 'block';
-
-            generateCaptcha();
-
-            setTimeout(() => {
-                formContainer.style.opacity = '1';
-            }, 50);
+        function openAndroidModal(e) {
+            if (e) e.preventDefault();
+            document.getElementById('androidDownloadModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function resetModalState() {
-            document.getElementById('modalContent').classList.remove('expanded');
-            document.getElementById('modal-initial-content').style.display = 'block';
-            document.getElementById('modal-beta-form').style.display = 'none';
-            document.getElementById('modal-beta-form').style.opacity = '0';
-
-            // Reset form and success message
-            const form = document.getElementById('betaSignupForm');
-            if (form) {
-                form.reset();
-                form.style.display = 'block';
-
-                // Hide errors
-                const emailError = document.getElementById('email-error');
-                if (emailError) emailError.style.display = 'none';
-                const captchaError = document.getElementById('captcha-error');
-                if (captchaError) captchaError.style.display = 'none';
-
-                const btn = document.getElementById('betaSubmitBtn');
-                if (btn) {
-                    btn.innerHTML = 'Get Early Access';
-                    btn.style.opacity = '1';
-                    btn.style.pointerEvents = 'auto';
-                }
-            }
-            const successMsg = document.getElementById('betaSuccessMessage');
-            if (successMsg) {
-                successMsg.style.display = 'none';
-            }
+        function closeAndroidModal() {
+            document.getElementById('androidDownloadModal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Close modal when clicking outside
-        document.getElementById('downloadModal').addEventListener('click', function (e) {
-            if (e.target === this) {
-                closeDownloadModal();
+        window.addEventListener('click', function (e) {
+            if (e.target.classList.contains('download-modal')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
         // Close modal with Escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
-                closeDownloadModal();
+                document.querySelectorAll('.download-modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
             }
         });
 
         // Attach to all download buttons
         document.addEventListener('DOMContentLoaded', function () {
-            const downloadButtons = document.querySelectorAll('.btn-mac, .btn-android');
-            downloadButtons.forEach(button => {
-                button.addEventListener('click', openDownloadModal);
+            document.querySelectorAll('.btn-mac').forEach(button => {
+                button.addEventListener('click', openMacModal);
+            });
+            document.querySelectorAll('.btn-android').forEach(button => {
+                button.addEventListener('click', openAndroidModal);
             });
         });
 
