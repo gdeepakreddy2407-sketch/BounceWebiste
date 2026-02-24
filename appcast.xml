@@ -22,11 +22,11 @@
 
         <!-- ═══════════ LATEST RELEASE — edit this block for every update ═════════ -->
         <item>
-            <title>Bounce Connect 1.0.0</title>
+            <title>Bounce Connect 2.0.0</title>
 
             <!-- Human-readable release notes (supports HTML) -->
             <sparkle:releaseNotesLink>
-                https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO/releases/tag/v1.0.0
+                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac/releases/tag/Bounce
             </sparkle:releaseNotesLink>
 
             <!-- Publication date (RFC 2822 format) -->
@@ -41,11 +41,11 @@
                  type      → Always "application/octet-stream" for .dmg
             -->
             <enclosure
-                url="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO/releases/download/v1.0.0/Bounce.dmg"
-                sparkle:version="1"
-                sparkle:shortVersionString="1.0.0"
-                sparkle:edSignature="PASTE_SIGNATURE_FROM_sign_update_TOOL"
-                length="0"
+                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac/releases/download/Bounce/Bounce.dmg"
+                sparkle:version="2"
+                sparkle:shortVersionString="2.0.0"
+                sparkle:edSignature="Bemo+/mH49xmzuo2KMvEnSovSRPsl+4pEada6Hzmm/4jPbKMA/kd31EuIQ15wt8qdctZWH96SUOeuN7kRqYUCw=="
+                length="4338688"
                 type="application/octet-stream"
             />
 
