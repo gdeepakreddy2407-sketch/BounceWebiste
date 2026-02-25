@@ -43,7 +43,7 @@
             <enclosure
                 url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce4.1/Bounce.dmg"
                 sparkle:version="7"
-                sparkle:shortVersionString="4.1"
+                sparkle:shortVersionString="4.1.0"
                 sparkle:edSignature="/VrWsCJN2H8soouRMHsOzLO/o5D0Rgx37Ihuq0z90QqQIxOL32KJX5udVbfNzX1IJrZN+Mg8nFPDtKPqfIFYDg=="
                 length="4382208"
                 type="application/octet-stream"
