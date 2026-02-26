@@ -42,10 +42,10 @@
             -->
             <enclosure
                 url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce6.0/Bounce.dmg"
-                sparkle:version="9"
+                sparkle:version="10"
                 sparkle:shortVersionString="6.0"
-                sparkle:edSignature="8urrsUFps39Ng2vqtps3dU9qktm4d2qkLTSrxb6y1sY/zoIn6I5WPHv+PTGu030Tvnb5Ccea2noBkf2hLd7aDg=="
-                length="4385792"
+                sparkle:edSignature="Lf/FzP0rmSOPMfhsZZ0/lecAkhH2+XJd2Sr0gTJgqUBHJqCnQBYCGEtb3uZezAAFSAnr7jrz+OnnDjkydc4/Cw=="
+                length="4385280"
                 type="application/octet-stream"
             />
 
