@@ -1335,9 +1335,19 @@
                     <img src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
                     <div class="logo">Bounce Connect</div>
                 </div>
-                <a href="how-to-use.html" class="help-icon">
-                    <span>?</span>
-                </a>
+                <div class="header-actions" style="display: flex; gap: 12px; align-items: center;">
+                    <a href="#" class="help-icon contact-icon" onclick="openContactModal(event)" title="Contact Us">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            style="width: 20px; height: 20px; position: relative; z-index: 1;">
+                            <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                            <polyline points="3 7 12 13 21 7"></polyline>
+                        </svg>
+                    </a>
+                    <a href="how-to-use.html" class="help-icon" title="How to Use">
+                        <span>?</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -2131,7 +2141,8 @@
                 <h2 class="modal-title">Mac Installation Guide</h2>
                 <div
                     style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
-                    <p style="margin-bottom: 16px;"><strong>Important:</strong> Because Bounce Connect is not signed from Appstore as i cant pay the fee now,
+                    <p style="margin-bottom: 16px;"><strong>Important:</strong> Because Bounce Connect is not signed
+                        from Appstore as i cant pay the fee now,
                         macOS will block it initially for security reasons.</p>
                     <ol style="padding-left: 20px; margin-bottom: 24px;">
                         <li style="margin-bottom: 12px;">Open the downloaded <strong>Bounce.dmg</strong> file and drag
@@ -2145,9 +2156,38 @@
                     </ol>
                 </div>
                 <!-- Removed onclick to prevent cancelling the download navigation -->
-                <a href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce6.0/Bounce.dmg"
+                <a href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce7.0/Bounce.dmg"
                     class="btn btn-modal-mac" style="width: 100%; justify-content: center;" target="_blank">Download
                     Bounce.dmg</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="download-modal" id="contactModal">
+        <div class="modal-content" style="max-width: 450px;">
+            <div class="modal-close-icon" onclick="closeContactModal()">✕</div>
+            <div>
+                <div class="modal-icon"
+                    style="margin-bottom: 24px; background: linear-gradient(135deg, var(--accent-purple), #5e2ca5);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 36px; height: 36px;">
+                        <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                        <polyline points="3 7 12 13 21 7"></polyline>
+                    </svg>
+                </div>
+                <h2 class="modal-title">Get in Touch</h2>
+                <div
+                    style="text-align: center; margin: 16px 0 32px; font-size: 16px; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 12px;">Have questions, feature requests, or just need a little help getting
+                        set up?</p>
+                    <p>Drop us an email at:<br>
+                        <a href="mailto:zurgteaminc@gmail.com"
+                            style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 18px;">zurgteaminc@gmail.com</a>
+                    </p>
+                </div>
+                <a href="#" onclick="handleEmailClick(event)" class="btn btn-modal-mac"
+                    style="width: 100%; justify-content: center;">Send Email</a>
             </div>
         </div>
     </div>
@@ -2172,7 +2212,9 @@
                     </p>
                     <p style="text-align: center;">You may experience occasional bugs or unpolished features as we
                         continue to improve the app. We appreciate your feedback!</p>
-                    <p style="text-align: center;">Please join the Google group first so you will get access to beta build for free link: <a href="https://groups.google.com/u/5/g/bounceconnecttest"> Google Group</p>
+                    <p style="text-align: center;">Please join the Google group first so you will get access to beta
+                        build for free link: <a href="https://groups.google.com/u/5/g/bounceconnecttest"> Google Group
+                    </p>
                 </div>
                 <!-- Removed onclick to prevent cancelling the download navigation -->
                 <a href="https://play.google.com/apps/testing/com.bounce.connect" target="_blank"
@@ -2204,6 +2246,33 @@
         function closeAndroidModal() {
             document.getElementById('androidDownloadModal').classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        function openContactModal(e) {
+            if (e) e.preventDefault();
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleEmailClick(e) {
+            e.preventDefault();
+            const email = "zurgteaminc@gmail.com";
+
+            // Check if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // On mobile, just trigger the default mail app
+                window.location.href = `mailto:${email}`;
+            } else {
+                // On desktop, open Gmail composer in a new tab
+                window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, '_blank');
+            }
         }
 
         // Close modal when clicking outside
