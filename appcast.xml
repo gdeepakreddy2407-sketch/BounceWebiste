@@ -22,11 +22,11 @@
 
         <!-- ═══════════ LATEST RELEASE — edit this block for every update ═════════ -->
         <item>
-            <title>Bounce Connect 10.0</title>
+            <title>Bounce Connect 11</title>
 
             <!-- Human-readable release notes (supports HTML) -->
             <sparkle:releaseNotesLink>
-                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/tag/Bounce10.0
+                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/tag/Bounce11
             </sparkle:releaseNotesLink>
 
             <!-- Publication date (RFC 2822 format) -->
@@ -42,10 +42,10 @@
             -->
             <enclosure
                 url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce10.0/Bounce.dmg"
-                sparkle:version="14"
-                sparkle:shortVersionString="10.0"
-                sparkle:edSignature="1hp9LgrvD6avn6h7OhpC9eGaC9Tp3P1Ru242zn34gdSDpEIV7kKfyPkuTv94IsXrqlOZaXBLXd0RdTDvOMUTAA=="
-                length="6292480"
+                sparkle:version="15"
+                sparkle:shortVersionString="11"
+                sparkle:edSignature="LL3ojIihdJh8jh7qJzqeC7GctckIhlAWWdWrFUdY+nkgdwCsnT8T9WrOgIWKxUnDLOXW26oLxam9wEPd0+YhCg=="
+                length="6322176"
                 type="application/octet-stream"
             />
 
