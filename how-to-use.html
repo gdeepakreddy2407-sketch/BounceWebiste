@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary SEO -->
     <title>How to Use Bounce Connect &#8211; Setup Guide for Mac &amp; Android | Bounce Connect</title>
-    <meta name="description" content="Step-by-step guide: pair your Android phone with Mac using Bounce Connect. Sync SMS, mirror notifications, transfer files &amp; manage calls. Setup in 3 steps.">
-    <meta name="keywords" content="how to use bounce connect, bounce connect setup, connect android to mac, bounce connect guide, android mac setup, KDE connect alternative setup mac">
+    <meta name="description"
+        content="Step-by-step guide: pair your Android phone with Mac using Bounce Connect. Sync SMS, mirror notifications, transfer files &amp; manage calls. Setup in 3 steps.">
+    <meta name="keywords"
+        content="how to use bounce connect, bounce connect setup, connect android to mac, bounce connect guide, android mac setup, KDE connect alternative setup mac">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Bounce Connect">
     <meta name="theme-color" content="#007aff">
@@ -18,14 +20,16 @@
     <meta property="og:url" content="https://bounceconnect.vercel.app/how-to-use.html">
     <meta property="og:site_name" content="Bounce Connect">
     <meta property="og:title" content="How to Use Bounce Connect &#8211; Mac &amp; Android Setup Guide">
-    <meta property="og:description" content="Complete guide to set up Bounce Connect. Sync SMS, mirror notifications, share clipboard, transfer files and manage calls between your Android and Mac.">
+    <meta property="og:description"
+        content="Complete guide to set up Bounce Connect. Sync SMS, mirror notifications, share clipboard, transfer files and manage calls between your Android and Mac.">
     <meta property="og:image" content="https://bounceconnect.vercel.app/logo.png">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How to Use Bounce Connect &#8211; Mac &amp; Android Setup Guide">
-    <meta name="twitter:description" content="Complete guide to set up Bounce Connect. Sync SMS, mirror notifications, share clipboard, transfer files and manage calls between your Android and Mac.">
+    <meta name="twitter:description"
+        content="Complete guide to set up Bounce Connect. Sync SMS, mirror notifications, share clipboard, transfer files and manage calls between your Android and Mac.">
     <meta name="twitter:image" content="https://bounceconnect.vercel.app/logo.png">
 
 
@@ -50,39 +54,59 @@
       ]
     }
     </script>
-    <!-- JSON-LD: HowTo -->
+    <!-- JSON-LD: FAQPage (replaces deprecated HowTo schema) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Connect Your Android Phone to a Mac Using Bounce Connect",
-      "description": "A step-by-step guide to setting up Bounce Connect, the best KDE Connect alternative for Mac, to wirelessly connect your Android phone and Mac.",
-      "url": "https://bounceconnect.vercel.app/how-to-use.html",
-      "step": [
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "HowToStep",
-          "name": "Download and Install",
-          "text": "Download Bounce Connect on your Mac and Bounce Companion on your Android device. The Mac app requires macOS 11 Big Sur or later; the Android app requires Android 8.0 Oreo or higher."
+          "@type": "Question",
+          "name": "How do I set up Bounce Connect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Download Bounce Connect on your Mac (macOS 11+) and Bounce Companion on your Android phone (Android 8.0+). Open both apps, scan the QR code shown on Mac using the Android app, and your devices pair instantly over local WiFi. Grant notification, SMS, and call log permissions when prompted."
+          }
         },
         {
-          "@type": "HowToStep",
-          "name": "Pair Your Devices",
-          "text": "Open both apps. On the Android app, tap Pair New Device and scan the QR code displayed on the Mac app. Wait for the AES-256 encrypted handshake to complete and grant permissions when prompted."
+          "@type": "Question",
+          "name": "Why does Bounce Connect keep disconnecting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most common cause is Android battery optimization killing the Bounce Companion app in the background. Fix it: go to Settings → Battery → Apps → Bounce Companion → set to Unrestricted. Also enable Allow background activity. Both settings are required for a stable always-on connection."
+          }
         },
         {
-          "@type": "HowToStep",
-          "name": "Grant System Permissions",
-          "text": "Grant Notification Access, SMS & MMS, Phone & Call Logs, Contacts Access, and Storage permissions to Bounce Companion on Android. Disable battery optimization for Bounce Companion to allow stable background connection."
-        }
-      ],
-      "tool": [
-        {
-          "@type": "HowToTool",
-          "name": "Bounce Connect (Mac App)"
+          "@type": "Question",
+          "name": "What permissions does Bounce Connect need on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bounce Companion needs: Notification Access (to mirror notifications), SMS & MMS permission (to sync messages), Phone & Call Logs access (to manage calls), Contacts access (to show contact names), and Storage permission (for file transfers). All permissions can be granted from Android Settings."
+          }
         },
         {
-          "@type": "HowToTool",
-          "name": "Bounce Companion (Android App)"
+          "@type": "Question",
+          "name": "Does Bounce Connect work without WiFi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bounce Connect requires both your Mac and Android phone to be on the same WiFi network. Alternatively, one device can create a mobile hotspot and the other can connect to it. The connection is fully local — no internet or cloud servers are used."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I transfer files between Android and Mac using Bounce Connect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To send files from Mac to Android: drag and drop files into the Bounce Connect Mac app. To send files from Android to Mac: select files on Android, tap Share, and choose Bounce. You can also use the Remote File Browser in the Mac app to browse and download files directly from your Android phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I enable notification replies on Mac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once Bounce Companion has Notification Access on Android and is connected to your Mac, notifications from WhatsApp, Telegram, SMS and other apps appear on Mac automatically. You can reply inline using the notification reply field — the reply sends through your Android phone."
+          }
         }
       ]
     }
@@ -1073,8 +1097,10 @@
             <p style="font-size:14px;opacity:0.65;margin-bottom:16px;">Your Android &amp; Mac, perfectly in sync.</p>
             <nav style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
                 <a href="index.html" style="color:var(--accent-cyan);text-decoration:none;font-size:14px;">Home</a>
-                <a href="how-to-use.html" style="color:var(--accent-cyan);text-decoration:none;font-size:14px;">Setup Guide</a>
-                <a href="kde-alternative.html" style="color:var(--accent-cyan);text-decoration:none;font-size:14px;">KDE Connect Alternative</a>
+                <a href="how-to-use.html" style="color:var(--accent-cyan);text-decoration:none;font-size:14px;">Setup
+                    Guide</a>
+                <a href="kde-alternative.html" style="color:var(--accent-cyan);text-decoration:none;font-size:14px;">KDE
+                    Connect Alternative</a>
             </nav>
             <div class="footer-content">
                 <p style="font-size:13px;opacity:0.5;">&copy; 2026 Bounce Connect. All rights reserved.</p>
