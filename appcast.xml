@@ -41,7 +41,7 @@
                  type      → Always "application/octet-stream" for .dmg
             -->
             <enclosure
-                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce10.0/Bounce.dmg"
+                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce11/Bounce.dmg"
                 sparkle:version="15"
                 sparkle:shortVersionString="11"
                 sparkle:edSignature="LL3ojIihdJh8jh7qJzqeC7GctckIhlAWWdWrFUdY+nkgdwCsnT8T9WrOgIWKxUnDLOXW26oLxam9wEPd0+YhCg=="
