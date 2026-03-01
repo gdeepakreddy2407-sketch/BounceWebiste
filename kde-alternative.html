@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="/logo.png" type="image/png">
     <link rel="shortcut icon" href="/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="/logo.png">
@@ -10,8 +14,7 @@
 
     <!-- Primary SEO -->
     <title>Best KDE Connect Alternative for Mac (2026) &#8211; Bounce Connect</title>
-    <meta name="description"
-        content="Best KDE Connect alternative for Mac. Native app to connect Android &amp; Mac — SMS sync, WhatsApp calls, notifications, clipboard &amp; files. $10.98 one-time.">
+    <meta name="description" content="Best KDE Connect alternative for Mac — connect Android &amp; Mac wirelessly. SMS, calls, notifications &amp; files. $10.98 one-time.">
     <meta name="keywords"
         content="KDE connect alternative mac, KDE alternative mac, KDE connect for mac, android mac connection app, connect android to mac, android mac integration, android sms mac, android notifications on mac, KDE connect macos, pushbullet alternative mac, airdroid alternative mac, phone link mac android">
     <meta name="robots" content="index, follow">
@@ -123,11 +126,8 @@
       ]
     }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"></noscript>
 
     <style>
         * {
@@ -652,7 +652,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo-container">
-                    <img src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
+                    <img fetchpriority="high" loading="eager" src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
                     <span class="logo">Bounce Connect</span>
                 </a>
                 <a href="index.html" class="back-link">← Back to Home</a>

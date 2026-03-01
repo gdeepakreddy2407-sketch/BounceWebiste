@@ -3,14 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="/logo.png" type="image/png">
     <link rel="shortcut icon" href="/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary SEO -->
     <title>How to Use Bounce Connect &#8211; Android &amp; Mac Setup Guide</title>
-    <meta name="description"
-        content="Step-by-step guide: pair your Android phone with Mac using Bounce Connect. Sync SMS, mirror notifications, transfer files &amp; manage calls. Setup in 3 steps.">
+    <meta name="description" content="Step-by-step guide to connect Android &amp; Mac using Bounce Connect. Setup in 3 steps — pair, share permissions, start using.">
     <meta name="keywords"
         content="how to use bounce connect, bounce connect setup, connect android to mac, bounce connect guide, android mac setup, KDE connect alternative setup mac">
     <meta name="robots" content="index, follow">
@@ -114,10 +117,8 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"></noscript>
     <style>
         * {
             margin: 0;
@@ -650,7 +651,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo-container">
-                    <img src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
+                    <img fetchpriority="high" loading="eager" src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
                     <div class="logo">Bounce Connect</div>
                 </a>
                 <a href="index.html" class="back-link">

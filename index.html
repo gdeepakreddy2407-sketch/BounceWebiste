@@ -3,14 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="/logo.png" type="image/png">
     <link rel="shortcut icon" href="/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary SEO -->
     <title>Bounce Connect &#8211; KDE Connect Alternative for Mac</title>
-    <meta name="description"
-        content="Best KDE Connect alternative for Mac. Connect Android &amp; Mac — sync SMS, WhatsApp calls, notifications, clipboard &amp; files. $10.98 one-time lifetime.">
+    <meta name="description" content="Best KDE Connect alternative for Mac. Connect Android &amp; Mac — sync SMS, calls, notifications &amp; files. $10.98 one-time.">
     >
     <meta name="keywords"
         content="bounce connect, KDE connect alternative mac, KDE alternative mac, connect android and mac, android mac integration, android sms on mac, mirror android notifications mac, android mac app, android mac file transfer, android mac companion app, android mac wireless, pushbullet alternative mac, airdroid alternative mac, phone link mac android, android mac sync, android mac continuity, android to mac sms, android notifications on mac desktop, android mac file sharing">
@@ -181,10 +184,8 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"></noscript>
     <style>
         * {
             margin: 0;
@@ -1605,7 +1606,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
+                    <img fetchpriority="high" loading="eager" src="logo.png" alt="Bounce Connect Logo" class="logo-img" onerror="this.style.display='none'">
                     <div class="logo">Bounce Connect</div>
                 </div>
                 <div class="header-actions" style="display: flex; gap: 12px; align-items: center;">
@@ -1824,7 +1825,7 @@
                         <!-- Dashboard -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_dashboard.png" alt="Android Dashboard"
+                                <img loading="lazy" src="Screenshots/android_dashboard.png" alt="Android Dashboard"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1837,7 +1838,7 @@
                         <!-- SMS Forwarding -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_sms.png" alt="SMS Forwarding" class="android-screenshot"
+                                <img loading="lazy" src="Screenshots/android_sms.png" alt="SMS Forwarding" class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
                             <h3 class="carousel-item-title">iMessage-Style SMS</h3>
@@ -1849,7 +1850,7 @@
                         <!-- File Transfer -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_file_transfer.png" alt="Large File Transfer"
+                                <img loading="lazy" src="Screenshots/android_file_transfer.png" alt="Large File Transfer"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1862,7 +1863,7 @@
                         <!-- Universal Clipboard -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_clipboard.png" alt="Universal Clipboard"
+                                <img loading="lazy" src="Screenshots/android_clipboard.png" alt="Universal Clipboard"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1875,7 +1876,7 @@
                         <!-- Smart Notifications -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_notifications.png" alt="Smart Notifications"
+                                <img loading="lazy" src="Screenshots/android_notifications.png" alt="Smart Notifications"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1889,7 +1890,7 @@
                         <!-- Call Management -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_calls.png" alt="Call Management"
+                                <img loading="lazy" src="Screenshots/android_calls.png" alt="Call Management"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1902,7 +1903,7 @@
                         <!-- Remote Media Controls -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_media.png" alt="Remote Media Controls"
+                                <img loading="lazy" src="Screenshots/android_media.png" alt="Remote Media Controls"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1915,7 +1916,7 @@
                         <!-- Continuity Link Sharing -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_link_share.png" alt="Continuity Link Sharing"
+                                <img loading="lazy" src="Screenshots/android_link_share.png" alt="Continuity Link Sharing"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1928,7 +1929,7 @@
                         <!-- Dynamic Wallpaper Sync -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_wallpaper.png" alt="Dynamic Wallpaper Sync"
+                                <img loading="lazy" src="Screenshots/android_wallpaper.png" alt="Dynamic Wallpaper Sync"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -1941,7 +1942,7 @@
                         <!-- Real-Time Telemetry -->
                         <div class="carousel-item">
                             <div class="carousel-phone-mockup">
-                                <img src="Screenshots/android_telemetry.png" alt="Real-Time Telemetry"
+                                <img loading="lazy" src="Screenshots/android_telemetry.png" alt="Real-Time Telemetry"
                                     class="android-screenshot"
                                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'536\'%3E%3Crect fill=\'%23f5f5f7\' width=\'256\' height=\'536\'/%3E%3C/svg%3E'" />
                             </div>
@@ -2157,7 +2158,7 @@
             <div class="screenshots-grid">
                 <!-- 1. Dashboard -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.05.16%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.05.16%20PM.png"
                         alt="Bounce Connect Mac app dashboard showing connected Android phone status"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
@@ -2180,7 +2181,7 @@
 
                 <!-- 2. Real-Time Messages -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.05.32%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.05.32%20PM.png"
                         alt="Android SMS messages synced on Mac with iMessage-style interface" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">iMessage-Style SMS</h3>
@@ -2202,7 +2203,7 @@
 
                 <!-- 3. Call Management -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.08.54%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.08.54%20PM.png"
                         alt="Android call notification on Mac with accept and decline buttons" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Smart Call Management</h3>
@@ -2223,7 +2224,7 @@
 
                 <!-- 4. Notification Center -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.05.01%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.05.01%20PM.png"
                         alt="Android notifications mirrored on Mac with inline reply support" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Unified Notifications</h3>
@@ -2245,7 +2246,7 @@
 
                 <!-- 5. Clipboard History -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.12%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.06.12%20PM.png"
                         alt="Universal clipboard sync between Android and Mac" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Universal Clipboard</h3>
@@ -2267,7 +2268,7 @@
 
                 <!-- 6. Easy File Transfers -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.27%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.06.27%20PM.png"
                         alt="Wireless file transfer between Android and Mac via Bounce Connect" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Wireless File Transfer</h3>
@@ -2288,7 +2289,7 @@
 
                 <!-- 7. Contacts -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Gemini_Generated_Image_h1nb40h1nb40h1nb.png"
+                    <img loading="lazy" src="Screenshots/Gemini_Generated_Image_h1nb40h1nb40h1nb.png"
                         alt="Bounce Companion Android app paired with Mac" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Native Contacts Sync</h3>
@@ -2309,7 +2310,7 @@
 
                 <!-- 8. Secure Pairing -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/Screenshot%202026-02-05%20at%202.06.39%20PM.png"
+                    <img loading="lazy" src="Screenshots/Screenshot%202026-02-05%20at%202.06.39%20PM.png"
                         alt="Bounce Connect QR code pairing and settings screen" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Secure Encrypted Pairing</h3>
@@ -2331,7 +2332,7 @@
 
                 <!-- 9. Continuity Link Sharing -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/mac_link_share.png"
+                    <img loading="lazy" src="Screenshots/mac_link_share.png"
                         alt="Share web links between Mac and Android using Bounce Connect" class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
                     <h3 class="screenshot-title">Continuity Link Sharing</h3>
@@ -2352,7 +2353,7 @@
 
                 <!-- 10. Browse Android Files -->
                 <div class="screenshot-card animate-on-scroll">
-                    <img src="Screenshots/mac_file_browser.png"
+                    <img loading="lazy" src="Screenshots/mac_file_browser.png"
                         alt="Browse Android phone files from Mac using Bounce Connect remote file browser"
                         class="screenshot-img"
                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'240\'%3E%3Crect fill=\'%23f5f5f7\' width=\'320\' height=\'240\'/%3E%3C/svg%3E'">
