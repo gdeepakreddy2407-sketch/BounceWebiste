@@ -11,7 +11,7 @@
     --border-color: rgba(0, 0, 0, 0.06);
     --text-primary: #1d1d1f;
     --text-secondary: #575757;
-    --accent-cyan: #007aff;
+    --accent-cyan: #0066cc;
     --accent-blue: #0066ff;
     --accent-purple: #8b5cf6;
     --accent-green: #10b981;
@@ -251,7 +251,7 @@ h1 {
     margin-bottom: 28px;
     color: var(--text-primary);
     letter-spacing: -3px;
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+    animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .hero-subtitle {
