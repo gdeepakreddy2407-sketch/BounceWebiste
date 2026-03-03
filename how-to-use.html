@@ -633,6 +633,41 @@
             transform: translateX(4px);
             color: var(--accent-blue);
         }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 42px;
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .step-card {
+                padding: 28px;
+            }
+
+            .step-header {
+                flex-direction: column;
+            }
+
+            .step-title {
+                font-size: 24px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+        }
     </style>
 </head>
 
@@ -684,6 +719,7 @@
                         <li><a href="#pairing">8. Encrypted Pairing</a></li>
                         <li><a href="#links">9. Continuity Links</a></li>
                         <li><a href="#browser">10. Remote File Browser</a></li>
+                        <li><a href="#wifilock">11. Smart WiFi Lock</a></li>
                         <li><a href="#troubleshooting">Troubleshooting</a></li>
                         <li><a href="#security">Security & Privacy</a></li>
                     </ul>
@@ -854,6 +890,11 @@
                         <h3 class="feature-name">Remote File Browser</h3>
                         <p class="feature-desc">Fetch and organize your phone's exact filesystem directly from Mac.</p>
                     </div>
+                    <div class="feature-box animate-on-scroll">
+                        <div class="feature-icon">🔋</div>
+                        <h3 class="feature-name">Smart WiFi Lock</h3>
+                        <p class="feature-desc">Lock connections to specific WiFi zones to save massive battery.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1022,14 +1063,27 @@
                 <div class="step-card animate-on-scroll" id="browser">
                     <h3 class="step-title" style="margin-bottom: 20px;">🗄️ 10. Remote File Browser</h3>
                     <p class="step-description">Browse, fetch, and organize your raw Android filesystem securely from
-                        Mac.
-                    </p>
+                        Mac.</p>
                     <ul class="step-list">
                         <li><strong>How it works:</strong> Navigate Android directories like internal storage (DCIM,
                             Downloads) directly from the beautiful Mac interface UI. Highlight items and trigger a rapid
                             wireless pull payload to your natively macOS Desktop.</li>
                         <li><strong>Limitations:</strong> To safeguard security paradigms, strict inaccessible protected
                             Android OS directories cannot be browsed natively.</li>
+                    </ul>
+                </div>
+
+                <!-- 11. Smart WiFi Lock -->
+                <div class="step-card animate-on-scroll" id="wifilock">
+                    <h3 class="step-title" style="margin-bottom: 20px;">🔋 11. Smart WiFi Lock</h3>
+                    <p class="step-description">Save massive amounts of battery by only establishing a connection when
+                        you are on specific, trusted WiFi networks.</p>
+                    <ul class="step-list">
+                        <li><strong>How it works:</strong> In the Android app settings, select your home or work WiFi
+                            network as a "Locked Network". Bounce Companion will completely shut down its background
+                            scanning when you leave this network to preserve battery.</li>
+                        <li><strong>Limitations:</strong> You must remember to connect to the selected WiFi network when
+                            you want to use Bounce Connect, as it will explicitly ignore all other networks.</li>
                     </ul>
                 </div>
             </div>

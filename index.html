@@ -14,7 +14,7 @@
     <!-- Primary SEO -->
     <title>Bounce Connect &#8211; KDE Connect Alternative for Mac</title>
     <meta name="description"
-        content="Best KDE Connect alternative for Mac. Connect Android &amp; Mac — sync SMS, calls, notifications &amp; files. $10.98 one-time.">
+        content="Best KDE Connect alternative for Mac. Connect Android &amp; Mac — sync SMS, calls, notifications &amp; files. $18 lifetime.">
     <meta name="keywords"
         content="bounce connect, KDE connect alternative mac, KDE alternative mac, connect android and mac, android mac integration, android sms on mac, mirror android notifications mac, android mac app, android mac file transfer, android mac companion app, android mac wireless, pushbullet alternative mac, airdroid alternative mac, phone link mac android, android mac sync, android mac continuity, android to mac sms, android notifications on mac desktop, android mac file sharing">
     <meta name="robots" content="index, follow">
@@ -70,7 +70,7 @@
       "url": "https://bounceconnect.vercel.app/",
       "offers": {
         "@type": "Offer",
-        "price": "10.98",
+        "price": "18.00",
         "priceCurrency": "USD",
         "name": "One-time purchase — lifetime access including all future updates"
       },
@@ -86,7 +86,8 @@
         "AES-256 encrypted local WiFi connection",
         "Dual-SIM SMS support",
         "WhatsApp call management on Mac",
-        "Native contacts sync"
+        "Native contacts sync",
+        "Battery-saving WiFi Network Lock"
       ],
       "publisher": {
         "@type": "Organization",
@@ -627,70 +628,179 @@
             padding-bottom: 100px;
         }
 
-        .features-grid {
+        .interactive-feature-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: 350px 1fr;
+            gap: 48px;
             margin-top: 60px;
+            align-items: start;
         }
 
-        .feature-card {
-            background: var(--bg-card);
-            padding: 48px 36px;
-            border-radius: 24px;
-            border: 1px solid var(--border-color);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+        .feature-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            /* Explicitly requested by user: No scrolling, fixed layout showing all items */
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            opacity: 0;
-            transition: opacity 0.5s ease;
+        .feature-tab {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            background: transparent;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-secondary);
         }
 
-        .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-large);
-            border-color: transparent;
-        }
-
-        .feature-card:hover::before {
-            opacity: 0.03;
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.15) rotate(5deg);
-        }
-
-        .feature-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
+        .feature-tab:hover {
+            background: var(--bg-secondary);
             color: var(--text-primary);
-            position: relative;
-            z-index: 1;
         }
 
-        .feature-description {
+        .feature-tab.active {
+            background: #ffffff;
+            border-color: rgba(0, 102, 204, 0.4);
+            /* subtle blue outline representing selection */
+            color: var(--text-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transform: translateX(4px);
+        }
+
+        .feature-tab-icon {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-tab.active .feature-tab-icon {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(139, 92, 246, 0.1));
+            transform: scale(1.1);
+        }
+
+        .feature-tab-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .feature-detail-container {
+            background: linear-gradient(135deg, #ffffff, #fdfdfd);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 64px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 120px;
+            /* Sticks on desktop while scrolling the left if needed */
+        }
+
+        .feature-pane {
+            display: none;
+            width: 100%;
+        }
+
+        .feature-pane.active {
+            display: block;
+            animation: paneFadeScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes paneFadeScale {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .pane-icon {
+            font-size: 72px;
+            margin-bottom: 24px;
+            line-height: 1;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        .pane-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .pane-desc {
+            font-size: 20px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .pane-details {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .pane-bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
             font-size: 16px;
             color: var(--text-secondary);
-            line-height: 1.7;
-            position: relative;
-            z-index: 1;
+            line-height: 1.5;
+        }
+
+        .pane-bullet::before {
+            content: '✓';
+            color: var(--accent-cyan);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Mobile Adjustments for the new layout */
+        @media (max-width: 992px) {
+            .interactive-feature-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .feature-detail-container {
+                position: static;
+                padding: 40px 30px;
+                min-height: auto;
+                order: -1;
+                /* Puts the detail pane above the tabs on mobile! */
+            }
+
+            .pane-title {
+                font-size: 32px;
+            }
+
+            .pane-desc {
+                font-size: 18px;
+            }
+
+            .feature-sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 12px;
+            }
         }
 
         .how-it-works {
@@ -963,6 +1073,7 @@
         .bento-grid {
             display: grid;
             grid-template-columns: 1fr;
+            grid-auto-flow: dense;
             gap: 24px;
             margin-top: 50px;
         }
@@ -970,27 +1081,60 @@
         @media (min-width: 768px) {
             .bento-grid {
                 grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: minmax(180px, auto);
+            }
+
+            .bento-card.wide,
+            .bento-card.large {
+                grid-column: span 2;
             }
         }
 
         @media (min-width: 1024px) {
             .bento-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: minmax(220px, auto);
+            }
+
+            .bento-card.large {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+
+            .bento-card.wide {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .bento-card.tall {
+                grid-column: span 1;
+                grid-row: span 2;
             }
         }
 
         .bento-card {
             background: #ffffff;
             border-radius: 32px;
-            padding: 36px;
+            padding: 32px;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            justify-content: center;
             position: relative;
             overflow: hidden;
             z-index: 1;
+        }
+
+        .bento-card.tall,
+        .bento-card.wide {
+            justify-content: center;
+        }
+
+        .bento-card.large .bento-icon {
+            font-size: 64px;
+            margin-bottom: 30px;
         }
 
         .bento-card:hover {
@@ -1025,20 +1169,28 @@
         .bento-icon {
             font-size: 42px;
             margin-bottom: 24px;
+            align-self: flex-start;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+
 
         .bento-card:hover .bento-icon {
             transform: scale(1.15) translateY(-5px);
         }
 
         .bento-title {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             letter-spacing: -0.5px;
             margin-top: 0;
+        }
+
+        .bento-card.large .bento-title {
+            font-size: 30px;
+            margin-bottom: 16px;
         }
 
         .bento-desc {
@@ -1046,6 +1198,46 @@
             line-height: 1.5;
             color: #575757;
             margin: 0;
+        }
+
+        .premium-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 17px;
+            text-decoration: none;
+            border-radius: 100px;
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.25);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .premium-cta-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 122, 255, 0.4);
+            color: #ffffff;
+        }
+
+        .premium-cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .premium-cta-button:hover::after {
+            left: 150%;
         }
 
         .bento-gloss {
@@ -1477,77 +1669,205 @@
         <!-- Features Grid Section -->
         <section class="features-grid-section">
             <div class="container">
-                <div class="features-grid">
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">💬</div>
-                        <h3 class="feature-title">iMessage-Style SMS</h3>
-                        <p class="feature-description">
-                            Send and receive SMS messages directly from your Mac with dual-SIM support.
-                        </p>
+                <div class="interactive-feature-layout">
+                    <!-- Left Sidebar (Tabs) -->
+                    <div class="feature-sidebar">
+                        <div class="feature-tab active" onclick="activateFeature(0)">
+                            <div class="feature-tab-icon">💬</div>
+                            <div class="feature-tab-title">iMessage-Style SMS</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(1)">
+                            <div class="feature-tab-icon">📞</div>
+                            <div class="feature-tab-title">Smart Call Management</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(2)">
+                            <div class="feature-tab-icon">🔔</div>
+                            <div class="feature-tab-title">Unified Notifications</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(3)">
+                            <div class="feature-tab-icon">📋</div>
+                            <div class="feature-tab-title">Universal Clipboard</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(4)">
+                            <div class="feature-tab-icon">📁</div>
+                            <div class="feature-tab-title">Wireless File Transfer</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(5)">
+                            <div class="feature-tab-icon">👥</div>
+                            <div class="feature-tab-title">Native Contacts Sync</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(6)">
+                            <div class="feature-tab-icon">🔒</div>
+                            <div class="feature-tab-title">Encrypted Pairing</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(7)">
+                            <div class="feature-tab-icon">🔗</div>
+                            <div class="feature-tab-title">Continuity Links</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(8)">
+                            <div class="feature-tab-icon">🗄️</div>
+                            <div class="feature-tab-title">Remote File Browser</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(9)">
+                            <div class="feature-tab-icon">🔋</div>
+                            <div class="feature-tab-title">Smart WiFi Lock</div>
+                        </div>
                     </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">📞</div>
-                        <h3 class="feature-title">Smart Call Management</h3>
-                        <p class="feature-description">
-                            Accept or decline incoming Cellular and WhatsApp calls from your desktop.
-                        </p>
-                    </div>
+                    <!-- Right Detail Container -->
+                    <div class="feature-detail-container">
+                        <!-- Pane 0 -->
+                        <div class="feature-pane active" id="feature-pane-0">
+                            <div class="pane-icon">💬</div>
+                            <h3 class="pane-title">A desktop SMS experience that feels native.</h3>
+                            <p class="pane-desc">Send and receive SMS messages directly from your Mac without breaking
+                                your workflow. Designed to feel exactly like Apple's native Messages app.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Full Dual-SIM support — select which SIM to send from</div>
+                                <div class="pane-bullet">Threaded conversation view with timestamp history</div>
+                                <div class="pane-bullet">Instant syncing without requiring an active cloud connection
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">🔔</div>
-                        <h3 class="feature-title">Unified Notifications</h3>
-                        <p class="feature-description">
-                            Mirror, dismiss, and inline-reply to app notifications centralized on your Mac.
-                        </p>
-                    </div>
+                        <!-- Pane 1 -->
+                        <div class="feature-pane" id="feature-pane-1">
+                            <div class="pane-icon">📞</div>
+                            <h3 class="pane-title">Take control of your incoming calls.</h3>
+                            <p class="pane-desc">Don't reach for your phone when it rings. See exactly who's calling
+                                right on your Mac screen and decide how to handle it instantly.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Accept or decline standard Cellular calls instantly</div>
+                                <div class="pane-bullet">Full support for incoming WhatsApp calls</div>
+                                <div class="pane-bullet">Mute the ringer from your desktop if you're in a meeting</div>
+                                <div class="pane-bullet">Multi sim support, call from SIM1 or SIM2 directly from your
+                                    Mac</div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">📋</div>
-                        <h3 class="feature-title">Universal Clipboard</h3>
-                        <p class="feature-description">
-                            Unify your copy-paste buffer instantly between macOS and Android OS.
-                        </p>
-                    </div>
+                        <!-- Pane 2 -->
+                        <div class="feature-pane" id="feature-pane-2">
+                            <div class="pane-icon">🔔</div>
+                            <h3 class="pane-title">Never miss an important alert again.</h3>
+                            <p class="pane-desc">Your Android notifications are securely mirrored to macOS Notification
+                                Center. They look, act, and feel like native Mac alerts.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Reply directly from the macOS notification popup (WhatsApp,
+                                    Telegram, etc.)</div>
+                                <div class="pane-bullet">Dismiss an alert on your Mac, and it instantly clears on your
+                                    phone</div>
+                                <div class="pane-bullet">Customizable filtering to silence spammy or unwanted apps</div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">📁</div>
-                        <h3 class="feature-title">Wireless File Transfer</h3>
-                        <p class="feature-description">
-                            Drag and drop multi-gigabyte files wirelessly without strict limitations.
-                        </p>
-                    </div>
+                        <!-- Pane 3 -->
+                        <div class="feature-pane" id="feature-pane-3">
+                            <div class="pane-icon">📋</div>
+                            <h3 class="pane-title">Copy here. Paste there.</h3>
+                            <p class="pane-desc">The ultimate productivity hack. Unify your clipboard buffer across
+                                platforms so you never have to email yourself a link or snippet of text again.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Command+C on your Mac to instantly paste on your Android</div>
+                                <div class="pane-bullet">Share text from Android securely to your Mac's clipboard buffer
+                                </div>
+                                <div class="pane-bullet">Supports syncing both standard text strings and image data
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">👥</div>
-                        <h3 class="feature-title">Native Contacts Sync</h3>
-                        <p class="feature-description">
-                            Browse your address book directly from Mac to quickly dial or SMS.
-                        </p>
-                    </div>
+                        <!-- Pane 4 -->
+                        <div class="feature-pane" id="feature-pane-4">
+                            <div class="pane-icon">📁</div>
+                            <h3 class="pane-title">Lightning fast file transfers.</h3>
+                            <p class="pane-desc">Forget cables or slow cloud uploads. Beam files directly over your
+                                local WiFi network with zero compression and blazing fast gigabit speeds.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Simple Drag & Drop interface from Finder directly to your phone
+                                </div>
+                                <div class="pane-bullet">Send multi-gigabyte 4K videos in seconds entirely locally</div>
+                                <div class="pane-bullet">Use the native Android Share Sheet to instantly beam to macOS
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">🔒</div>
-                        <h3 class="feature-title">Encrypted Pairing</h3>
-                        <p class="feature-description">
-                            Secure local AES-256 handshake bypassing the cloud entirely.
-                        </p>
-                    </div>
+                        <!-- Pane 5 -->
+                        <div class="feature-pane" id="feature-pane-5">
+                            <div class="pane-icon">👥</div>
+                            <h3 class="pane-title">Your entire address book, synced.</h3>
+                            <p class="pane-desc">Bounce Connect automatically pulls your Android contact list into
+                                memory so you can easily identify callers and quickly compose new messages.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Displays names instead of just raw phone
+                                    numbers</div>
+                                <div class="pane-bullet">Lightning fast local search to quickly find the right person
+                                </div>
+                                <div class="pane-bullet">Syncs changes automatically when you dial a new call
+                                    phone</div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">🔗</div>
-                        <h3 class="feature-title">Continuity Links</h3>
-                        <p class="feature-description">
-                            Pass web URLs back and forth instantly using the native Share Sheets.
-                        </p>
-                    </div>
+                        <!-- Pane 6 -->
+                        <div class="feature-pane" id="feature-pane-6">
+                            <div class="pane-icon">🔒</div>
+                            <h3 class="pane-title">Uncompromising privacy and security.</h3>
+                            <p class="pane-desc">Your data is yours. Unlike competing apps, Bounce Connect does not rely
+                                on third-party servers. Everything stays strictly on your local network.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Bank-grade AES-256-GCM encryption for all transmitted data
+                                </div>
+                                <div class="pane-bullet">Zero cloud infrastructure — NO middleman servers handling your
+                                    messages</div>
+                                <div class="pane-bullet">Requires secure, physical QR-code pairing to establish a
+                                    trusted connection</div>
+                            </div>
+                        </div>
 
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">🗄️</div>
-                        <h3 class="feature-title">Remote File Browser</h3>
-                        <p class="feature-description">
-                            Fetch and organize your phone's exact filesystem directly from Mac.
-                        </p>
+                        <!-- Pane 7 -->
+                        <div class="feature-pane" id="feature-pane-7">
+                            <div class="pane-icon">🔗</div>
+                            <h3 class="pane-title">Continuity across operating systems.</h3>
+                            <p class="pane-desc">Bridge the gap between macOS and Android. Instantly open web links or
+                                maps from one device natively on the other.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Send a URL from Mac to instantly open in Chrome on your phone
+                                </div>
+                                <div class="pane-bullet">Share a map location from Android to pop open on your large
+                                    desktop</div>
+                                <div class="pane-bullet">Seamless integration with native OS sharing menus</div>
+                            </div>
+                        </div>
+
+                        <!-- Pane 8 -->
+                        <div class="feature-pane" id="feature-pane-8">
+                            <div class="pane-icon">🗄️</div>
+                            <h3 class="pane-title">A window into your phone's storage.</h3>
+                            <p class="pane-desc">Don't guess where files are saved. Use the native Mac interface to
+                                remotely browse the exact directory structure of your Android device.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Visually navigate the complex Android filesystem right from
+                                    your Mac</div>
+                                <div class="pane-bullet">Quickly browse the DCIM/Camera folders to pull specific photos
+                                </div>
+                                <div class="pane-bullet">Download files wirelessly directly to your macOS Downloads
+                                    folder</div>
+                            </div>
+                        </div>
+
+                        <!-- Pane 9 -->
+                        <div class="feature-pane" id="feature-pane-9">
+                            <div class="pane-icon">🔋</div>
+                            <h3 class="pane-title">Total efficiency. Zero battery drain.</h3>
+                            <p class="pane-desc">Unlike KDE Connect which constantly scans networks in the background,
+                                Bounce Connect is engineered to rest until you need it.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">Smart WiFi Lock ensures the app only connects on your Home/Work
+                                    network</div>
+                                <div class="pane-bullet">Deep sleep mode kills aggressive background pinging to save
+                                    immense battery life</div>
+                                <div class="pane-bullet">Modern Android API integration specifically built to circumvent
+                                    OS restrictions</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1756,17 +2076,19 @@
                     <p class="section-subtitle">The best KDE Connect alternative for Mac &#8212; here&#8217;s exactly
                         why
                         Bounce Connect wins.</p>
-                    <a href="kde-alternative.html"
-                        style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--accent-cyan);font-weight:600;font-size:16px;text-decoration:none;border-bottom:2px solid rgba(0,122,255,0.25);padding-bottom:2px;transition:all 0.2s ease;">
-                        See full feature comparison vs KDE Connect &rarr;
+                    <a href="kde-alternative.html" class="premium-cta-button">
+                        See full feature comparison vs KDE Connect
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                     </a>
                 </div>
 
                 <div class="bento-grid">
                     <!-- Point 1 -->
-                    <div class="bento-card dark animate-on-scroll">
+                    <div class="bento-card dark wide animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">⚡️</div>
                         <div>
                             <h3 class="bento-title">Pure Native Performance</h3>
                             <p class="bento-desc">Bounce is built entirely from the ground up in <strong>native
@@ -1776,9 +2098,8 @@
                     </div>
 
                     <!-- Point 11: Call Handling -->
-                    <div class="bento-card gradient-1 animate-on-scroll">
+                    <div class="bento-card gradient-1 standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📞</div>
                         <div>
                             <h3 class="bento-title">Beautiful Call Management</h3>
                             <p class="bento-desc">Answer, reject, and mute regular or <strong>WhatsApp calls</strong>
@@ -1787,9 +2108,8 @@
                     </div>
 
                     <!-- Point 4 -->
-                    <div class="bento-card gradient-2 animate-on-scroll">
+                    <div class="bento-card gradient-2 standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">🚀</div>
                         <div>
                             <h3 class="bento-title">Drag & Drop Simplicity</h3>
                             <p class="bento-desc">File transfers in Bounce are fundamentally seamless. No complex menus
@@ -1799,9 +2119,8 @@
                     </div>
 
                     <!-- Point 6 -->
-                    <div class="bento-card dark animate-on-scroll">
+                    <div class="bento-card dark wide animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">✍️</div>
                         <div>
                             <h3 class="bento-title">Full Message Composer</h3>
                             <p class="bento-desc">Unlike alternatives that gray out the 'New Message' button, Bounce
@@ -1810,9 +2129,8 @@
                     </div>
 
                     <!-- Point 5 -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card tall animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">🗂️</div>
                         <div>
                             <h3 class="bento-title">Remote File Browser</h3>
                             <p class="bento-desc">Browse our Android filesystem and fetch files instantly from your Mac.
@@ -1822,9 +2140,8 @@
                     </div>
 
                     <!-- Point 8 & 9: Dual SIM -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card gradient-1 wide animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📲</div>
                         <div>
                             <h3 class="bento-title">Dual-SIM Call Support</h3>
                             <p class="bento-desc">Take full control of your phone lines. Choose exactly which SIM card
@@ -1834,9 +2151,8 @@
                     </div>
 
                     <!-- Point 13 & 16 -->
-                    <div class="bento-card dark animate-on-scroll">
+                    <div class="bento-card dark standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📸</div>
                         <div>
                             <h3 class="bento-title">Clipboard Sync</h3>
                             <p class="bento-desc">We sync more than raw text. Bounce bridges clipboard images and
@@ -1845,18 +2161,16 @@
                     </div>
 
                     <!-- Point 14: Call Logs -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📋</div>
                         <div>
                             <h3 class="bento-title">Advanced Call Log Sync</h3>
                             <p class="bento-desc">Your entire Android call history, synced instantly to the Mac app.
                                 View missed calls and redial with one click—a feature KDE Connect lacks.</p>
                         </div>
                     </div>
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">🔍</div>
                         <div>
                             <h3 class="bento-title">Native Contact Dialer</h3>
                             <p class="bento-desc">Search your Android contacts directly from our spotlight-like
@@ -1866,9 +2180,8 @@
                     </div>
 
                     <!-- Point 7 -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card gradient-2 wide animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">💬</div>
                         <div>
                             <h3 class="bento-title">Inline Replies</h3>
                             <p class="bento-desc">Reply directly from Mac notifications (including WhatsApp and
@@ -1878,9 +2191,8 @@
                     </div>
 
                     <!-- Point 15 -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card dark standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📡</div>
                         <div>
                             <h3 class="bento-title">Smart mDNS</h3>
                             <p class="bento-desc">Bounce uses Apple's mDNS to effortlessly find your phone even when IP
@@ -1889,9 +2201,8 @@
                     </div>
 
                     <!-- Point 2 -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card gradient-2 tall animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">🌐</div>
                         <div>
                             <h3 class="bento-title">Safari Extension</h3>
                             <p class="bento-desc">Share any webpage straight to your Android browser with one single
@@ -1901,9 +2212,8 @@
                     </div>
 
                     <!-- Point 3 -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card dark standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📋</div>
                         <div>
                             <h3 class="bento-title">Natural Clipboard</h3>
                             <p class="bento-desc">Utilizes Android's native share system. No manual triggers from
@@ -1913,9 +2223,8 @@
                     </div>
 
                     <!-- Point 10 -->
-                    <div class="bento-card animate-on-scroll">
+                    <div class="bento-card wide animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">📜</div>
                         <div>
                             <h3 class="bento-title">Notification Sync</h3>
                             <p class="bento-desc">Clear a notification on your Mac, and it vanishes on your Android.</p>
@@ -1923,14 +2232,24 @@
                     </div>
 
                     <!-- Point 12 -->
-                    <div class="bento-card gradient-1 animate-on-scroll">
+                    <div class="bento-card standard animate-on-scroll">
                         <div class="bento-gloss"></div>
-                        <div class="bento-icon">🎵</div>
                         <div>
                             <h3 class="bento-title">Proactive Media</h3>
                             <p class="bento-desc">Trigger and resume your favorite music app directly from the Mac menu
                                 bar.
                             </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 13: WiFi Lock -->
+                    <div class="bento-card dark wide animate-on-scroll">
+                        <div class="bento-gloss"></div>
+                        <div>
+                            <h3 class="bento-title">Battery-Saving WiFi Lock</h3>
+                            <p class="bento-desc">Unlike KDE Connect which constantly scans for networks, Bounce lets
+                                you lock connections to specific WiFi zones (like Home/Work), saving massive amounts of
+                                battery when you're away.</p>
                         </div>
                     </div>
                 </div>
@@ -2457,9 +2776,7 @@
                                 style="font-size: 24px; font-weight: 300; color: var(--accent-cyan); flex-shrink: 0; margin-left: 16px;">+</span>
                         </summary>
                         <div style="margin-top: 16px; color: var(--text-secondary); line-height: 1.7; font-size: 16px;">
-                            <p>Bounce Companion for Android is a <strong>one-time purchase of $10.98</strong>
-                                (&#8377;1,000
-                                on Google Play Store).</p>
+                            <p>Bounce Companion for Android is a <strong>one-time purchase of $18 lifetime</strong>.</p>
                             <div
                                 style="margin-top: 14px; background: linear-gradient(135deg, rgba(0,122,255,0.06), rgba(139,92,246,0.06)); border-radius: 12px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px;">
                                 <div style="display:flex;align-items:center;gap:10px;"><span
@@ -2609,6 +2926,22 @@
     </div>
 
     <script>
+        // Feature Layout Interactivity
+        function activateFeature(index) {
+            // 1. Remove active class from all tabs
+            document.querySelectorAll('.feature-tab').forEach(tab => tab.classList.remove('active'));
+            // 2. Remove active class from all panes
+            document.querySelectorAll('.feature-pane').forEach(pane => pane.classList.remove('active'));
+
+            // 3. Add active class to the clicked tab
+            const tabs = document.querySelectorAll('.feature-tab');
+            if (tabs[index]) tabs[index].classList.add('active');
+
+            // 4. Add active class to the corresponding pane
+            const pane = document.getElementById('feature-pane-' + index);
+            if (pane) pane.classList.add('active');
+        }
+
         // Download Modal Functions
         function openMacModal(e) {
             if (e) e.preventDefault();
