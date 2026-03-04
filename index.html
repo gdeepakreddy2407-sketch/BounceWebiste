@@ -773,6 +773,10 @@
             font-size: 18px;
         }
 
+        .feature-swipe-hint {
+            display: none;
+        }
+
         /* Mobile Adjustments for the new layout */
         @media (max-width: 992px) {
             .interactive-feature-layout {
@@ -784,8 +788,6 @@
                 position: static;
                 padding: 40px 30px;
                 min-height: auto;
-                order: -1;
-                /* Puts the detail pane above the tabs on mobile! */
             }
 
             .pane-title {
@@ -796,11 +798,74 @@
                 font-size: 18px;
             }
 
-            .feature-sidebar {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 12px;
+            @keyframes scrollHint {
+
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+
+                10%,
+                30% {
+                    transform: translateX(-15px);
+                }
+
+                20%,
+                40% {
+                    transform: translateX(0);
+                }
             }
+
+            .feature-sidebar {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-bottom: 12px;
+                gap: 12px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                /* Firefox */
+                animation: scrollHint 3s cubic-bezier(0.4, 0, 0.2, 1) 1s infinite;
+            }
+
+            .feature-sidebar.user-scrolled {
+                animation: none !important;
+            }
+
+            .feature-sidebar::-webkit-scrollbar {
+                display: none;
+                /* Chrome, Safari */
+            }
+
+            .feature-swipe-hint {
+                display: block;
+                text-align: center;
+                font-size: 13px;
+                color: var(--text-secondary);
+                margin-bottom: 12px;
+                font-weight: 500;
+                opacity: 0.7;
+                animation: scrollHint 3s cubic-bezier(0.4, 0, 0.2, 1) 1s infinite;
+            }
+
+            .feature-swipe-hint.user-scrolled {
+                animation: none !important;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
+            }
+
+            .feature-tab {
+                flex: 0 0 calc(85% - 24px);
+                /* Show current card and peek of next */
+                scroll-snap-align: start;
+            }
+        }
+
+        .scroll-hint {
+            display: none;
         }
 
         .how-it-works {
@@ -1669,6 +1734,7 @@
         <!-- Features Grid Section -->
         <section class="features-grid-section">
             <div class="container">
+                <div class="feature-swipe-hint">← Swipe to see more features →</div>
                 <div class="interactive-feature-layout">
                     <!-- Left Sidebar (Tabs) -->
                     <div class="feature-sidebar">
@@ -2856,7 +2922,7 @@
                 </div>
                 <!-- Removed onclick to prevent cancelling the download navigation -->
                 <a rel="noopener noreferrer"
-                    href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce14/Bounce.dmg"
+                    href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce11/Bounce.dmg"
                     class="btn btn-modal-mac" style="width: 100%; justify-content: center;" target="_blank">Download
                     Bounce.dmg</a>
             </div>
@@ -2964,6 +3030,30 @@
             document.getElementById('androidDownloadModal').classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // Stop swipe hint animation on interaction
+        setTimeout(() => {
+            document.querySelectorAll('.feature-sidebar').forEach(sidebar => {
+                const stopAnimation = () => {
+                    sidebar.classList.add('user-scrolled');
+
+                    // also hide the hint text smoothly
+                    const container = sidebar.closest('.container');
+                    if (container) {
+                        const hint = container.querySelector('.feature-swipe-hint');
+                        if (hint) hint.classList.add('user-scrolled');
+                    }
+
+                    // Remove listeners after first interaction
+                    sidebar.removeEventListener('scroll', stopAnimation);
+                    sidebar.removeEventListener('touchstart', stopAnimation);
+                    sidebar.removeEventListener('mousedown', stopAnimation);
+                };
+                sidebar.addEventListener('scroll', stopAnimation, { passive: true });
+                sidebar.addEventListener('touchstart', stopAnimation, { passive: true });
+                sidebar.addEventListener('mousedown', stopAnimation, { passive: true });
+            });
+        }, 1000); // Brief delay so initial rendering layout-shifts don't trigger the removal
 
         function openContactModal(e) {
             if (e) e.preventDefault();
