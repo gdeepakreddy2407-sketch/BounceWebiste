@@ -822,6 +822,192 @@
             }
         }
 
+        /* ── Download Modals ── */
+        .download-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        .download-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 40px;
+            max-width: 440px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: center;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 24px 60px rgba(0, 0, 0, 0.2);
+            transform: scale(0.92) translateY(10px);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .download-modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #00c2ff, #007aff);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.2);
+        }
+
+        .modal-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-body {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .modal-body ol {
+            padding-left: 20px;
+            margin: 16px 0;
+        }
+
+        .modal-body li {
+            margin-bottom: 10px;
+        }
+
+        .modal-body p {
+            margin-bottom: 12px;
+        }
+
+        .modal-close-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: #888;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .modal-close-icon:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: #1d1d1f;
+        }
+
+        .btn-modal-mac {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #1d1d1f, #000);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-modal-mac:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-modal-android {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #00c2ff, #007aff);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-modal-android:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 122, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 24px 20px;
+                max-height: 85vh;
+                border-radius: 24px;
+            }
+
+            .modal-close-icon {
+                top: 12px;
+                right: 12px;
+            }
+
+            .modal-icon {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 12px;
+            }
+
+            .modal-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .modal-title {
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+        }
+
         @media (max-width:768px) {
             h1 {
                 font-size: 42px;
@@ -889,14 +1075,14 @@
                     ✦ One-Time Purchase &nbsp;·&nbsp; $20 lifetime &nbsp;·&nbsp; Lifetime Updates Included
                 </div>
                 <div class="cta-buttons">
-                    <a href="index.html#download" class="btn btn-primary">
+                    <a href="#" onclick="openMacModal(event)" class="btn btn-primary">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                         </svg>
                         Download for Mac
                     </a>
-                    <a href="index.html" class="btn btn-secondary">
+                    <a href="#" onclick="openAndroidModal(event)" class="btn btn-secondary">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.28.05 2.17.74 2.95.73.94-.01 1.72-.78 2.95-.77 1.22.01 2.13.56 2.58 1.32-3.69 2.17-3.12 7.46 1.39 9.02-.37.97-.55 1.95-1.87 3.58zM12 4.2c.05-2.71 2.2-4.82 4.77-4.56.31 2.68-2.46 4.98-4.77 4.56z" />
@@ -1399,13 +1585,13 @@
                     Bounce Companion for Android is a <strong>one-time purchase of $20 lifetime</strong> — pay
                     once, get lifetime access and all future updates. Local &amp; private, no cloud.</p>
                 <div class="cta-buttons" style="justify-content: center;">
-                    <a href="index.html" class="btn"
+                    <a href="#" onclick="openMacModal(event)" class="btn"
                         style="background: white; color: #007aff; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                         </svg>
-                        Download ($20)
+                        Download for Mac
                     </a>
                     <a href="how-to-use.html" class="btn"
                         style="background: rgba(255,255,255,0.18); color: white; border: 1px solid rgba(255,255,255,0.3);">
@@ -1485,6 +1671,101 @@
             const pane = document.getElementById('feature-pane-' + index);
             if (pane) pane.classList.add('active');
         }
+    </script>
+
+    <!-- Mac Download Modal -->
+    <div class="download-modal" id="macDownloadModal">
+        <div class="modal-content" style="max-width: 450px;">
+            <div class="modal-close-icon" onclick="closeMacModal()">✕</div>
+            <div>
+                <div class="modal-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24" style="width: 48px; height: 48px;">
+                        <path
+                            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5M13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
+                    </svg>
+                </div>
+                <h2 class="modal-title">Mac Installation Guide</h2>
+                <div
+                    style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 16px;"><strong>Important:</strong> Because Bounce Connect is not signed
+                        from Appstore as i cant pay the fee now,
+                        macOS will block it initially for security reasons.</p>
+                    <ol style="padding-left: 20px; margin-bottom: 24px;">
+                        <li style="margin-bottom: 12px;">Open the downloaded <strong>Bounce.dmg</strong> file and drag
+                            the app to your Applications folder.</li>
+                        <li style="margin-bottom: 12px;">Try to open Bounce. You may see a warning that it cannot be
+                            opened.
+                            Dont click on move to trash, Just Click Done.</li>
+                        <li>Go to <strong>System Settings > Privacy & Security</strong>, scroll down, and click
+                            <strong>Open Anyway</strong> to launch the app.
+                        </li>
+                    </ol>
+                </div>
+                <!-- Removed onclick to prevent cancelling the download navigation -->
+                <a rel="noopener noreferrer"
+                    href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce15/Bounce.dmg"
+                    class="btn btn-modal-mac" style="width: 100%; justify-content: center;" target="_blank">Download
+                    Bounce.dmg</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Android Download Modal -->
+    <div class="download-modal" id="androidDownloadModal">
+        <div class="modal-content" style="max-width: 450px;">
+            <div class="modal-close-icon" onclick="closeAndroidModal()">✕</div>
+            <div>
+                <div class="modal-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24"
+                        style="width: 48px; height: 48px; color: var(--accent-green);">
+                        <path
+                            d="M17.6,9.48L16.85,8.82C17.3,8.13 17.58,7.3 17.58,6.4C17.58,4.12 15.71,2.25 13.43,2.25C12.53,2.25 11.7,2.53 11,2.98L10.36,2.23C10.14,1.96 9.75,1.93 9.48,2.15C9.21,2.37 9.18,2.76 9.4,3.03L10.03,3.76C9.58,4.45 9.3,5.28 9.3,6.18C9.3,8.46 11.17,10.33 13.45,10.33C14.35,10.33 15.18,10.05 15.87,9.6L16.5,10.25C16.63,10.38 16.8,10.45 16.97,10.45C17.12,10.45 17.27,10.4 17.39,10.3C17.66,10.08 17.69,9.69 17.47,9.42L17.6,9.48M11.05,6.18C11.05,5.43 11.32,4.74 11.79,4.21L14.5,7.29C13.97,7.76 13.28,8.03 12.53,8.03C11.78,8.03 11.09,7.76 10.56,7.29C10.09,6.76 9.82,6.07 9.82,5.32L11.05,6.18M12.53,3C13.28,3 13.97,3.27 14.5,3.74C14.97,4.27 15.24,4.96 15.24,5.71L14.01,4.85C14.01,4.1 13.74,3.41 13.27,2.88L12.53,3M6.05,8.55C5.5,8.55 5.05,9 5.05,9.55V15.45C5.05,16 5.5,16.45 6.05,16.45C6.6,16.45 7.05,16 7.05,15.45V9.55C7.05,9 6.6,8.55 6.05,8.55M18.05,8.55C17.5,8.55 17.05,9 17.05,9.55V15.45C17.05,16 17.5,16.45 18.05,16.45C18.6,16.45 19.05,16 19.05,15.45V9.55C19.05,9 18.6,8.55 18.05,8.55M8.05,21.5C8.05,22.33 8.72,23 9.55,23C10.38,23 11.05,22.33 11.05,21.5V18.5H8.05V21.5M13.05,21.5C13.05,22.33 13.72,23 14.55,23C15.38,23 16.05,22.33 16.05,21.5V18.5H13.05V21.5M8.05,9V17.5H16.05V9H8.05Z" />
+                    </svg>
+                </div>
+                <h2 class="modal-title">Closed Beta Notice</h2>
+                <div
+                    style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 12px; text-align: center;">Bounce Connect for Android is currently in
+                        <strong>Beta</strong>.
+                    </p>
+                    <p style="text-align: center;">You may experience occasional bugs or unpolished features as we
+                        continue to improve the app. We appreciate your feedback!</p>
+                    <p style="text-align: center;">Please join the Google group first so you will get access to beta
+                        build for free link: <a rel="noopener noreferrer"
+                            href="https://groups.google.com/u/5/g/bounceconnecttest"> Google Group
+                    </p>
+                </div>
+                <!-- Removed onclick to prevent cancelling the download navigation -->
+                <a rel="noopener noreferrer" href="https://play.google.com/apps/testing/com.bounce.connect"
+                    target="_blank" class="btn btn-modal-android" style="width: 100%; justify-content: center;">Get it
+                    on Google
+                    Play</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openMacModal(e) {
+            e.preventDefault();
+            document.getElementById('macDownloadModal').classList.add('active');
+        }
+        function closeMacModal() {
+            document.getElementById('macDownloadModal').classList.remove('active');
+        }
+        function openAndroidModal(e) {
+            e.preventDefault();
+            document.getElementById('androidDownloadModal').classList.add('active');
+        }
+        function closeAndroidModal() {
+            document.getElementById('androidDownloadModal').classList.remove('active');
+        }
+        // Close modals when clicking the backdrop
+        document.getElementById('macDownloadModal').addEventListener('click', function (e) {
+            if (e.target === this) closeMacModal();
+        });
+        document.getElementById('androidDownloadModal').addEventListener('click', function (e) {
+            if (e.target === this) closeAndroidModal();
+        });
     </script>
 
 </body>
