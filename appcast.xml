@@ -16,21 +16,21 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
     <channel>
         <title>Bounce Connect</title>
-        <link>https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO/appcast.xml</link>
+        <link>https://github.com/gdeepakreddy2407-sketch/BounceWebiste/blob/main/appcast.xml</link>
         <description>Bounce Connect release notes and update feed</description>
         <language>en</language>
 
         <!-- ═══════════ LATEST RELEASE — edit this block for every update ═════════ -->
         <item>
-            <title>Bounce Connect 15</title>
+            <title>Bounce Connect 16</title>
 
             <!-- Human-readable release notes (supports HTML) -->
             <sparkle:releaseNotesLink>
-                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/tag/Bounce15
+                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/tag/Bounce16
             </sparkle:releaseNotesLink>
 
             <!-- Publication date (RFC 2822 format) -->
-            <pubDate>Wed, 4 Mar 2026 00:00:00 +0000</pubDate>
+            <pubDate>Fri, 6 Mar 2026 00:00:00 +0000</pubDate>
 
             <!-- The actual download.
                  url       → Direct download link to the .dmg on GitHub Releases
@@ -41,11 +41,11 @@
                  type      → Always "application/octet-stream" for .dmg
             -->
             <enclosure
-                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce15/Bounce.dmg"
-                sparkle:version="19"
-                sparkle:shortVersionString="15.0"
-                sparkle:edSignature="YZXCFgbiPlC1hVyy3krk/rLKm3lx2CwzNaFowI16DubxNS5ISloBvutvXZHSNL4RKbqjb/JvS/jni0tmmk5HCw=="
-                length="6292480"
+                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce16/Bounce.dmg"
+                sparkle:version="20"
+                sparkle:shortVersionString="16.0"
+                sparkle:edSignature="ryhALYPhAvIMfTQ0VYQ18SgSvGrPg5b6RtE7Noqs6SWqb/4lq7zD713JKcB1vREylpL3FON5Prp2UA6/23ZsDw=="
+                length="6297088"
                 type="application/octet-stream"
             />
 
