@@ -22,15 +22,15 @@
 
         <!-- ═══════════ LATEST RELEASE — edit this block for every update ═════════ -->
         <item>
-            <title>Bounce Connect 16</title>
+            <title>Bounce Connect 17</title>
 
             <!-- Human-readable release notes (supports HTML) -->
             <sparkle:releaseNotesLink>
-                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/tag/Bounce16
+                https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/tag/Bounce17
             </sparkle:releaseNotesLink>
 
             <!-- Publication date (RFC 2822 format) -->
-            <pubDate>Fri, 6 Mar 2026 00:00:00 +0000</pubDate>
+            <pubDate>Sat, 7 Mar 2026 00:00:00 +0000</pubDate>
 
             <!-- The actual download.
                  url       → Direct download link to the .dmg on GitHub Releases
@@ -41,11 +41,11 @@
                  type      → Always "application/octet-stream" for .dmg
             -->
             <enclosure
-                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce16/Bounce.dmg"
-                sparkle:version="20"
-                sparkle:shortVersionString="16.0"
-                sparkle:edSignature="ryhALYPhAvIMfTQ0VYQ18SgSvGrPg5b6RtE7Noqs6SWqb/4lq7zD713JKcB1vREylpL3FON5Prp2UA6/23ZsDw=="
-                length="6297088"
+                url="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce17/Bounce.dmg"
+                sparkle:version="21"
+                sparkle:shortVersionString="17.0"
+                sparkle:edSignature="W77WJSt+nwoNW8JEbkZFFnvsX8RULcDMl1b0M/xJGcidVRp8C8+t74y1ml5fJ/OEJZ3B9e2kEXf7VtOHyFvGAQ=="
+                length="6299136"
                 type="application/octet-stream"
             />
 
