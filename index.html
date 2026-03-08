@@ -80,6 +80,7 @@
       "featureList": [
         "Sync Android SMS on Mac",
         "Mirror Android notifications on Mac",
+        "Granular App Notification Management",
         "Universal clipboard sync between Android and Mac",
         "Wireless file transfer between Android and Mac",
         "Accept or decline calls from Mac",
@@ -1784,6 +1785,10 @@
                             <div class="feature-tab-icon">🔋</div>
                             <div class="feature-tab-title">Smart WiFi Lock</div>
                         </div>
+                        <div class="feature-tab" onclick="activateFeature(10)">
+                            <div class="feature-tab-icon">🎛️</div>
+                            <div class="feature-tab-title">Manage App Notifications</div>
+                        </div>
                     </div>
 
                     <!-- Right Detail Container -->
@@ -1828,7 +1833,8 @@
                                     Telegram, etc.)</div>
                                 <div class="pane-bullet">Dismiss an alert on your Mac, and it instantly clears on your
                                     phone</div>
-                                <div class="pane-bullet">Customizable filtering to silence spammy or unwanted apps</div>
+                                <div class="pane-bullet">Use "Manage App Notifications" to selectively block spammy or
+                                    unwanted apps</div>
                             </div>
                         </div>
 
@@ -1938,6 +1944,21 @@
                                     immense battery life</div>
                                 <div class="pane-bullet">Modern Android API integration specifically built to circumvent
                                     OS restrictions</div>
+                            </div>
+                        </div>
+
+                        <!-- Pane 10 -->
+                        <div class="feature-pane" id="feature-pane-10">
+                            <div class="pane-icon">🎛️</div>
+                            <h3 class="pane-title">Granular control over your alerts.</h3>
+                            <p class="pane-desc">Take complete control over which Android apps are allowed to push
+                                notifications to your Mac desktop, ensuring a distraction-free environment.</p>
+                            <div class="pane-details">
+                                <div class="pane-bullet">View a comprehensive list of all installed Android applications
+                                </div>
+                                <div class="pane-bullet">Instantly toggle alert syncing on a per-app basis</div>
+                                <div class="pane-bullet">A sleek iOS-style interface tailored for speed and efficiency
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2461,6 +2482,8 @@
                                 <li>Reply inline to WhatsApp, Telegram, and Messages via a native input field.</li>
                                 <li>Dismissing a notification on Mac wipes it cleanly from your Android phone drop-down.
                                 </li>
+                                <li>Use <strong>Manage App Notifications</strong> to selectively block noisy apps from
+                                    reaching your Mac.</li>
                             </ul>
                             <strong>Limitations</strong>
                             <ul>
