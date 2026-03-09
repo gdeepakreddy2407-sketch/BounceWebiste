@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LLM Migration Assistant — SQL → MongoDB (Interview Answer)</title>
+  <style>
+    :root{
+      --bg:#0b1220; /* deep navy like LLM UI */
+      --card:#0f1724; 
+      --accent:#7c5cff; /* single consistent accent colour */
+      --muted:#9aa4b2;
+      --text:#e6eef6;
+      --code-bg:#071024;
+      --bubble:#071327;
+      --mono:SFMono-Regular,Consolas,Monaco,monospace;
+    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,var(--bg), #071122); colour:var(--text);}
+    .wrap{max-width:980px;margin:40px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    header{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5bb1ff);display:flex;align-items:center;justify-content:center;font-weight:700;colour:white;font-family:var(--mono);} 
+    h1{font-size:20px;margin:0}
+    p.lead{colour:var(--muted);margin-top:6px}
+
+    .section{margin-top:20px}
+    .section h2{font-size:14px;margin:0 0 10px 0;colour:var(--accent)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.02)}
+    pre, code{font-family:var(--mono);font-size:13px}
+    .code-block{background:var(--code-bg);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);overflow:auto}
+    .note{colour:var(--muted);font-size:13px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,0.14);colour:var(--accent);font-weight:600;font-size:12px}
+
+    /* chat-like bubble style for the main explanation */
+    .bubble{background:linear-gradient(180deg,var(--bubble), rgba(10,18,36,0.6));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.02)}
+    .muted{colour:var(--muted)}
+
+    /* responsive */
+    @media (max-width:720px){.wrap{margin:18px;padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">LLM</div>
+      <div>
+        <h1>LLM Migration Assistant — SQL → MongoDB</h1>
+        <p class="lead">A portable HTML version of the interview-ready answer: architecture, prompts, code snippets, and the one-paragraph summary — all in a consistent LLM-styled design.</p>
+      </div>
+    </header>
+
+    <div class="section">
+      <div class="card bubble">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px">
+          <div>
+            <strong>Story Scope —</strong>
+            <span class="muted">An internal Spring Boot dev tool with two endpoints: <span class="pill">/migrate-query</span> and <span class="pill">/validate</span>.</span>
+          </div>
+        </div>
+
+        <p class="muted">This single-page tool is intended for developers during a SQL → MongoDB migration. It uses a deterministic LLM setup (low temperature, JSON-only system prompts) to convert SQL queries to MongoDB aggregation pipelines and to validate migrated documents vs source rows.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Architecture Overview</h2>
+      <div class="card">
+        <pre class="code-block">Developer
+   │
+   ├── POST /migrate-query  (SQL string)
+   │        └── LLM API → returns MongoDB aggregation JSON
+   │
+   └── POST /validate       (mismatched docs: SQL row + MongoDB doc)
+            └── LLM API → returns reason + fix suggestion
+
+Two endpoints, one LlmApiClient, and one controller — simple, focused, and practical.</pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Step 1 — LLM API Client Wrapper</h2>
+      <div class="card">
+        <p class="note">Key design choices: low temperature for deterministic code, system prompt to enforce JSON-only responses, and a reusable @Service for all LLM calls.</p>
+
+        <div class="code-block">
+<pre><code>@Service
+public class LlmApiClient {
+
+    private final RestTemplate restTemplate;
+
+    @Value("${llm.api.url}")
+    private String apiUrl;
+
+    @Value("${llm.api.key}")
+    private String apiKey;
+
+    @Value("${llm.model}")
+    private String model;
+
+    public LlmApiClient(RestTemplateBuilder builder) {
+        this.restTemplate = builder.build();
+    }
+
+    public String complete(String systemPrompt, String userMessage) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(apiKey);
+
+        Map&lt;String, Object&gt; body = Map.of(
+            "model", model,
+            "messages", List.of(
+                Map.of("role", "system",  "content", systemPrompt),
+                Map.of("role", "user",    "content", userMessage)
+            ),
+            "temperature", 0.2
+        );
+
+        HttpEntity&lt;Map&lt;String,Object&gt;&gt; request = new HttpEntity&lt;&gt;(body, headers);
+        Map&lt;String, Object&gt; response = restTemplate.postForObject(apiUrl, request, Map.class);
+
+        List&lt;Map&lt;String, Object&gt;&gt; choices = (List&lt;Map&lt;String, Object&gt;&gt;) response.get("choices");
+        Map&lt;String, Object&gt; message = (Map&lt;String, Object&gt;) choices.get(0).get("message");
+        return (String) message.get("content");
+    }
+}
+</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Step 2 — Request / Response DTOs</h2>
+      <div class="card">
+        <div class="code-block"><pre><code>// MigrateQueryRequest
+public class MigrateQueryRequest {
+    private String sqlQuery;
+    private String collectionName;
+}
+
+// MigrateQueryResponse
+public class MigrateQueryResponse {
+    private String aggregationPipeline;
+    private String explanation;
+}
+
+// ValidateRequest
+public class ValidateRequest {
+    private String sqlRow;
+    private String mongoDocument;
+    private String tableName;
+    private String collectionName;
+}
+
+// ValidateResponse
+public class ValidateResponse {
+    private String likelyCause;
+    private String suggestedFix;
+    private String severity; // LOW/MEDIUM/HIGH
+}
+</code></pre></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Step 3 — MigrationToolService (Core Logic)</h2>
+      <div class="card">
+        <p class="note">Two features implemented here: <strong>Query translation</strong> and <strong>migration validation</strong>. Both call the same LLM client with strict system prompts asking for JSON-only responses.</p>
+
+        <div class="code-block"><pre><code>@Service
+public class MigrationToolService {
+
+    private final LlmApiClient llmApiClient;
+    private final ObjectMapper objectMapper;
+
+    public MigrationToolService(LlmApiClient llmApiClient, ObjectMapper objectMapper) {
+        this.llmApiClient = llmApiClient;
+        this.objectMapper = objectMapper;
+    }
+
+    public MigrateQueryResponse migrateQuery(MigrateQueryRequest request) {
+
+        String systemPrompt = """
+            You are a database migration expert.
+            Convert SQL or JPQL queries into MongoDB aggregation pipelines.
+            Always return a valid JSON object with two fields:
+            - "aggregationPipeline": the MongoDB pipeline as a JSON array
+            - "explanation": a brief explanation
+            Return ONLY the JSON object, no markdown, no extra text.
+            """;
+
+        String userMessage = String.format("Target MongoDB collection: %s\nSQL Query:\n%s",
+            request.getCollectionName(), request.getSqlQuery());
+
+        String rawResponse = llmApiClient.complete(systemPrompt, userMessage);
+
+        try {
+            JsonNode json = objectMapper.readTree(rawResponse);
+            MigrateQueryResponse response = new MigrateQueryResponse();
+            response.setAggregationPipeline(json.get("aggregationPipeline").toString());
+            response.setExplanation(json.get("explanation").asText());
+            return response;
+        } catch (Exception e) {
+            MigrateQueryResponse response = new MigrateQueryResponse();
+            response.setAggregationPipeline(rawResponse);
+            response.setExplanation("Raw response — JSON parsing failed");
+            return response;
+        }
+    }
+
+    public ValidateResponse validate(ValidateRequest request) {
+
+        String systemPrompt = """
+            You are a data migration validation expert.
+            Given an original SQL record and its migrated MongoDB document,
+            return a JSON object with "likelyCause", "suggestedFix", and "severity".
+            Return ONLY the JSON object, no markdown, no extra text.
+            """;
+
+        String userMessage = String.format("Table: %s → Collection: %s\n\nOriginal SQL record:\n%s\n\nMigrated MongoDB document:\n%s",
+            request.getTableName(), request.getCollectionName(), request.getSqlRow(), request.getMongoDocument());
+
+        String rawResponse = llmApiClient.complete(systemPrompt, userMessage);
+
+        try {
+            JsonNode json = objectMapper.readTree(rawResponse);
+            ValidateResponse response = new ValidateResponse();
+            response.setLikelyCause(json.get("likelyCause").asText());
+            response.setSuggestedFix(json.get("suggestedFix").asText());
+            response.setSeverity(json.get("severity").asText());
+            return response;
+        } catch (Exception e) {
+            ValidateResponse response = new ValidateResponse();
+            response.setLikelyCause(rawResponse);
+            response.setSuggestedFix("Manual review needed");
+            response.setSeverity("UNKNOWN");
+            return response;
+        }
+    }
+}
+</code></pre></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Step 4 — Controller</h2>
+      <div class="card">
+        <div class="code-block"><pre><code>@RestController
+@RequestMapping("/api/migration-tool")
+public class MigrationToolController {
+
+    private final MigrationToolService migrationToolService;
+
+    public MigrationToolController(MigrationToolService migrationToolService) {
+        this.migrationToolService = migrationToolService;
+    }
+
+    @PostMapping("/migrate-query")
+    public ResponseEntity&lt;MigrateQueryResponse&gt; migrateQuery(@RequestBody MigrateQueryRequest request) {
+        return ResponseEntity.ok(migrationToolService.migrateQuery(request));
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity&lt;ValidateResponse&gt; validate(@RequestBody ValidateRequest request) {
+        return ResponseEntity.ok(migrationToolService.validate(request));
+    }
+}
+</code></pre></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Step 5 — application.properties</h2>
+      <div class="card">
+        <div class="code-block"><pre><code>llm.api.url=https://api.openai.com/v1/chat/completions
+llm.api.key=${LLM_API_KEY}
+llm.model=gpt-4o-mini
+</code></pre></div>
+        <p class="note">Keep the API key in environment variables; never commit it. Choose a model that balances cost and latency for a dev tool.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Sample Requests &amp; Responses</h2>
+      <div class="card">
+        <div class="code-block"><pre><code>// POST /migrate-query
+{
+  "collectionName": "orders",
+  "sqlQuery": "SELECT c.name, COUNT(o.id) as order_count FROM customers c JOIN orders o ON c.id = o.customer_id GROUP BY c.id HAVING COUNT(o.id) > 5"
+}
+
+// Response
+{
+  "aggregationPipeline": "[ { \"$lookup\": ... }, { \"$group\": ... }, { \"$match\": { \"order_count\": { \"$gt\": 5 } } } ]",
+  "explanation": "JOIN→$lookup, GROUP BY→$group, HAVING→$match after grouping"
+}
+
+// POST /validate
+{
+  "tableName": "orders",
+  "collectionName": "orders",
+  "sqlRow": "{ \"id\": 101, \"total\": 250.00, \"discount\": 25.00, \"status\": \"SHIPPED\" }",
+  "mongoDocument": "{ \"_id\": 101, \"total\": 250.00, \"status\": \"SHIPPED\" }"
+}
+
+// Response
+{
+  "likelyCause": "The 'discount' field was not mapped in the ItemProcessor transformation logic",
+  "suggestedFix": "Add discount field mapping in the OrderItemProcessor.process() method",
+  "severity": "MEDIUM"
+}
+</code></pre></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>One-paragraph Interview Answer</h2>
+      <div class="card bubble">
+        <p style="margin:0">"We built an internal Spring Boot dev tool with two endpoints. The first took a SQL or JPQL query, called the LLM API with a strict system prompt to return only JSON, and gave back the MongoDB aggregation pipeline equivalent with an explanation. The second was for our validation phase — our batch job flagged mismatches between the MySQL source and MongoDB target, and developers could POST those two documents to the validate endpoint. The LLM would compare them and return the likely cause, a suggested fix, and a severity rating. The key engineering decisions were keeping temperature low for deterministic output, enforcing JSON-only responses in the system prompt, and having a fallback handler when the LLM returned malformed output."</p>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top:22px;display:flex;gap:12px;align-items:center;justify-content:space-between">
+      <div class="muted">Copy, save, or open this HTML file from the canvas. If you'd like I can also export this as a PDF or a plain text file.</div>
+      <div style="font-size:13px;color:var(--accent);font-weight:600">LLM Migration Assistant • portable HTML</div>
+    </div>
+
+  </div>
+</body>
+</html>
