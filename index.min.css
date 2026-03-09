@@ -643,7 +643,8 @@ h1 {
 
 .scroll-hint {
     text-align: center;
-    color: var(--text-secondary);
+    color: #404040;
+    font-weight: 600;
     font-size: 14px;
     margin-top: 24px;
     display: flex;
