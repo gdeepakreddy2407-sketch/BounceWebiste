@@ -8,31 +8,31 @@
     :root{
       --bg:#0b1220; /* deep navy like LLM UI */
       --card:#0f1724; 
-      --accent:#7c5cff; /* single consistent accent colour */
+      --accent:#7c5cff; /* single consistent accent color */
       --muted:#9aa4b2;
       --text:#e6eef6;
       --code-bg:#071024;
       --bubble:#071327;
       --mono:SFMono-Regular,Consolas,Monaco,monospace;
     }
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,var(--bg), #071122); colour:var(--text);}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,var(--bg), #071122); color:var(--text);}
     .wrap{max-width:980px;margin:40px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
     header{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5bb1ff);display:flex;align-items:center;justify-content:center;font-weight:700;colour:white;font-family:var(--mono);} 
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5bb1ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-family:var(--mono);} 
     h1{font-size:20px;margin:0}
-    p.lead{colour:var(--muted);margin-top:6px}
+    p.lead{color:var(--muted);margin-top:6px}
 
     .section{margin-top:20px}
-    .section h2{font-size:14px;margin:0 0 10px 0;colour:var(--accent)}
+    .section h2{font-size:14px;margin:0 0 10px 0;color:var(--accent)}
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.02)}
     pre, code{font-family:var(--mono);font-size:13px}
     .code-block{background:var(--code-bg);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);overflow:auto}
-    .note{colour:var(--muted);font-size:13px}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,0.14);colour:var(--accent);font-weight:600;font-size:12px}
+    .note{color:var(--muted);font-size:13px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:var(--accent);font-weight:600;font-size:12px}
 
     /* chat-like bubble style for the main explanation */
     .bubble{background:linear-gradient(180deg,var(--bubble), rgba(10,18,36,0.6));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.02)}
-    .muted{colour:var(--muted)}
+    .muted{color:var(--muted)}
 
     /* responsive */
     @media (max-width:720px){.wrap{margin:18px;padding:16px}}
