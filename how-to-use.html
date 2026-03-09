@@ -139,8 +139,8 @@
             --border-color: rgba(0, 0, 0, 0.06);
             --text-primary: #1d1d1f;
             --text-secondary: #575757;
-            --accent-cyan: #0066cc;
-            --accent-blue: #0066ff;
+            --accent-cyan: #005bb5;
+            --accent-blue: #005bb5;
             --accent-green: #10b981;
             --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.04);
             --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -713,13 +713,14 @@
                         <li><a href="#messaging">2. iMessage-Style SMS</a></li>
                         <li><a href="#calls">3. Smart Call Management</a></li>
                         <li><a href="#notifications">4. Unified Notifications</a></li>
-                        <li><a href="#clipboard">5. Universal Clipboard</a></li>
-                        <li><a href="#files">6. Wireless File Transfer</a></li>
-                        <li><a href="#contacts">7. Native Contacts Sync</a></li>
-                        <li><a href="#pairing">8. Encrypted Pairing</a></li>
-                        <li><a href="#links">9. Continuity Links</a></li>
-                        <li><a href="#browser">10. Remote File Browser</a></li>
-                        <li><a href="#wifilock">11. Smart WiFi Lock</a></li>
+                        <li><a href="#manage-apps">5. Manage App Notifications</a></li>
+                        <li><a href="#clipboard">6. Universal Clipboard</a></li>
+                        <li><a href="#files">7. Wireless File Transfer</a></li>
+                        <li><a href="#contacts">8. Native Contacts Sync</a></li>
+                        <li><a href="#pairing">9. Encrypted Pairing</a></li>
+                        <li><a href="#links">10. Continuity Links</a></li>
+                        <li><a href="#browser">11. Remote File Browser</a></li>
+                        <li><a href="#wifilock">12. Smart WiFi Lock</a></li>
                         <li><a href="#troubleshooting">Troubleshooting</a></li>
                         <li><a href="#security">Security & Privacy</a></li>
                     </ul>
@@ -858,6 +859,12 @@
                             Mac.</p>
                     </div>
                     <div class="feature-box animate-on-scroll">
+                        <div class="feature-icon">🎛️</div>
+                        <h3 class="feature-name">Manage App Notifications</h3>
+                        <p class="feature-desc">Mute specific chatty apps to stop them from forwarding to your Mac
+                            screen.</p>
+                    </div>
+                    <div class="feature-box animate-on-scroll">
                         <div class="feature-icon">📋</div>
                         <h3 class="feature-name">Universal Clipboard</h3>
                         <p class="feature-desc">Unify your copy-paste buffer instantly between macOS and Android OS.</p>
@@ -972,9 +979,25 @@
                     </ul>
                 </div>
 
-                <!-- 5. Clipboard -->
+                <!-- 5. Manage Apps -->
+                <div class="step-card animate-on-scroll" id="manage-apps">
+                    <h3 class="step-title" style="margin-bottom: 20px;">🎛️ 5. Manage App Notifications</h3>
+                    <p class="step-description">Control exactly which Android apps are allowed to push notifications to
+                        your Mac screen.
+                    </p>
+                    <ul class="step-list">
+                        <li><strong>How it works:</strong> Open the Mac app settings and click "Manage App
+                            Notifications" to see a live-searchable list of every app installed on your Android device.
+                            Simply uncheck the switch next to any app to instantly mute its notifications from crossing
+                            over.</li>
+                        <li><strong>Limitations:</strong> Changing mute settings requires an active connection to the
+                            Android device to fetch the app list and immediately apply the state changes.</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Clipboard -->
                 <div class="step-card animate-on-scroll" id="clipboard">
-                    <h3 class="step-title" style="margin-bottom: 20px;">📋 5. Universal Clipboard</h3>
+                    <h3 class="step-title" style="margin-bottom: 20px;">📋 6. Universal Clipboard</h3>
                     <p class="step-description">Access cross-device clipboard history with effortless native syncing.
                     </p>
                     <ul class="step-list">
@@ -1214,10 +1237,19 @@
         const header = document.getElementById('header');
         const scrollProgress = document.getElementById('scrollProgress');
 
-        // Cache scroll height (recalculate on resize)
-        let documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let documentHeight = 0;
+        let isDocumentHeightCalculated = false;
+
+        function getDocumentHeight() {
+            if (!isDocumentHeightCalculated) {
+                documentHeight = Math.max(1, document.documentElement.scrollHeight - document.documentElement.clientHeight);
+                isDocumentHeightCalculated = true;
+            }
+            return documentHeight;
+        }
+
         window.addEventListener('resize', () => {
-            documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            isDocumentHeightCalculated = false;
         });
 
         function updateScroll() {
@@ -1225,7 +1257,7 @@
 
             // 1. Progress Bar
             if (scrollProgress) {
-                const scrolled = (currentScrollY / documentHeight) * 100;
+                const scrolled = (currentScrollY / getDocumentHeight()) * 100;
                 scrollProgress.style.width = scrolled + '%';
             }
 
