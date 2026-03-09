@@ -402,7 +402,7 @@ h1 {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('Screenshots/feature_bg.png');
+    background-image: url('Screenshots/feature_bg.webp');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
