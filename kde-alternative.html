@@ -1123,14 +1123,22 @@
                             <div class="feature-tab-title">No File Browser</div>
                         </div>
                         <div class="feature-tab" onclick="activateFeature(4)">
+                            <div class="feature-tab-icon">🔄</div>
+                            <div class="feature-tab-title">No Resume Support</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(5)">
+                            <div class="feature-tab-icon">🧹</div>
+                            <div class="feature-tab-title">No Auto-Cleanup</div>
+                        </div>
+                        <div class="feature-tab" onclick="activateFeature(6)">
                             <div class="feature-tab-icon">🔔</div>
                             <div class="feature-tab-title">Passive Notifications</div>
                         </div>
-                        <div class="feature-tab" onclick="activateFeature(5)">
+                        <div class="feature-tab" onclick="activateFeature(7)">
                             <div class="feature-tab-icon">📋</div>
                             <div class="feature-tab-title">Manual Clipboard</div>
                         </div>
-                        <div class="feature-tab" onclick="activateFeature(6)">
+                        <div class="feature-tab" onclick="activateFeature(8)">
                             <div class="feature-tab-icon">🔋</div>
                             <div class="feature-tab-title">Battery Drain</div>
                         </div>
@@ -1168,6 +1176,23 @@
                                 folders, preview files, or download specific files wirelessly.</p>
                         </div>
                         <div class="feature-pane" id="feature-pane-4">
+                            <div class="pane-icon">🔄</div>
+                            <h3 class="pane-title">No Resume Support</h3>
+                            <p class="pane-desc">KDE Connect cannot resume interrupted file transfers. If your WiFi
+                                drops for even a second,
+                                the entire transfer fails and you have to start over from 0%. Bounce Connect handles
+                                brief interruptions
+                                with seamless auto-resume.</p>
+                        </div>
+                        <div class="feature-pane" id="feature-pane-5">
+                            <div class="pane-icon">🧹</div>
+                            <h3 class="pane-title">No Auto-Cleanup</h3>
+                            <p class="pane-desc">KDE Connect often leaves orphaned ".part" files consuming space on your
+                                Mac after a
+                                failed transfer. It lacks a cleanup mechanism to wipe temporary files after a connection
+                                drop.</p>
+                        </div>
+                        <div class="feature-pane" id="feature-pane-6">
                             <div class="pane-icon">🔔</div>
                             <h3 class="pane-title">Passive Notifications Only</h3>
                             <p class="pane-desc">KDE Connect just mirrors notifications without letting you interact
@@ -1176,7 +1201,7 @@
                                 Bounce Connect lets you reply inline to WhatsApp, Telegram, and SMS directly from Mac.
                             </p>
                         </div>
-                        <div class="feature-pane" id="feature-pane-5">
+                        <div class="feature-pane" id="feature-pane-7">
                             <div class="pane-icon">📋</div>
                             <h3 class="pane-title">Manual Clipboard Triggers</h3>
                             <p class="pane-desc">KDE Connect requires you to manually activate clipboard sync from an
@@ -1185,7 +1210,7 @@
                                 triggers
                                 needed.</p>
                         </div>
-                        <div class="feature-pane" id="feature-pane-6">
+                        <div class="feature-pane" id="feature-pane-8">
                             <div class="pane-icon">🔋</div>
                             <h3 class="pane-title">Massive Background Battery Drain</h3>
                             <p class="pane-desc">KDE Connect constantly scans for networks in the background. It lacks
@@ -1306,11 +1331,28 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="feature-name">Wireless File Transfer</div>
-                                    <div class="feature-note">Drag &amp; drop, no size limit</div>
+                                    <div class="feature-name">Ultra-Fast File Transfer</div>
+                                    <div class="feature-note">512KB binary chunks, hits near-gigabit speeds (up to
+                                        120MB/s) on WiFi 5/6</div>
                                 </td>
                                 <td><span class="check">✓</span></td>
                                 <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="feature-name">Seamless Resume</div>
+                                    <div class="feature-note">Resume large transfers after WiFi drops</div>
+                                </td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="cross">✗</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="feature-name">Auto-Cleanup Failsafe</div>
+                                    <div class="feature-note">Wipes temp files after 60s disconnection</div>
+                                </td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="cross">✗</span></td>
                             </tr>
                             <tr>
                                 <td>
@@ -1420,12 +1462,18 @@
                         <p class="feat-limit">⚠ MMS photo attachments not fully supported yet</p>
                     </div>
                     <div class="feat-card animate-on-scroll">
-                        <span class="feat-icon">🗂️</span>
-                        <div class="feat-title">Remote File Browser</div>
-                        <p class="feat-desc">Navigate your Android phone's folders — DCIM, Downloads, and more —
-                            directly
-                            from the Mac app and download files wirelessly.</p>
-                        <p class="feat-limit">⚠ Protected system directories cannot be accessed</p>
+                        <span class="feat-icon">🔄</span>
+                        <div class="feat-title">Seamless Resume</div>
+                        <p class="feat-desc">Bounce Connect automatically resumes file transfers from the last chunk if
+                            WiFi drops. Powered by a new binary protocol that hits <b>near-gigabit speeds</b> on WiFi
+                            5/6.</p>
+                    </div>
+                    <div class="feat-card animate-on-scroll">
+                        <span class="feat-icon">🧹</span>
+                        <div class="feat-title">60s Auto-Cleanup</div>
+                        <p class="feat-desc">If a connection is lost for more than 60 seconds, Bounce automatically
+                            cancels the transfer and wipes temporary files to save disk space. KDE Connect often leaves
+                            stale partial files behind.</p>
                     </div>
                     <div class="feat-card animate-on-scroll">
                         <span class="feat-icon">🔔</span>
@@ -1707,16 +1755,22 @@
                     </svg>
                 </div>
                 <h2 class="modal-title">Mac Installation Guide</h2>
-                <div style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
-    <p style="margin-bottom: 16px;">Bounce Connect is distributed <strong>directly</strong> — outside the Mac App Store — so you always get the latest version instantly, without App Store review delays.</p>
-    <p style="margin-bottom: 16px;">macOS will flag any app not from the App Store the first time. Here's how to allow it:</p>
-    <ol style="padding-left: 20px; margin-bottom: 24px;">
-        <li style="margin-bottom: 12px;">Open the downloaded <strong>Bounce.dmg</strong> and drag the app to your Applications folder.</li>
-        <li style="margin-bottom: 12px;">Try opening Bounce — if macOS blocks it, click <strong>Done</strong> (not "Move to Trash").</li>
-        <li style="margin-bottom: 12px;">Go to <strong>System Settings → Privacy & Security</strong>, scroll down, and click <strong>Open Anyway</strong>.</li>
-    </ol>
-    <p style="font-size: 13px; color: var(--text-secondary); font-style: italic;">This is a one-time step. The app opens normally every time after that.</p>
-</div>
+                <div
+                    style="text-align: left; margin: 24px 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
+                    <p style="margin-bottom: 16px;"><strong>Important:</strong> Because Bounce Connect is not signed
+                        from Appstore as i cant pay the fee now,
+                        macOS will block it initially for security reasons.</p>
+                    <ol style="padding-left: 20px; margin-bottom: 24px;">
+                        <li style="margin-bottom: 12px;">Open the downloaded <strong>Bounce.dmg</strong> file and drag
+                            the app to your Applications folder.</li>
+                        <li style="margin-bottom: 12px;">Try to open Bounce. You may see a warning that it cannot be
+                            opened.
+                            Dont click on move to trash, Just Click Done.</li>
+                        <li>Go to <strong>System Settings > Privacy & Security</strong>, scroll down, and click
+                            <strong>Open Anyway</strong> to launch the app.
+                        </li>
+                    </ol>
+                </div>
                 <!-- Removed onclick to prevent cancelling the download navigation -->
                 <a rel="noopener noreferrer"
                     href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce19/Bounce.dmg"
