@@ -15,7 +15,7 @@
     <!-- Primary SEO -->
     <title>Bounce Connect &#8211; KDE Connect Alternative for Mac</title>
     <meta name="description"
-        content="Best KDE Connect alternative for Mac. Connect Android &amp; Mac — sync SMS, calls, notifications &amp; files. $10.99 lifetime.">
+        content="Best KDE Connect alternative for Mac. Connect Android &amp; Mac — sync SMS, calls, files, and actionable notifications with two-way clear sync. $10.99 lifetime.">
     <meta name="keywords"
         content="bounce connect, KDE connect alternative mac, android macbook integration, imessage for android mac, phone link macbook android, android sms on mac, mirror android notifications, pushbullet alternative, cross platform sync, receive android texts">
     <meta name="robots" content="index, follow">
@@ -30,7 +30,7 @@
     <meta property="og:site_name" content="Bounce Connect">
     <meta property="og:title" content="Bounce Connect &#8211; Best KDE Connect Alternative for Mac">
     <meta property="og:description"
-        content="Connect your Android phone to your Mac wirelessly. Sync SMS, mirror notifications, share clipboard, transfer files &amp; manage WhatsApp calls &#8212; AES-256 encrypted, no cloud.">
+        content="Connect your Android phone to your Mac wirelessly. Sync SMS, trigger supported Android notification actions, keep two-way dismiss sync, and transfer files &#8212; AES-256 encrypted, no cloud.">
     <meta property="og:image" content="https://bounceconnect.app/logo.webp">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
@@ -40,7 +40,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bounce Connect &#8211; Best KDE Connect Alternative for Mac">
     <meta name="twitter:description"
-        content="Connect your Android phone to your Mac wirelessly. Sync SMS, mirror notifications, share clipboard, transfer files &amp; manage WhatsApp calls.">
+        content="Connect Android and Mac wirelessly with SMS sync, actionable notifications, two-way dismiss sync, file transfer, and WhatsApp call controls.">
     <meta name="twitter:image" content="https://bounceconnect.app/logo.webp">
 
 
@@ -67,7 +67,7 @@
       "name": "Bounce Connect",
       "operatingSystem": "macOS, Android",
       "applicationCategory": "UtilitiesApplication",
-      "description": "Bounce Connect is a native macOS app that wirelessly connects your Mac and Android phone. Sync SMS messages, mirror notifications, share clipboard, transfer files, manage calls, and browse your Android filesystem \u2014 all over local WiFi with AES-256 encryption. No cloud servers.",
+    "description": "Bounce Connect is a native macOS app that wirelessly connects your Mac and Android phone. Sync SMS messages, mirror and act on notifications, keep dismissals in sync both ways, share clipboard, transfer files, manage calls, and browse your Android filesystem \u2014 all over local WiFi with AES-256 encryption. No cloud servers.",
       "url": "https://bounceconnect.app/",
       "offers": {
         "@type": "Offer",
@@ -80,6 +80,8 @@
       "featureList": [
         "Sync Android SMS on Mac",
         "Mirror Android notifications on Mac",
+                "Cross-device notification actions from Mac",
+                "Bidirectional notification dismissal sync with reconnect snapshot reconciliation",
         "Granular App Notification Management",
         "Universal clipboard sync between Android and Mac",
         "Wireless file transfer between Android and Mac",
@@ -1822,6 +1824,8 @@
                                     Telegram, etc.)</div>
                                 <div class="pane-bullet">Dismiss an alert on your Mac, and it instantly clears on your
                                     phone</div>
+                                    <div class="pane-bullet">Dismiss an alert on your Android, and it instantly clears on your
+                                    Mac too</div>
                                 <div class="pane-bullet">Use "Manage App Notifications" to selectively block spammy or
                                     unwanted apps</div>
                             </div>
@@ -1853,7 +1857,7 @@
                                 <div class="pane-bullet"><strong>Seamless Resume:</strong> Disconnected? Transfers
                                     resume exactly where they left off.</div>
                                 <div class="pane-bullet"><strong>Auto-Cleanup:</strong> Failsafes automatically clear
-                                    temp files after 60 seconds.</div>
+                                    temp files after 120 seconds.</div>
                                 <div class="pane-bullet">Send multi-gigabyte 4K videos in seconds entirely locally</div>
                             </div>
                         </div>
@@ -2341,7 +2345,7 @@
                         <div class="bento-gloss"></div>
                         <div>
                             <h3 class="bento-title">Notification Sync</h3>
-                            <p class="bento-desc">Clear a notification on your Mac, and it vanishes on your Android.</p>
+                            <p class="bento-desc">A true cross-device bridge: use Android notification actions from your Mac, clear on either side, and Bounce auto-reconciles state after reconnect.</p>
                         </div>
                     </div>
 
@@ -2475,16 +2479,17 @@
                             <strong>How it works</strong>
                             <ul>
                                 <li>Reply inline to WhatsApp, Telegram, and Messages via a native input field.</li>
-                                <li>Dismissing a notification on Mac wipes it cleanly from your Android phone drop-down.
+                                <li>Trigger supported Android notification actions (like mark read or archive) right from Mac.
+                                </li>
+                                <li>Dismiss on Mac or Android and Bounce keeps both devices in sync automatically.
                                 </li>
                                 <li>Use <strong>Manage App Notifications</strong> to selectively block noisy apps from
                                     reaching your Mac.</li>
                             </ul>
                             <strong>Limitations</strong>
                             <ul>
-                                <li>Dismissal is unidirectional. Swiping away a notification natively on your Android
-                                    limits
-                                    remote-deletion synchronization from restoring Mac's history logic.</li>
+                                <li>Inline reply support depends on each Android app's exposed actions (for example,
+                                    Gmail inline reply is currently not supported).</li>
                             </ul>
                         </div>
                     </div>
@@ -2666,9 +2671,8 @@
             <div class="container" style="text-align: center; position: relative; z-index: 2;">
                 <h2 class="section-title" style="margin-bottom: 10px; color: #000;">Never miss a notification.</h2>
                 <p class="section-subtitle" style="color: #000; font-size: 18px; font-weight: 500;">
-                    Notifications synced from Android to Mac seamlessly and privately. you can reply too directly from
-                    the
-                    notification.
+                    Bounce mirrors alerts with actionable controls, keeps dismissals synced both ways, and reconciles
+                    notification state automatically after reconnect.
                 </p>
             </div>
         </section>
@@ -2979,7 +2983,7 @@
                 </div>
                 <!-- Removed onclick to prevent cancelling the download navigation -->
                 <a rel="noopener noreferrer"
-                    href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download/Bounce20/Bounce.dmg"
+                    href="https://github.com/gdeepakreddy2407-sketch/Bounce-Connect-Mac-Releases/releases/download20/Bounce.dmg"
                     class="btn btn-modal-mac" style="width: 100%; justify-content: center;" target="_blank">Download
                     Bounce.dmg</a>
             </div>
