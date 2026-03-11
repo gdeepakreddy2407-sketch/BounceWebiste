@@ -675,22 +675,50 @@
 
                 <p><strong>Android – Bounce Companion:</strong></p>
                 <ul>
-                    <li><strong>READ_SMS / SEND_SMS:</strong> To read and forward your messages to the Mac app, and to
-                        send SMS replies you compose on your Mac.</li>
-                    <li><strong>READ_CONTACTS:</strong> To resolve contact names for incoming calls and messages,
-                        displayed locally on your Mac.</li>
-                    <li><strong>READ_CALL_LOG:</strong> To sync your Android call history directly to the Mac app for
-                        display.</li>
-                    <li><strong>NOTIFICATION_LISTENER:</strong> To mirror Android app notifications to your Mac in
-                        real-time.</li>
-                    <li><strong>READ/WRITE_EXTERNAL_STORAGE:</strong> To allow browsing your Android filesystem and
-                        transferring files to your Mac.</li>
-                    <li><strong>FOREGROUND_SERVICE / WAKE_LOCK:</strong> To maintain the persistent connection in the
-                        background without being killed by Android's battery optimiser.</li>
-                    <li><strong>ACCESS_WIFI_STATE / ACCESS_NETWORK_STATE:</strong> To detect your current Wi-Fi network
-                        and enforce the Smart Wi-Fi Lock feature.</li>
-                    <li><strong>ANSWER_PHONE_CALLS:</strong> To allow you to accept or decline calls directly from your
-                        Mac.</li>
+                    <li><strong>SMS permissions (READ_SMS, SEND_SMS):</strong> Used to sync SMS
+                        conversations to your Mac, send SMS replies from your Mac, and keep message threads current in
+                        real time.</li>
+                    <li><strong>Contacts and call history (READ_CONTACTS, READ_CALL_LOG):</strong> Used to show contact
+                        names and sync call history for display in the Mac app.</li>
+                    <li><strong>Phone and call control (READ_PHONE_STATE, ANSWER_PHONE_CALLS, CALL_PHONE):</strong>
+                        Used to detect call state and let you answer, decline, or start calls from your Mac.</li>
+                    <li><strong>Notification access (BIND_NOTIFICATION_LISTENER_SERVICE):</strong> Used to mirror
+                        Android app notifications to your Mac after you explicitly enable Notification Access in Android
+                        Settings.</li>
+                    <li><strong>Files and media access (READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE,
+                            READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO, MANAGE_EXTERNAL_STORAGE):</strong>
+                        Used for file browsing and transfer between your Android device and Mac. "All files access"
+                        is only used for full-device file browsing features and remains local to your devices.</li>
+                    <li><strong>Background connection reliability (FOREGROUND_SERVICE,
+                            FOREGROUND_SERVICE_CONNECTED_DEVICE, WAKE_LOCK,
+                            REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, SCHEDULE_EXACT_ALARM,
+                            RECEIVE_BOOT_COMPLETED):</strong> Used to keep the companion connection alive, restart
+                        services after reboot, and maintain reliable syncing on devices with aggressive battery
+                        restrictions.</li>
+                    <li><strong>Network and Wi-Fi state (INTERNET, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE):</strong>
+                        Used to connect to your Mac on local Wi-Fi and support Smart
+                        Wi-Fi Lock behavior.</li>
+                    <li><strong>Location for Wi-Fi SSID detection (ACCESS_FINE_LOCATION):</strong>
+                        Required by Android to read Wi-Fi network identifiers (SSID/BSSID) used by Smart Wi-Fi Lock.
+                        We do not use this for background location tracking.</li>
+                    <li><strong>Bluetooth companion pairing (BLUETOOTH, BLUETOOTH_ADMIN, BLUETOOTH_CONNECT,
+                            BLUETOOTH_SCAN):</strong> Used for Android Companion Device Manager pairing and nearby
+                        device discovery flows.</li>
+                    <li><strong>Audio/control permissions (MODIFY_AUDIO_SETTINGS,
+                            ACCESS_NOTIFICATION_POLICY):</strong> Used for call-related audio routing and call-control
+                        behavior, including mute/silence actions.</li>
+                    <li><strong>Camera (CAMERA):</strong> Used only to scan the QR code during secure device pairing.</li>
+                    <li><strong>Notifications permission (POST_NOTIFICATIONS):</strong> Required on newer Android
+                        versions to show ongoing foreground-service notifications.</li>
+                    <li><strong>Companion background privileges (REQUEST_COMPANION_RUN_IN_BACKGROUND,
+                            REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND,
+                            REQUEST_COMPANION_USE_DATA_IN_BACKGROUND):</strong> Used so an approved companion device
+                        can maintain connectivity in the background.</li>
+                    <li><strong>Installed apps visibility (QUERY_ALL_PACKAGES):</strong> Used for the optional
+                        "Manage App Notifications" feature to show installed apps and let you choose which app
+                        notifications are mirrored to your Mac.</li>
+                    <li><strong>Display over other apps (SYSTEM_ALERT_WINDOW):</strong> Used for optional call-related
+                        floating UI on supported devices.</li>
                 </ul>
 
                 <p><strong>macOS – Bounce Connect:</strong></p>
@@ -729,8 +757,8 @@
                     data collection SDKs. The apps contain no tracking libraries.</p>
                 <p>The only external services relevant to Bounce Connect are:</p>
                 <ul>
-                    <li><strong>GitHub (Mac direct download) / Google Play Store:</strong> Distribution platforms. Their own
-                        privacy policies apply to your account and purchase history, which is handled entirely by Github
+                    <li><strong>Apple Mac App Store / Google Play Store:</strong> Distribution platforms. Their own
+                        privacy policies apply to your account and purchase history, which is handled entirely by Apple
                         or Google.</li>
                     <li><strong>Vercel (our website host):</strong> Our marketing website is hosted on Vercel. Vercel
                         may collect standard server access logs (IP address, browser type, page visited) as part of
@@ -863,17 +891,26 @@
             <div class="policy-section">
                 <div class="section-number">14</div>
                 <h2>Governing Law &amp; Jurisdiction</h2>
-                <p>This Privacy Policy is governed by and construed in accordance with the laws of India, with exclusive jurisdiction in the courts of Andhra Pradesh. As Bounce Connect is an independently developed application distributed globally through GitHub (direct download) and Google Play Store, users in different jurisdictions may have additional rights under their local laws.</p>
+                <p>This Privacy Policy is governed by and construed in accordance with applicable laws. As Bounce
+                    Connect is an independently developed application distributed globally through the Apple Mac App
+                    Store and Google Play Store, users in different jurisdictions may have additional rights under their
+                    local laws.</p>
                 <p>We are committed to respecting privacy rights globally, including but not limited to:</p>
                 <ul>
-                    <li><strong>DPDP Act (India):</strong> Digital Personal Data Protection Act 2023 — we do not collect or process digital personal data, ensuring full compliance with the principles of data minimization and purpose limitation under the Act.</li>
-                    <li><strong>GDPR (EU/EEA):</strong> General Data Protection Regulation — we confirm we do not process personal data, so GDPR obligations around data processing are not applicable. However, we fully respect the spirit of the GDPR.</li>
-                    <li><strong>CCPA (California, USA):</strong> California Consumer Privacy Act — we do not sell personal information. California residents have no need to opt out as no data collection occurs.</li>
-                    <li><strong>COPPA (USA):</strong> Children's Online Privacy Protection Act — we do not knowingly collect data from children under 13.</li>
+                    <li><strong>GDPR (EU/EEA):</strong> General Data Protection Regulation — we confirm we do not
+                        process personal data, so GDPR obligations around data processing are not applicable. However,
+                        we fully respect the spirit of the GDPR.</li>
+                    <li><strong>CCPA (California, USA):</strong> California Consumer Privacy Act — we do not sell
+                        personal information. California residents have no need to opt out as no data collection occurs.
+                    </li>
+                    <li><strong>COPPA (USA):</strong> Children's Online Privacy Protection Act — we do not knowingly
+                        collect data from children under 13.</li>
                 </ul>
                 <p>If you have specific privacy concerns based on your jurisdiction, please contact us at <a
                         href="mailto:support@bounceconnect.app"
-                        style="colour:var(--accent-blue);font-weight:600;">support@bounceconnect.app</a> and we will do our best to address them promptly.</p>
+                        style="color:var(--accent-blue);font-weight:600;">support@bounceconnect.app</a> and we will do
+                    our
+                    best to address them promptly.</p>
             </div>
 
             <!-- Contact Card -->
