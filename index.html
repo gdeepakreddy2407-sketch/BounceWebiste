@@ -1127,6 +1127,54 @@
             }
         }
 
+        .carousel-scroll-btn {
+            position: absolute;
+            right: -20px;
+            top: 300px;
+            /* Exact middle of the 560px tall mobile screenshot (20px top padding + 280px half-height) */
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.25), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            z-index: 10;
+            animation: bounceRight 2s infinite;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            outline: none;
+        }
+
+        .carousel-scroll-btn:hover {
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 12px 28px rgba(0, 122, 255, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            animation: none;
+        }
+
+        .carousel-scroll-btn.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-50%) scale(0.8);
+        }
+
+        @keyframes bounceRight {
+
+            0%,
+            100% {
+                transform: translateY(-50%) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-50%) translateX(10px);
+            }
+        }
+
         .scroll-hint svg {
             width: 20px;
             height: 20px
@@ -3074,6 +3122,15 @@
                         </div>
                     </div>
 
+                    <!-- Floating Animated Arrow Button -->
+                    <button id="carouselScrollBtn" class="carousel-scroll-btn" aria-label="Scroll features"
+                        onclick="document.querySelector('.carousel-wrapper').scrollBy({left: 440, behavior: 'smooth'})">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+
                     <div class="scroll-hint">
                         <svg fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
@@ -4048,12 +4105,27 @@
         // Close modal with Escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
-                document.querySelectorAll('.download-modal.active').forEach(modal => {
-                    modal.classList.remove('active');
-                });
-                document.body.style.overflow = '';
+                closeMacModal();
+                closeAndroidModal();
+                closeContactModal();
             }
         });
+
+        // Carousel Arrow Visibility Toggle
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        const carouselScrollBtn = document.getElementById('carouselScrollBtn');
+
+        if (carouselWrapper && carouselScrollBtn) {
+            carouselWrapper.addEventListener('scroll', () => {
+                const maxScroll = carouselWrapper.scrollWidth - carouselWrapper.clientWidth;
+                // Using 10px threshold for stability across different browsers/zooms
+                if (carouselWrapper.scrollLeft >= maxScroll - 10) {
+                    carouselScrollBtn.classList.add('hidden');
+                } else {
+                    carouselScrollBtn.classList.remove('hidden');
+                }
+            }, { passive: true });
+        }
 
         // Attach to all download buttons
         document.addEventListener('DOMContentLoaded', function () {
