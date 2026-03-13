@@ -18,6 +18,23 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://bounceconnect.app/privacy.html">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bounceconnect.app/privacy.html">
+    <meta property="og:site_name" content="Bounce Connect">
+    <meta property="og:title" content="Privacy Policy – Bounce Connect">
+    <meta property="og:description"
+        content="Privacy Policy for Bounce Connect — the Mac & Android integration app. Learn how we handle your data with full transparency.">
+    <meta property="og:image" content="https://bounceconnect.app/logo.webp">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy Policy – Bounce Connect">
+    <meta name="twitter:description"
+        content="Privacy Policy for Bounce Connect — the Mac & Android integration app. Learn how we handle your data with full transparency.">
+    <meta name="twitter:image" content="https://bounceconnect.app/logo.webp">
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
 
@@ -58,23 +75,32 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(245, 245, 247, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 16px 0;
+            background: transparent;
+            border-bottom: none;
+            padding: 14px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
         }
 
         .container {
-            max-width: 860px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 32px;
         }
 
         .header-content {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            gap: 12px;
         }
 
         .logo-container {
@@ -88,6 +114,7 @@
             width: 36px;
             height: 36px;
             border-radius: 8px;
+            object-fit: cover;
         }
 
         .logo {
@@ -105,11 +132,20 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: opacity 0.2s;
+                padding: 10px 18px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(0, 122, 255, 0.1));
+                backdrop-filter: blur(18px) saturate(180%);
+                -webkit-backdrop-filter: blur(18px) saturate(180%);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84), inset 0 -1px 0 rgba(255, 255, 255, 0.18), 0 14px 30px rgba(15, 23, 42, 0.1);
+                transition: all 0.25s ease;
         }
 
         .back-link:hover {
-            opacity: 0.7;
+                transform: translateY(-2px);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(0, 122, 255, 0.16));
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.22), 0 18px 36px rgba(0, 122, 255, 0.14);
         }
 
         /* ── Hero ── */
@@ -333,19 +369,23 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.9), rgba(139, 92, 246, 0.74));
             color: white;
             text-decoration: none;
             padding: 12px 28px;
             border-radius: 100px;
             font-size: 15px;
             font-weight: 600;
-            transition: opacity 0.2s, transform 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 16px 34px rgba(0, 122, 255, 0.24);
+            transition: all 0.25s ease;
         }
 
         .contact-btn:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), inset 0 -1px 0 rgba(255, 255, 255, 0.1), 0 20px 42px rgba(0, 122, 255, 0.32);
         }
 
         /* ── Contact Modal ── */
@@ -451,60 +491,70 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.9), rgba(139, 92, 246, 0.74));
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.24);
             border-radius: 100px;
             padding: 14px 28px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
-            transition: opacity 0.2s, transform 0.2s;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 16px 34px rgba(0, 122, 255, 0.24);
+            transition: all 0.25s ease;
         }
 
         .modal-send-btn:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), inset 0 -1px 0 rgba(255, 255, 255, 0.1), 0 20px 42px rgba(0, 122, 255, 0.32);
         }
 
         /* Footer */
         footer {
-            padding: 48px 0;
+            padding: 60px 0;
             background: var(--text-primary);
             color: white;
             text-align: center;
         }
 
         .footer-logo {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 800;
             margin-bottom: 14px;
             letter-spacing: -0.5px;
         }
 
-        footer nav {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .footer-subtext {
+            font-size: 14px;
+            opacity: 0.68;
             margin-bottom: 20px;
         }
 
-        footer nav a {
-            color: rgba(255, 255, 255, 0.65);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
+        .footer-nav {
+            display: flex;
+            gap: 22px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
         }
 
-        footer nav a:hover {
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover,
+        .footer-nav a.active {
             color: #fff;
         }
 
-        footer p {
+        .footer-copy {
             font-size: 13px;
-            opacity: 0.45;
+            opacity: 0.5;
         }
 
         /* Responsive */
@@ -530,6 +580,231 @@
                 padding: 28px 24px;
             }
         }
+
+        .liquid-nav {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            background: linear-gradient(130deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.34) 42%, rgba(255, 255, 255, 0.16) 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(255, 255, 255, 0.35), 0 18px 38px rgba(31, 41, 55, 0.16), 0 4px 10px rgba(31, 41, 55, 0.08);
+            backdrop-filter: blur(30px) saturate(210%) contrast(106%);
+            -webkit-backdrop-filter: blur(30px) saturate(210%) contrast(106%);
+        }
+
+        .liquid-nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(120% 100% at 20% 0%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 58%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .liquid-nav::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(0, 122, 255, 0.07), rgba(139, 92, 246, 0.08));
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .liquid-nav a {
+            position: relative;
+            z-index: 1;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 999px;
+            padding: 10px 14px;
+            border: none;
+            background: none;
+            box-shadow: none;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+        }
+
+        .liquid-nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-bubble {
+            position: absolute;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,255,255,0.54));
+            border: 1px solid rgba(255,255,255,0.72);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.92), 0 4px 18px rgba(0,122,255,0.13), 0 2px 6px rgba(31,41,55,0.08);
+            transition: left 0.42s cubic-bezier(0.34,1.56,0.64,1),
+                        top 0.42s cubic-bezier(0.34,1.56,0.64,1),
+                        width 0.42s cubic-bezier(0.34,1.56,0.64,1),
+                        height 0.42s cubic-bezier(0.34,1.56,0.64,1),
+                        opacity 0.22s ease;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+        }
+
+        .contact-btn,
+        .modal-send-btn,
+        .back-link {
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 24px rgba(0, 0, 0, 0.14);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Premium Icons */
+        .feat-icon-custom {
+            width: 48px;
+            height: 48px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-bottom: 4px;
+        }
+
+        .feat-icon-custom::before,
+        .feat-icon-custom::after {
+            content: '';
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .feat-icon-custom::before {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .feat-icon-custom::after {
+            width: 18px;
+            height: 18px;
+            background: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .icon-lock::before { background: linear-gradient(135deg, #ff2d92 0%, #d1004d 100%); }
+        .icon-lock::after { -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>') center/contain no-repeat; }
+
+        .icon-storage::before { background: linear-gradient(135deg, #00d4aa 0%, #00a884 100%); }
+        .icon-storage::after { -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M15 16h4v2h-4v-2zm0-8h7v2h-7V8zm0 4h6v2h-6v-2zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12V5z"/></svg>') center/contain no-repeat; }
+
+        .icon-error::before { background: linear-gradient(135deg, #ff3b30 0%, #d72323 100%); }
+        .icon-error::after { -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>') center/contain no-repeat; }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            padding: 80px 24px 24px;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 16px 20px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(0, 122, 255, 0.08);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 980px) {
+            .liquid-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
@@ -544,19 +819,36 @@
                         onerror="this.style.display='none'">
                     <div class="logo">Bounce Connect</div>
                 </a>
-                <a href="index.html" class="back-link">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M19 12H5M12 5l-7 7 7 7" />
-                    </svg>
-                    Back to Home
-                </a>
+                <nav class="liquid-nav" aria-label="Privacy sections">
+                    <a href="index.html">Home</a>
+                    <a href="#overview">Overview</a>
+                    <a href="#permissions">Permissions</a>
+                    <a href="#security">Security</a>
+                    <a href="#rights">Rights</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="index.html">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#permissions">Permissions</a>
+        <a href="#security">Security</a>
+        <a href="#rights">Rights</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
     <!-- Hero -->
-    <section class="policy-hero">
+    <section class="policy-hero" id="policy-top">
         <div class="container" style="max-width: 700px;">
             <div class="policy-badge">🔒 Your Privacy Matters</div>
             <h1>Privacy Policy</h1>
@@ -573,26 +865,26 @@
             <!-- Quick Summary Cards -->
             <div class="summary-grid">
                 <div class="summary-card">
-                    <div class="summary-icon">📵</div>
+                    <div class="summary-icon"><span class="feat-icon-custom icon-storage"></span></div>
                     <h3>No Cloud Servers</h3>
                     <p>All data transfers happen directly over your local Wi-Fi network. Nothing touches our servers.
                     </p>
                 </div>
                 <div class="summary-card">
-                    <div class="summary-icon">🔐</div>
+                    <div class="summary-icon"><span class="feat-icon-custom icon-lock"></span></div>
                     <h3>End-to-End Encrypted</h3>
                     <p>Every message, file, and notification is encrypted with AES-256-GCM before leaving your device.
                     </p>
                 </div>
                 <div class="summary-card">
-                    <div class="summary-icon">🚫</div>
+                    <div class="summary-icon"><span class="feat-icon-custom icon-error"></span></div>
                     <h3>Zero Data Collection</h3>
                     <p>We do not collect, store, or sell any personal data. Ever.</p>
                 </div>
             </div>
 
             <!-- 1. Overview -->
-            <div class="policy-section">
+            <div class="policy-section" id="overview">
                 <div class="section-number">1</div>
                 <h2>Overview</h2>
                 <p>This Privacy Policy describes how <strong>Bounce Connect</strong> ("we", "our", or "the app") handles
@@ -667,7 +959,7 @@
             </div>
 
             <!-- 4. Permissions -->
-            <div class="policy-section">
+            <div class="policy-section" id="permissions">
                 <div class="section-number">4</div>
                 <h2>Permissions &amp; Why We Need Them</h2>
                 <p>Both apps request only the permissions required to function. Here is why each permission is needed:
@@ -779,7 +1071,7 @@
             </div>
 
             <!-- 8. Security -->
-            <div class="policy-section">
+            <div class="policy-section" id="security">
                 <div class="section-number">8</div>
                 <h2>Security</h2>
                 <p>Security is a core design principle of Bounce Connect, not an afterthought:</p>
@@ -811,7 +1103,7 @@
             </div>
 
             <!-- 10. Your Rights -->
-            <div class="policy-section">
+            <div class="policy-section" id="rights">
                 <div class="section-number">10</div>
                 <h2>Your Rights</h2>
                 <p>Because Bounce Connect does not collect or store your personal data on any of our servers, there is
@@ -914,7 +1206,7 @@
             </div>
 
             <!-- Contact Card -->
-            <div class="contact-card">
+            <div class="contact-card" id="contact">
                 <h2>Questions about your privacy?</h2>
                 <p>We're happy to answer any questions about how Bounce Connect handles your data. Reach out and we'll
                     respond as quickly as we can.</p>
@@ -935,15 +1227,14 @@
     <footer>
         <div class="container" style="max-width: 1000px;">
             <div class="footer-logo">Bounce Connect</div>
-            <p style="font-size:14px;opacity:0.65;margin-bottom:20px;">The best KDE Connect alternative for Mac &mdash;
-                connect Android &amp; Mac wirelessly.</p>
-            <nav>
+            <p class="footer-subtext">The best KDE Connect alternative for Mac &amp; Android.</p>
+            <nav class="footer-nav" aria-label="Footer links">
                 <a href="index.html">Home</a>
                 <a href="how-to-use.html">Setup Guide</a>
                 <a href="kde-alternative.html">KDE Connect Alternative</a>
-                <a href="privacy.html" style="color:rgba(255,255,255,0.95);">Privacy Policy</a>
+                <a href="privacy.html" class="active">Privacy Policy</a>
             </nav>
-            <p style="font-size:13px;opacity:0.45;">&copy; 2026 Bounce Connect. All rights reserved.</p>
+            <p class="footer-copy">&copy; 2026 Bounce Connect. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1006,6 +1297,104 @@
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeContactPopup();
         });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = (document.querySelector('header')?.offsetHeight || 0) + 12;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+        // Liquid nav bubble — single floating pill follows hover
+        (function () {
+            document.querySelectorAll('.liquid-nav').forEach(function (nav) {
+                var bubble = document.createElement('span');
+                bubble.className = 'nav-bubble';
+                nav.prepend(bubble);
+                var links = nav.querySelectorAll('a');
+                function moveBubble(el) {
+                    var nr = nav.getBoundingClientRect();
+                    var er = el.getBoundingClientRect();
+                    bubble.style.left = (er.left - nr.left) + 'px';
+                    bubble.style.top = (er.top - nr.top) + 'px';
+                    bubble.style.width = er.width + 'px';
+                    bubble.style.height = er.height + 'px';
+                    bubble.style.opacity = '1';
+                }
+                links.forEach(function (link) {
+                    link.addEventListener('mouseenter', function () { moveBubble(this); });
+                });
+                nav.addEventListener('mouseleave', function () { bubble.style.opacity = '0'; });
+            });
+        })();
+
+        // Header scroll effect
+        (function () {
+            var header = document.getElementById('header') || document.querySelector('header');
+            var ticking = false;
+
+            function updateHeader() {
+                var scrollY = window.pageYOffset;
+                if (header) {
+                    if (scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeader);
+                    ticking = true;
+                }
+            });
+        })();
+
+        // Mobile menu toggle
+        (function () {
+            var menuBtn = document.getElementById('mobileMenuBtn');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var overlay = document.getElementById('mobileMenuOverlay');
+
+            function toggleMenu() {
+                menuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
+
+            function closeMenu() {
+                menuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', toggleMenu);
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+
+            // Close menu when clicking a link
+            if (mobileMenu) {
+                var menuLinks = mobileMenu.querySelectorAll('a');
+                menuLinks.forEach(function (link) {
+                    link.addEventListener('click', closeMenu);
+                });
+            }
+        })();
     </script>
 
 </body>
