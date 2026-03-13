@@ -2491,6 +2491,7 @@
                         <path id="arcPath" d="M 0,280 Q 500,0 1000,280" fill="none" stroke="url(#arcGrad)"
                             stroke-width="2.5" opacity="0.8" />
 
+                        <!-- Forward direction dots (Mac to Android) -->
                         <circle r="6" fill="#007aff" filter="url(#glow)">
                             <animateMotion dur="2.5s" repeatCount="indefinite" path="M 0,280 Q 500,0 1000,280"
                                 keyPoints="0;1" keyTimes="0;1" calcMode="linear" />
@@ -2503,11 +2504,19 @@
                             <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" begin="1s"
                                 repeatCount="indefinite" />
                         </circle>
+
+                        <!-- Reverse direction dots (Android to Mac) -->
                         <circle r="6" fill="#10b981" filter="url(#glow)">
-                            <animateMotion dur="2.2s" begin="0.8s" repeatCount="indefinite"
-                                path="M 0,280 Q 500,0 1000,280" keyPoints="0;1" keyTimes="0;1" calcMode="linear" />
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.2s"
-                                begin="0.8s" repeatCount="indefinite" />
+                            <animateMotion dur="2.8s" begin="0.5s" repeatCount="indefinite"
+                                path="M 0,280 Q 500,0 1000,280" keyPoints="1;0" keyTimes="0;1" calcMode="linear" />
+                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.8s"
+                                begin="0.5s" repeatCount="indefinite" />
+                        </circle>
+                        <circle r="6" fill="#f59e0b" filter="url(#glow)">
+                            <animateMotion dur="3.2s" begin="1.2s" repeatCount="indefinite"
+                                path="M 0,280 Q 500,0 1000,280" keyPoints="1;0" keyTimes="0;1" calcMode="linear" />
+                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3.2s"
+                                begin="1.2s" repeatCount="indefinite" />
                         </circle>
                     </svg>
                 </div>
