@@ -1624,7 +1624,23 @@
             transition: transform 0.3s ease
         }
 
+        .mobile-only-br {
+            display: none;
+        }
+
+        .hide-mobile {
+            display: inline;
+        }
+
         @media (max-width:768px) {
+            .mobile-only-br {
+                display: block;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
+
             .container {
                 padding: 0 20px
             }
@@ -1659,22 +1675,22 @@
             }
 
             .animated-logo-container {
-                top: 150px;
+                top: 120px;
                 gap: 12px;
             }
 
             .animated-logo-img {
-                width: 60px;
-                height: 60px;
-                border-radius: 16px;
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
             }
 
             .animated-logo-text {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .hero {
-                padding: 120px 0 60px;
+                padding: 180px 0 60px;
             }
 
             .hero-subtitle {
@@ -2696,8 +2712,7 @@
                         in sync.</span></h2>
                 <p class="hero-seo-tag"
                     style="font-size:15px;color:var(--text-secondary);margin-top:40px;font-weight:500;letter-spacing:0.2px;animation:fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.35s backwards;">
-                    The best <strong>KDE Connect alternative for Mac</strong> &mdash; connect Android &amp; Mac
-                    wirelessly
+                    The best <strong>KDE Connect alternative for Mac</strong> <span class="hide-mobile">&mdash;</span><br class="mobile-only-br"> connect Android &amp; Mac wirelessly
                 </p>
 
                 <div class="download-buttons" style="margin-top: 48px;">
@@ -4160,9 +4175,14 @@
             // Easing function for smoother movement curve
             const easeProgress = 1 - Math.pow(1 - progress, 3);
 
-            const START_TOP = 140;
-            const sourceHeight = 76; // Use constant instead of querying DOM
-            const END_SCALE = 0.52;
+            const isMobile = window.innerWidth <= 768;
+
+            const START_TOP = isMobile ? 120 : 140;
+            const sourceHeight = isMobile ? 48 : 76; // Match CSS width/height
+            
+            // On mobile, the header target is 32px (CSS line 1641), so 32/48 = 0.66 scale
+            // On desktop, target is 40px, so 40/76 = 0.52 scale
+            const END_SCALE = isMobile ? 0.66 : 0.52;
 
             const viewportCenterX = window.innerWidth / 2;
 
