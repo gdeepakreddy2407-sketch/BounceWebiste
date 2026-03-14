@@ -399,7 +399,92 @@
             font-size: 26px;
             font-weight: 800;
             color: var(--text-primary);
-            letter-spacing: -0.5px
+            letter-spacing: -0.5px;
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        /* Animated Logo */
+        .animated-logo-container {
+            position: fixed;
+            top: 140px;
+            left: 50%;
+            /* Translate X centers the container initially. Scale down shrinks from center. */
+            transform: translateX(-50%) scale(1);
+            transform-origin: center center;
+            z-index: 1001;
+            /* Above header */
+            will-change: transform;
+            pointer-events: none;
+            /* Let clicks pass through when animating */
+        }
+
+        .levitate-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: levitate 6s ease-in-out infinite;
+            transition: transform 0.4s ease-out;
+            will-change: transform;
+        }
+
+        .animated-logo-container.in-header {
+            pointer-events: auto;
+            /* Clickable when in header */
+        }
+
+        .animated-logo-container.in-header .levitate-wrapper {
+            animation: none;
+            transform: translateY(0);
+        }
+
+        @keyframes levitate {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .animated-logo-img {
+            width: 76px;
+            height: 76px;
+            border-radius: 18px;
+            object-fit: cover;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            /* Removed width/height animation for smoother 60fps performance */
+        }
+
+        .animated-logo-text {
+            font-size: 54px;
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            margin: 0;
+            /* Important for h1 */
+            line-height: 1;
+            /* Anti-aliasing during GPU matrix scale to prevent jitter */
+            -webkit-font-smoothing: antialiased;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        /* Hide the static header logo and text initially */
+        .header-logo-placeholder {
+            width: 42px;
+            height: 42px;
+            visibility: hidden;
+        }
+
+        .header-text-placeholder {
+            /* Approximate width of "Bounce Connect" text to prevent layout shift */
+            width: 190px;
+            visibility: hidden;
         }
 
         .header-actions {
@@ -481,13 +566,16 @@
         }
 
         .hero {
-            padding: 90px 0 100px;
+            padding: 300px 0 100px;
+            /* Increased top padding to make room for absolute logo */
             text-align: center;
             position: relative;
-            isolation: isolate
+            isolation: isolate;
+            min-height: 700px;
         }
 
-        h1 {
+        /* The old H1 is now H2 */
+        .hero-main-title {
             font-size: 80px;
             font-weight: 900;
             line-height: 1.05;
@@ -1564,6 +1652,31 @@
                 margin-bottom: 16px
             }
 
+            .hero-main-title {
+                font-size: 40px;
+                letter-spacing: -1.5px;
+                margin-bottom: 16px
+            }
+
+            .animated-logo-container {
+                top: 150px;
+                gap: 12px;
+            }
+
+            .animated-logo-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 16px;
+            }
+
+            .animated-logo-text {
+                font-size: 36px;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
             .hero-subtitle {
                 font-size: 18px;
                 margin-bottom: 24px
@@ -2470,10 +2583,9 @@
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo-container">
-                    <img fetchpriority="high" loading="eager" src="logo.webp" alt="Bounce Connect Logo" class="logo-img"
-                        onerror="this.style.display='none'">
-                    <div class="logo">Bounce Connect</div>
+                <div class="logo-container" id="headerLogoContainer">
+                    <div class="header-logo-placeholder" id="headerLogoPlaceholder"></div>
+                    <div class="header-text-placeholder" id="headerTextPlaceholder"></div>
                 </div>
                 <div class="header-actions">
                     <nav class="liquid-nav" aria-label="Primary sections">
@@ -2513,7 +2625,14 @@
 
     <main>
 
-
+        <!-- Animated Logo that moves from Hero to Header -->
+        <div class="animated-logo-container" id="animatedLogo">
+            <div class="levitate-wrapper">
+                <img fetchpriority="high" loading="eager" src="logo.webp" alt="Bounce Connect Logo"
+                    class="animated-logo-img" id="animatedLogoImg" onerror="this.style.display='none'">
+                <h1 class="animated-logo-text logo" id="animatedLogoText">Bounce Connect</h1>
+            </div>
+        </div>
         <!-- Hero Section -->
         <section class="hero" id="hero">
             <!-- Hero Connection Animation -->
@@ -2572,21 +2691,16 @@
             </div>
 
             <div class="container">
-                <h1>Your Mac &amp; Android,<br><span
+                <h2 class="hero-main-title" style="margin-top: 24px;">Your Mac &amp; Android,<br><span
                         style="background:linear-gradient(135deg,#007aff,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">perfectly
-                        in sync.</span></h1>
-                <!-- SEO subheading -->
+                        in sync.</span></h2>
                 <p class="hero-seo-tag"
-                    style="font-size:15px;color:var(--text-secondary);margin-top:20px;margin-bottom:20px;font-weight:500;letter-spacing:0.2px;animation:fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.35s backwards;">
+                    style="font-size:15px;color:var(--text-secondary);margin-top:40px;font-weight:500;letter-spacing:0.2px;animation:fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.35s backwards;">
                     The best <strong>KDE Connect alternative for Mac</strong> &mdash; connect Android &amp; Mac
                     wirelessly
                 </p>
-                <p class="hero-subtitle">
-                    Seamless integration that brings messages, calls, notifications, and files together across your
-                    devices.
-                </p>
 
-                <div class="download-buttons">
+                <div class="download-buttons" style="margin-top: 48px;">
                     <a href="#" class="btn btn-mac">
                         <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -2635,7 +2749,8 @@
                 <div class="section-header">
                     <h2 class="section-title">Everything you need,<br>beautifully integrated.</h2>
                     <p class="section-subtitle">
-                        Powerful features that work seamlessly together to enhance your workflow.
+                        Seamless integration that brings messages, calls, notifications, and files together across your
+                        devices.
                     </p>
                 </div>
             </div>
@@ -4004,6 +4119,80 @@
     </div>
 
     <script>
+        // JavaScript logo animation logic
+        const animatedLogo = document.getElementById('animatedLogo');
+        const animatedLogoImg = document.getElementById('animatedLogoImg');
+        const animatedLogoText = document.getElementById('animatedLogoText');
+
+        const headerLogoPlaceholder = document.getElementById('headerLogoPlaceholder');
+        const headerTextPlaceholder = document.getElementById('headerTextPlaceholder');
+        const headerLogoContainer = document.getElementById('headerLogoContainer');
+        const headerEl = document.getElementById('header');
+
+        // Cached Logo Dimensions to prevent layout thrashing (stuttering)
+        let cachedTargetX = 0;
+        let cachedTargetY = 0;
+        let isLogoLayoutCached = false;
+
+        window.addEventListener('resize', () => {
+            isLogoLayoutCached = false;
+        });
+
+        function calculateLogoAnimation(scrollY) {
+            const ANIMATION_START = 0;
+            const ANIMATION_END = 120; // Pixels to scroll before animation is complete
+
+            if (!animatedLogo || !headerLogoContainer) return;
+
+            // Compute layout only once (or on resize) to prevent severe layout thrashing (stutter)
+            if (!isLogoLayoutCached) {
+                const rect = headerLogoContainer.getBoundingClientRect();
+                // Since header is sticky top:0, getBoundingClientRect is reliably absolute to viewport
+                cachedTargetX = rect.left + (rect.width / 2);
+                cachedTargetY = rect.top + (rect.height / 2);
+                isLogoLayoutCached = true;
+            }
+
+            // Direct calculate progress (0 to 1) perfectly synced to scroll (fixes throwing lag)
+            let progress = (scrollY - ANIMATION_START) / (ANIMATION_END - ANIMATION_START);
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Easing function for smoother movement curve
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+            const START_TOP = 140;
+            const sourceHeight = 76; // Use constant instead of querying DOM
+            const END_SCALE = 0.52;
+
+            const viewportCenterX = window.innerWidth / 2;
+
+            // Interpolate position relative to the page to eliminate the "throwing" sensation
+            // When progress is 0, element moves up exactly synced with the page scroll.
+            // When progress is 1, element is perfectly locked to the target header position.
+            const startCenterYScreen = START_TOP + sourceHeight / 2 - scrollY;
+            const currentCenterYScreen = startCenterYScreen * (1 - easeProgress) + cachedTargetY * easeProgress;
+
+            const startCenterXScreen = viewportCenterX;
+            const currentCenterXScreen = startCenterXScreen * (1 - easeProgress) + cachedTargetX * easeProgress;
+
+            const deltaX = currentCenterXScreen - viewportCenterX;
+            const deltaY = currentCenterYScreen - (START_TOP + sourceHeight / 2);
+
+            const scale = 1 - easeProgress * (1 - END_SCALE);
+            const currentX = easeProgress * deltaX;
+            const currentY = easeProgress * deltaY;
+
+            // Hardcode subpixel rendering (translate3d) to engage hardware accel natively
+            animatedLogo.style.transform = `translate3d(calc(-50% + ${currentX}px), ${currentY}px, 0) scale(${scale})`;
+
+            // Toggle interactive elements
+            if (progress === 1) {
+                animatedLogo.classList.add('in-header');
+            } else {
+                animatedLogo.classList.remove('in-header');
+            }
+        }
+
         // Feature Layout Interactivity
         function activateFeature(index) {
             // 1. Remove active class from all tabs
@@ -4175,6 +4364,9 @@
                 }
             }
 
+            // 3. Logo Animation Effect
+            calculateLogoAnimation(currentScrollY);
+
             ticking = false;
         }
 
@@ -4202,6 +4394,12 @@
                 }
             });
         }, observerOptions);
+
+        // Run logo animation calculation once on load to set initial state
+        setTimeout(() => {
+            // Instantly snap to target on load
+            calculateLogoAnimation(window.pageYOffset || 0);
+        }, 50);
 
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
