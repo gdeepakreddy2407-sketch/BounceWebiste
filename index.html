@@ -1671,26 +1671,43 @@
             .hero-main-title {
                 font-size: 40px;
                 letter-spacing: -1.5px;
+                margin-top: 0 !important;
                 margin-bottom: 16px
             }
 
             .animated-logo-container {
-                top: 120px;
+                top: 110px;
+            }
+
+            .animated-logo-container .levitate-wrapper {
                 gap: 12px;
             }
 
+            .header-logo-placeholder {
+                width: 32px;
+                height: 32px;
+            }
+
+            .header-text-placeholder {
+                width: 146px; /* 190 * (20/26) to match the 20px mobile font scaling perfectly */
+            }
+
             .animated-logo-img {
-                width: 48px;
-                height: 48px;
-                border-radius: 12px;
+                width: 44px;
+                height: 44px;
+                border-radius: 10px;
             }
 
             .animated-logo-text {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .hero {
-                padding: 180px 0 60px;
+                padding: 90px 0 40px;
+            }
+
+            .hero-seo-tag {
+                margin-top: 20px !important;
             }
 
             .hero-subtitle {
@@ -1698,14 +1715,35 @@
                 margin-bottom: 24px
             }
 
+            .download-buttons {
+                margin-top: 32px !important;
+            }
+
             .platform-badges {
-                gap: 16px;
-                margin-top: 20px
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 24px;
+                padding: 0;
             }
 
             .badge {
-                padding: 8px 16px;
-                font-size: 13px
+                background: transparent;
+                box-shadow: none !important;
+                padding: 4px 8px;
+                font-size: 13px;
+                gap: 8px;
+                color: var(--text-secondary);
+            }
+
+            .badge:hover {
+                transform: none;
+            }
+
+            .badge-icon {
+                width: 18px;
+                height: 18px;
             }
 
             .section-title {
@@ -1799,9 +1837,9 @@
             }
 
             .modal-content {
-                padding: 24px 20px;
-                max-height: 85vh;
-                border-radius: 24px
+                padding: 16px;
+                max-height: 90vh;
+                border-radius: 20px
             }
 
             .modal-close-icon {
@@ -1810,9 +1848,10 @@
             }
 
             .modal-icon {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 12px
+                width: 40px;
+                height: 40px;
+                margin-bottom: 8px;
+                border-radius: 12px;
             }
 
             .modal-icon svg {
@@ -1821,8 +1860,32 @@
             }
 
             .modal-title {
-                font-size: 20px;
-                margin-bottom: 8px
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .modal-important {
+                font-size: 12px;
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+
+            .install-step {
+                font-size: 13px;
+                margin-bottom: 10px;
+                padding-left: 20px;
+            }
+            
+            .install-step::before {
+                width: 16px;
+                height: 16px;
+                font-size: 10px;
+            }
+
+            .modal-btn {
+                padding: 14px 24px;
+                font-size: 15px;
+                margin-top: 16px;
             }
         }
 
@@ -3773,13 +3836,13 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="hero" style="padding: 100px 0;">
+        <section class="hero" style="padding: 100px 0; min-height: auto;">
             <div class="container">
                 <div class="animate-on-scroll">
                     <h2 class="section-title">Ready to get started?</h2>
                     <p class="hero-subtitle">Download Bounce Connect and experience seamless connectivity.</p>
 
-                    <div class="download-buttons">
+                    <div class="download-buttons" style="margin-bottom: 0;">
                         <a href="#" class="btn btn-mac">
                             <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
                                 <path
@@ -3800,7 +3863,7 @@
         </section>
 
         <!-- FAQ Section (SEO: targets Google Featured Snippets & PAA) -->
-        <section id="faq" style="padding: 80px 0; background: var(--bg-secondary);">
+        <section id="faq" style="padding: 20px 0 80px; background: var(--bg-secondary);">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Frequently Asked Questions</h2>
@@ -4162,9 +4225,13 @@
             // Compute layout only once (or on resize) to prevent severe layout thrashing (stutter)
             if (!isLogoLayoutCached) {
                 const rect = headerLogoContainer.getBoundingClientRect();
-                // Since header is sticky top:0, getBoundingClientRect is reliably absolute to viewport
+                const isMobileLayout = window.innerWidth <= 768;
+                // Since header is sticky top:0, getBoundingClientRect is reliably absolute to viewport.
+                // However, by the time progress=1, header gets .scrolled which changes padding
+                // (Desktop: 14px -> 10px, Mobile: 12px -> 10px). We adjust the final target Y accordingly.
+                const scrollOffset = isMobileLayout ? 2 : 4;
                 cachedTargetX = rect.left + (rect.width / 2);
-                cachedTargetY = rect.top + (rect.height / 2);
+                cachedTargetY = rect.top + (rect.height / 2) - scrollOffset;
                 isLogoLayoutCached = true;
             }
 
@@ -4177,12 +4244,12 @@
 
             const isMobile = window.innerWidth <= 768;
 
-            const START_TOP = isMobile ? 120 : 140;
-            const sourceHeight = isMobile ? 48 : 76; // Match CSS width/height
+            const START_TOP = isMobile ? 110 : 140;
+            const sourceHeight = isMobile ? 44 : 76; // Match CSS width/height
             
-            // On mobile, the header target is 32px (CSS line 1641), so 32/48 = 0.66 scale
+            // On mobile, the header target is 32px (CSS line 1641), so 32/44 = 0.72 scale
             // On desktop, target is 40px, so 40/76 = 0.52 scale
-            const END_SCALE = isMobile ? 0.66 : 0.52;
+            const END_SCALE = isMobile ? 0.72 : 0.52;
 
             const viewportCenterX = window.innerWidth / 2;
 
