@@ -1971,11 +1971,6 @@
             </div>
 
             <div class="container">
-                <div class="breadcrumb" style="text-align:center">
-                    <a href="https://bounceconnect.app/">Home</a>
-                    <span>›</span>
-                    <span>KDE Connect Alternative for Mac</span>
-                </div>
                 <div class="hero-tag">⚡ KDE Connect Alternative for Mac</div>
                 <h1>The Best <span>KDE Connect</span><br>Alternative for Mac</h1>
                 <p class="hero-subtitle">
@@ -2631,77 +2626,8 @@
         </div>
     </footer>
 
-    <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -60px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Stop swipe hint animation on interaction
-        setTimeout(() => {
-            document.querySelectorAll('.feature-sidebar').forEach(sidebar => {
-                const stopAnimation = () => {
-                    sidebar.classList.add('user-scrolled');
-
-                    // also hide the hint text smoothly
-                    const container = sidebar.closest('.container');
-                    if (container) {
-                        const hint = container.querySelector('.feature-swipe-hint');
-                        if (hint) hint.classList.add('user-scrolled');
-                    }
-
-                    // Remove listeners after first interaction
-                    sidebar.removeEventListener('scroll', stopAnimation);
-                    sidebar.removeEventListener('touchstart', stopAnimation);
-                    sidebar.removeEventListener('mousedown', stopAnimation);
-                };
-                sidebar.addEventListener('scroll', stopAnimation, { passive: true });
-                sidebar.addEventListener('touchstart', stopAnimation, { passive: true });
-                sidebar.addEventListener('mousedown', stopAnimation, { passive: true });
-            });
-        }, 1000); // Brief delay so initial rendering layout-shifts don't trigger the removal
-
-        function activateFeature(index) {
-            document.querySelectorAll('.feature-tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.feature-pane').forEach(pane => pane.classList.remove('active'));
-
-            const tabs = document.querySelectorAll('.feature-tab');
-            if (tabs[index]) tabs[index].classList.add('active');
-
-            const pane = document.getElementById('feature-pane-' + index);
-            if (pane) pane.classList.add('active');
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (!href || href === '#') return;
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    const headerOffset = (document.querySelector('header')?.offsetHeight || 0) + 12;
-                    const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
-
-    <!-- Mac Download Modal -->
+    
+<!-- Mac Download Modal -->
     <div class="download-modal" id="macDownloadModal">
         <div class="modal-content" style="max-width: 450px;">
             <div class="modal-close-icon" onclick="closeMacModal()">✕</div>
@@ -2738,7 +2664,8 @@
         </div>
     </div>
 
-    <!-- Android Download Modal -->
+    
+<!-- Android Download Modal -->
     <div class="download-modal" id="androidDownloadModal">
         <div class="modal-content" style="max-width: 450px;">
             <div class="modal-close-icon" onclick="closeAndroidModal()">✕</div>
@@ -2772,116 +2699,7 @@
         </div>
     </div>
 
-    <script>
-        function openMacModal(e) {
-            e.preventDefault();
-            document.getElementById('macDownloadModal').classList.add('active');
-        }
-        function closeMacModal() {
-            document.getElementById('macDownloadModal').classList.remove('active');
-        }
-        function openAndroidModal(e) {
-            e.preventDefault();
-            document.getElementById('androidDownloadModal').classList.add('active');
-        }
-        function closeAndroidModal() {
-            document.getElementById('androidDownloadModal').classList.remove('active');
-        }
-        // Close modals when clicking the backdrop
-        document.getElementById('macDownloadModal').addEventListener('click', function (e) {
-            if (e.target === this) closeMacModal();
-        });
-        document.getElementById('androidDownloadModal').addEventListener('click', function (e) {
-            if (e.target === this) closeAndroidModal();
-        });
-    </script>
-
-    <script>
-        // Liquid nav bubble — single floating pill follows hover
-        (function () {
-            document.querySelectorAll('.liquid-nav').forEach(function (nav) {
-                var bubble = document.createElement('span');
-                bubble.className = 'nav-bubble';
-                nav.prepend(bubble);
-                var links = nav.querySelectorAll('a');
-                function moveBubble(el) {
-                    var nr = nav.getBoundingClientRect();
-                    var er = el.getBoundingClientRect();
-                    bubble.style.left = (er.left - nr.left) + 'px';
-                    bubble.style.top = (er.top - nr.top) + 'px';
-                    bubble.style.width = er.width + 'px';
-                    bubble.style.height = er.height + 'px';
-                    bubble.style.opacity = '1';
-                }
-                links.forEach(function (link) {
-                    link.addEventListener('mouseenter', function () { moveBubble(this); });
-                });
-                nav.addEventListener('mouseleave', function () { bubble.style.opacity = '0'; });
-            });
-        })();
-
-        // Header scroll effect
-        (function () {
-            var header = document.getElementById('header') || document.querySelector('header');
-            var ticking = false;
-
-            function updateHeader() {
-                var scrollY = window.pageYOffset;
-                if (header) {
-                    if (scrollY > 100) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                }
-                ticking = false;
-            }
-
-            window.addEventListener('scroll', function () {
-                if (!ticking) {
-                    window.requestAnimationFrame(updateHeader);
-                    ticking = true;
-                }
-            });
-        })();
-
-        // Mobile menu toggle
-        (function () {
-            var menuBtn = document.getElementById('mobileMenuBtn');
-            var mobileMenu = document.getElementById('mobileMenu');
-            var overlay = document.getElementById('mobileMenuOverlay');
-
-            function toggleMenu() {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            }
-
-            function closeMenu() {
-                menuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            if (menuBtn) {
-                menuBtn.addEventListener('click', toggleMenu);
-            }
-
-            if (overlay) {
-                overlay.addEventListener('click', closeMenu);
-            }
-
-            // Close menu when clicking a link
-            if (mobileMenu) {
-                var menuLinks = mobileMenu.querySelectorAll('a');
-                menuLinks.forEach(function (link) {
-                    link.addEventListener('click', closeMenu);
-                });
-            }
-        })();
-    </script>
+    <script src="main.js" defer></script>
 
 </body>
 
